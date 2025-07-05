@@ -14,6 +14,8 @@ var movecount: int = 0
 
 func _ready() -> void:
 	input_sequence = Globals.player_sequence
+	Globals.current_move = 0
+	
 	Globals.hide_active = false
 	
 	if Globals.max_speedup_turns > 0:
@@ -65,6 +67,7 @@ func change_position() -> void:
 	
 	
 	movecount+=1
+	Globals.current_move = movecount
 	
 
 

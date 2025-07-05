@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=29 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/Map.tscn" id="3_cxv17"]
 [ext_resource type="Texture2D" uid="uid://bp4ut1tshuu0t" path="res://assets/sprites/Tutorial/skip.png" id="4_1npfk"]
+[ext_resource type="Script" uid="uid://duyh6hdvgma2b" path="res://scripts/turn_count_label.gd" id="4_2gh7q"]
 [ext_resource type="Script" uid="uid://cg2ylqvx868ee" path="res://scenes/speedup_indicator.gd" id="4_6nmf6"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="4_18ig4"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
@@ -19,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://cnjhuew5ssw74" path="res://assets/models/flippage/papertexture.jpg" id="11_21xg8"]
 [ext_resource type="AudioStream" uid="uid://cb88ggjx4kabs" path="res://assets/music/main_theme.ogg" id="11_j40tv"]
 [ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://assets/pause_menu.tscn" id="13_1npfk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lk0vr"]
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_6nmf6"]
 
@@ -75,6 +79,22 @@ stream = ExtResource("8_2gh7q")
 volume_db = -5.0
 bus = &"Music"
 
+[node name="Turncount" type="Label" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = -100.0
+offset_right = -45.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "100"
+label_settings = SubResource("LabelSettings_lk0vr")
+vertical_alignment = 1
+script = ExtResource("4_2gh7q")
+
 [node name="SpeedupIndicator" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -113,6 +133,18 @@ label_settings = SubResource("LabelSettings_1npfk")
 [node name="WinScreen" parent="." instance=ExtResource("6_6nmf6")]
 visible = false
 
+[node name="Check" parent="WinScreen" index="1"]
+texture = ExtResource("8_6nmf6")
+
+[node name="Label" parent="WinScreen/UI" index="0"]
+text = "You Win"
+
+[node name="Fills" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" index="0"]
+region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
+
+[node name="Lines" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" index="1"]
+region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
+
 [node name="Score Component" type="Node2D" parent="WinScreen"]
 z_index = -1
 script = ExtResource("7_icif4")
@@ -123,22 +155,22 @@ texture = ExtResource("8_iaegw")
 region_enabled = true
 region_rect = Rect2(2078.51, 3047.55, 401.487, 459.449)
 
-[node name="TurnsTakenTitle" type="Label" parent="WinScreen/Score Component"]
+[node name="MovesTakenTitle" type="Label" parent="WinScreen/Score Component"]
 offset_left = 1550.0
 offset_top = 355.0
 offset_right = 1735.0
 offset_bottom = 400.0
-text = "Turns taken"
+text = "Moves taken"
 label_settings = SubResource("LabelSettings_iaegw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="WinScreen/Score Component/TurnsTakenTitle"]
+[node name="Label" type="Label" parent="WinScreen/Score Component/MovesTakenTitle"]
 layout_mode = 0
-offset_left = 1.0
+offset_left = 10.0
 offset_top = 39.0
-offset_right = 183.0
-offset_bottom = 62.0
+offset_right = 192.0
+offset_bottom = 113.0
 text = "100"
 label_settings = SubResource("LabelSettings_2gh7q")
 horizontal_alignment = 1
@@ -156,10 +188,10 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="WinScreen/Score Component/PreviousBestTitle"]
 layout_mode = 0
-offset_left = 1.0
+offset_left = 10.0
 offset_top = 39.0
-offset_right = 183.0
-offset_bottom = 62.0
+offset_right = 192.0
+offset_bottom = 113.0
 text = "100"
 label_settings = SubResource("LabelSettings_2gh7q")
 horizontal_alignment = 1
@@ -174,18 +206,6 @@ text = "New best heist!"
 label_settings = SubResource("LabelSettings_a5tct")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Check" parent="WinScreen" index="2"]
-texture = ExtResource("8_6nmf6")
-
-[node name="Label" parent="WinScreen/UI" index="0"]
-text = "You Win"
-
-[node name="Fills" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" index="0"]
-region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
-
-[node name="Lines" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" index="1"]
-region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
 
 [node name="Check2" type="Sprite2D" parent="WinScreen"]
 position = Vector2(978, 468)
@@ -267,8 +287,8 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="request_data" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_request_data"]
-[connection signal="won" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_won"]
 [connection signal="won" from="GameManager" to="WinScreen/Score Component" method="_on_won"]
+[connection signal="won" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_won"]
 [connection signal="button_pressed" from="CaughtScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="IncompleteScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="WinScreen" to="GameManager" method="_on_main_menu_button_pressed"]

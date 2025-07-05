@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var turns_taken_label: Label = $TurnsTakenTitle/Label
+@onready var turns_taken_label: Label = $MovesTakenTitle/Label
 @onready var prev_best_label: Label = $PreviousBestTitle/Label
 @onready var highscore_beaten_label: Label = $NewBestHeist
 

@@ -37,6 +37,8 @@ var allow_speedup: bool = false
 var hide_active: bool = false
 var guard:int = -1 
 
+var current_move: int = 0
+
 var run_turns: int = 0
 var turns_best_run: int = -1
 var prev_best_turns: int = -1

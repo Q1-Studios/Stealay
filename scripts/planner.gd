@@ -8,6 +8,7 @@ signal place_skull(pos: Vector2i)
 @export var player: Node3D
 
 @onready var invalid_sound: AudioStreamPlayer = $InvalidSound
+@onready var turncount_label: Label = $Turncount
 
 var input_sequence: Array[Globals.movement] = []
 
@@ -42,6 +43,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not init_done and Globals.previous_sequence != [] and Globals.previous_move_count != 0:
 		load_sequence()
+		turncount_label.text = str(input_sequence.size())
 		init_done = true
 	elif not init_done:
 		init_done = true
@@ -77,8 +79,10 @@ func _input(event: InputEvent) -> void:
 			# TODO: Signal user invalid move by shaking screen
 			invalid_sound.play()
 			pass
-			
-		
+	
+	turncount_label.text = str(input_sequence.size())
+	
+
 func add_action(action: Globals.movement) -> void:
 	input_sequence.append(action)
 	emit_signal("add_movement", action, current_pos) 
