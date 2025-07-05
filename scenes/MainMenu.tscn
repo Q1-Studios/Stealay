@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=47 format=4 uid="uid://bg4w7m5cvf82n"]
 
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="1_7la6k"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cj2qv55fkab47" path="res://assets/ui/post_its/x.png" id="16_hm0al"]
 [ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="17_i7r3k"]
 [ext_resource type="Texture2D" uid="uid://cw5kpeeq2q0sv" path="res://assets/ui/post_its/check.png" id="18_os5dr"]
+[ext_resource type="Script" uid="uid://bu6ajbqlfoedm" path="res://scripts/music_fadeout.gd" id="25_hm0al"]
 [ext_resource type="Script" uid="uid://bpkvxlh2113p8" path="res://scenes/fader.gd" id="25_wrgne"]
 
 [sub_resource type="GDScript" id="GDScript_ow34m"]
@@ -58,7 +59,11 @@ func startGame() -> void:
 resource_name = "quitButton"
 script/source = "extends Button
 
+signal pre_quit_hook
+
 func forcequit():
+	await get_tree().create_timer(1).timeout
+	pre_quit_hook.emit()
 	get_tree().quit()
 "
 
@@ -322,6 +327,9 @@ tracks/1/keys = PackedFloat32Array(0, 1, 0, 0.0416667, 1, 0.0127407, 0.0833333, 
 _data = {
 &"Plane|Action_004": SubResource("Animation_fmmu8")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_hm0al"]
+font_size = 48
 
 [node name="SubViewportContainer" type="SubViewportContainer"]
 offset_right = 1920.0
@@ -793,18 +801,38 @@ stream = ExtResource("13_l4mxc")
 volume_db = -7.0
 autoplay = true
 bus = &"Music"
+script = ExtResource("25_hm0al")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
 [node name="Fader" type="ColorRect" parent="Camera2D"]
+modulate = Color(1, 1, 1, 0)
 offset_left = -960.0
 offset_top = -540.0
 offset_right = 960.0
 offset_bottom = 540.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 script = ExtResource("25_wrgne")
+
+[node name="WebInfo" type="Label" parent="Camera2D/Fader"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have quit the game. To restart it, refresh the tab."
+label_settings = SubResource("LabelSettings_hm0al")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/FancyButton" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/ButtonAudioPlayer" method="_on_hover"]
@@ -832,8 +860,11 @@ script = ExtResource("25_wrgne")
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/FancyButton" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="mouse_exited" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="pre_quit_hook" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="Camera2D/Fader" method="_on_pre_quit_hook"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton" method="forcequit"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="SubViewport/Node2D/UI/DefaultView/QuitButton/ButtonAudioPlayer" method="_on_click"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="MusicPlayer" method="_on_fadeout"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/QuitButton" to="Camera2D/Fader" method="_on_quit_button_pressed"]
 [connection signal="page_flip" from="SubViewport/Node2D/UI/OptionsView" to="SubViewport/Node2D/PageFlip" method="_on_page_flip"]
 [connection signal="mouse_entered" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_hover"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]

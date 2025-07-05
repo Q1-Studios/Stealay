@@ -3,6 +3,8 @@ extends Node
 
 var tutorial_enabled: bool = true
 
+var is_web: bool = OS.get_name() == "Web"
+
 enum movement { 
 	UP,
 	DOWN,
