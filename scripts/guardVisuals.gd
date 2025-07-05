@@ -105,7 +105,7 @@ func _rotateVisually(rot: Vector3) -> void:
 	prev_rotation = next_rotation
 	next_rotation += rot
 	
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	time += delta * Globals.speed
 	time = clamp(time, 0.0, 1.0)
 	global_position = prev_position.lerp(next_position,time)
