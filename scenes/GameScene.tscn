@@ -1,16 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=27 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/Map.tscn" id="3_cxv17"]
 [ext_resource type="Texture2D" uid="uid://bp4ut1tshuu0t" path="res://assets/sprites/Tutorial/skip.png" id="4_1npfk"]
-[ext_resource type="Script" path="res://scenes/speedup_indicator.gd" id="4_6nmf6"]
+[ext_resource type="Script" uid="uid://cg2ylqvx868ee" path="res://scenes/speedup_indicator.gd" id="4_6nmf6"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="4_18ig4"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="5_7s5hy"]
 [ext_resource type="PackedScene" uid="uid://c60mal05vn06b" path="res://assets/EndScreen.tscn" id="6_6nmf6"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="6_xs4ih"]
 [ext_resource type="Script" uid="uid://fve4ylqy7j1n" path="res://scripts/player_mover.gd" id="7_6ytau"]
+[ext_resource type="Script" uid="uid://bq4rqp7ow711n" path="res://scripts/score_display.gd" id="7_icif4"]
 [ext_resource type="AudioStream" uid="uid://bwiwh1ddpoigc" path="res://assets/sounds/game_over_jingle/game_over.ogg" id="8_2gh7q"]
 [ext_resource type="Texture2D" uid="uid://cw5kpeeq2q0sv" path="res://assets/ui/post_its/check.png" id="8_6nmf6"]
+[ext_resource type="Texture2D" uid="uid://caiv810gq1dvv" path="res://assets/newui/paper.jpg" id="8_iaegw"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="8_vijgj"]
 [ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="9_pynjx"]
 [ext_resource type="AudioStream" uid="uid://csb3t8vt3lf7x" path="res://assets/sounds/victory_jingle/victory.ogg" id="10_a5tct"]
@@ -22,6 +24,18 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_1npfk"]
 font_size = 90
+
+[sub_resource type="LabelSettings" id="LabelSettings_iaegw"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gh7q"]
+font_size = 54
+font_color = Color(0.393086, 0.393086, 0.393085, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a5tct"]
+font_size = 24
+font_color = Color(0, 0.410708, 0.818128, 1)
 
 [sub_resource type="Environment" id="Environment_18ig4"]
 background_color = Color(0.323074, 0.389237, 0.503971, 1)
@@ -99,7 +113,69 @@ label_settings = SubResource("LabelSettings_1npfk")
 [node name="WinScreen" parent="." instance=ExtResource("6_6nmf6")]
 visible = false
 
-[node name="Check" parent="WinScreen" index="1"]
+[node name="Score Component" type="Node2D" parent="WinScreen"]
+z_index = -1
+script = ExtResource("7_icif4")
+
+[node name="PaperTexture" type="Sprite2D" parent="WinScreen/Score Component"]
+position = Vector2(1628, 506)
+texture = ExtResource("8_iaegw")
+region_enabled = true
+region_rect = Rect2(2078.51, 3047.55, 401.487, 459.449)
+
+[node name="TurnsTakenTitle" type="Label" parent="WinScreen/Score Component"]
+offset_left = 1550.0
+offset_top = 355.0
+offset_right = 1735.0
+offset_bottom = 400.0
+text = "Turns taken"
+label_settings = SubResource("LabelSettings_iaegw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="WinScreen/Score Component/TurnsTakenTitle"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 39.0
+offset_right = 183.0
+offset_bottom = 62.0
+text = "100"
+label_settings = SubResource("LabelSettings_2gh7q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviousBestTitle" type="Label" parent="WinScreen/Score Component"]
+offset_left = 1550.0
+offset_top = 480.0
+offset_right = 1758.0
+offset_bottom = 525.0
+text = "Fastest heist"
+label_settings = SubResource("LabelSettings_iaegw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="WinScreen/Score Component/PreviousBestTitle"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 39.0
+offset_right = 183.0
+offset_bottom = 62.0
+text = "100"
+label_settings = SubResource("LabelSettings_2gh7q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewBestHeist" type="Label" parent="WinScreen/Score Component"]
+offset_left = 1456.0
+offset_top = 610.0
+offset_right = 1852.0
+offset_bottom = 660.0
+text = "New best heist!"
+label_settings = SubResource("LabelSettings_a5tct")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Check" parent="WinScreen" index="2"]
 texture = ExtResource("8_6nmf6")
 
 [node name="Label" parent="WinScreen/UI" index="0"]
@@ -191,6 +267,8 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="request_data" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_request_data"]
+[connection signal="won" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_won"]
+[connection signal="won" from="GameManager" to="WinScreen/Score Component" method="_on_won"]
 [connection signal="button_pressed" from="CaughtScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="IncompleteScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="WinScreen" to="GameManager" method="_on_main_menu_button_pressed"]

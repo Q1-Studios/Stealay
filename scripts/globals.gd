@@ -37,6 +37,10 @@ var allow_speedup: bool = false
 var hide_active: bool = false
 var guard:int = -1 
 
+var run_turns: int = 0
+var turns_best_run: int = -1
+var prev_best_turns: int = -1
+
 func _init() -> void:
 	for y in range(0, 25):
 		for x in range(-27, 4):
@@ -49,5 +53,12 @@ func calculate_global_position_from_pos(pos: Vector2i) -> Vector3:
 	myPosition.x = pos.y
 	myPosition.z = -pos.x
 	
-	return myPosition
+	return myPosition	
+
+
+func submit_result(turns: int) -> void:
+	run_turns = turns
+	prev_best_turns = turns_best_run
 	
+	if turns_best_run < 0 or turns_best_run > turns:
+		turns_best_run = turns

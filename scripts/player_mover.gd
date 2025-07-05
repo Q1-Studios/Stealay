@@ -70,3 +70,7 @@ func change_position() -> void:
 
 func _on_game_manager_request_data() -> void:
 	emit_signal("send_data", movecount, input_sequence)
+
+
+func _on_game_manager_won() -> void:
+	Globals.submit_result(movecount)
