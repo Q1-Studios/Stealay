@@ -62,7 +62,6 @@ font_size = 36
 script = ExtResource("1_i05ib")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("10_ec7cf")]
-play_hop_sound = true
 
 [node name="HeistPlanner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_sfq2c")]
 player = NodePath("../Player")

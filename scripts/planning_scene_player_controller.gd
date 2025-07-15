@@ -51,6 +51,8 @@ func move(current_move: Globals.movement):
 		player.moveRight()
 	elif (current_move == Globals.movement.LEFT):
 		player.moveLeft()
+	elif (current_move == Globals.movement.HIDE):
+		player.performHide()
 		
 
 func revert_move(new_position: Vector2i):

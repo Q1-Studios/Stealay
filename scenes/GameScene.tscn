@@ -218,7 +218,6 @@ texture = ExtResource("8_6nmf6")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
 
 [node name="Player" parent="." instance=ExtResource("5_7s5hy")]
-play_hop_sound = true
 id = 10
 
 [node name="Camera3D" type="Camera3D" parent="Player"]

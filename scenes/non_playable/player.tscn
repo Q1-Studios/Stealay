@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b44tvfhd3lcf1"]
+[gd_scene load_steps=30 format=3 uid="uid://b44tvfhd3lcf1"]
 
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_3mip4"]
 [ext_resource type="PackedScene" uid="uid://djrqqx1mo8ppp" path="res://assets/models/player2/PlayerGuy_Angemalen_Animation.gltf" id="2_3mip4"]
@@ -14,8 +14,14 @@
 [ext_resource type="AudioStream" uid="uid://dlii43y3pkuwm" path="res://assets/sounds/step/step8.wav" id="12_67mtf"]
 [ext_resource type="AudioStream" uid="uid://cd12uejv21sf6" path="res://assets/sounds/step/step9.wav" id="13_m0ick"]
 [ext_resource type="AudioStream" uid="uid://cda7r78rqof6g" path="res://assets/sounds/step/step10.wav" id="14_1npgd"]
+[ext_resource type="AudioStream" uid="uid://cjd431d4sf0u1" path="res://assets/sounds/tick/tick1.wav" id="15_hki6i"]
 [ext_resource type="Texture2D" uid="uid://cw2cxuyhuu2p2" path="res://assets/ui/post_its/player_token.png" id="15_lgdun"]
 [ext_resource type="Texture2D" uid="uid://26qhodnsdo50" path="res://assets/models/flippage/Shadow.png" id="16_dclhl"]
+[ext_resource type="AudioStream" uid="uid://diwr2kmmtk1a8" path="res://assets/sounds/tick/tick2.wav" id="16_qe4ts"]
+[ext_resource type="AudioStream" uid="uid://bnhqyqmniil6v" path="res://assets/sounds/tick/tick3.wav" id="17_vgect"]
+[ext_resource type="AudioStream" uid="uid://cwg5f5i8qwjsw" path="res://assets/sounds/tick/tick4.wav" id="18_e13pq"]
+[ext_resource type="AudioStream" uid="uid://c75o8ns218xab" path="res://assets/sounds/tick/tick5.wav" id="19_3f8em"]
+[ext_resource type="AudioStream" uid="uid://mau2qk1q4qwm" path="res://assets/sounds/tick/tick6.wav" id="20_hq1o6"]
 
 [sub_resource type="Animation" id="Animation_k7l5m"]
 length = 0.001
@@ -182,9 +188,20 @@ stream_9/stream = ExtResource("14_1npgd")
 stream_10/stream = ExtResource("5_dclhl")
 stream_11/stream = ExtResource("6_cbn5g")
 
-[node name="Guard2" type="Node3D" node_paths=PackedStringArray("hop_sound", "AnimPlayer", "HopAnimator", "RotationAnimator", "token")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_32l21"]
+streams_count = 6
+stream_0/stream = ExtResource("15_hki6i")
+stream_1/stream = ExtResource("16_qe4ts")
+stream_2/stream = ExtResource("17_vgect")
+stream_3/stream = ExtResource("18_e13pq")
+stream_4/stream = ExtResource("19_3f8em")
+stream_5/stream = ExtResource("20_hq1o6")
+
+[node name="Guard2" type="Node3D" node_paths=PackedStringArray("hop_sound", "hide_sound", "AnimPlayer", "HopAnimator", "RotationAnimator", "token")]
 script = ExtResource("1_3mip4")
+plays_sound = true
 hop_sound = NodePath("HopSound")
+hide_sound = NodePath("HideSound")
 AnimPlayer = NodePath("RotationAnimator/AnimationPlayer")
 HopAnimator = NodePath("RotationAnimator/HopAnimator")
 RotationAnimator = NodePath("RotationAnimator")
@@ -223,6 +240,9 @@ shape = SubResource("CapsuleShape3D_insbl")
 [node name="HopSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_2asft")
 bus = &"SFX"
+
+[node name="HideSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_32l21")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0.899369, 0)
