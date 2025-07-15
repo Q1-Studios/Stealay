@@ -3,9 +3,9 @@ extends Node2D
 func _ready() -> void:
 	$Fills.hide()
 
-func _on_area_2d_mouse_entered() -> void:
+func _on_focus_entered() -> void:
 	$Fills.show()
 
 
-func _on_area_2d_mouse_exited() -> void:
+func _on_focus_exited() -> void:
 	$Fills.hide()

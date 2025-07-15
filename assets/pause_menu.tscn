@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dj8ocoeajpxud"]
+[gd_scene load_steps=15 format=3 uid="uid://dj8ocoeajpxud"]
 
 [ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="1_aliht"]
 [ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="2_5x83p"]
+[ext_resource type="Script" uid="uid://c4hkhw4gnfr0b" path="res://scripts/smart_button.gd" id="3_5x83p"]
 [ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="3_ds8rb"]
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="4_ejppj"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="5_ai8gn"]
@@ -14,12 +15,16 @@ script/source = "extends Control
 
 signal back_pressed
 
+@export var first_button: Button
+
 func _ready():
 	set_process(true)
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func resetUI():
 	$UI/DefaultView.visible = true
 	$UI/OptionsView.visible = false
+	first_button.grab_focus()
 
 
 func _on_back_pressed() -> void:
@@ -41,7 +46,7 @@ func HideMe() -> void:
 
 [sub_resource type="GDScript" id="GDScript_255cg"]
 resource_name = "quitButton"
-script/source = "extends Button
+script/source = "extends SmartButton
 
 func backMainMenu() -> void:
 	get_tree().paused = false;
@@ -52,18 +57,22 @@ func backMainMenu() -> void:
 resource_name = "buttonlogic2"
 script/source = "extends Control
 
+@export var first_button: Button
+@export var triggered_by: Button
 
 func showMe() -> void:
 	show()
+	first_button.grab_focus()
 
 
 func HideMe() -> void:
 	hide()
+	triggered_by.grab_focus()
 "
 
 [sub_resource type="GDScript" id="GDScript_hypni"]
 resource_name = "sfxSetting"
-script/source = "extends CheckButton
+script/source = "extends SmartButton
 
 var soundBus = AudioServer.get_bus_index(\"SFX\")
 
@@ -76,7 +85,7 @@ func _on_pressed() -> void:
 
 [sub_resource type="GDScript" id="GDScript_0hyt6"]
 resource_name = "musicsetting"
-script/source = "extends CheckButton
+script/source = "extends SmartButton
 
 var musicBus = AudioServer.get_bus_index(\"Music\")
 
@@ -87,7 +96,7 @@ func _on_pressed() -> void:
 	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
 "
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("first_button")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -98,6 +107,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource("GDScript_b31oo")
+first_button = NodePath("UI/DefaultView/VBoxContainer/OptionsButton")
 
 [node name="Empty" type="Sprite2D" parent="."]
 position = Vector2(946, 448)
@@ -154,9 +164,11 @@ theme_override_constants/separation = 30
 [node name="OptionsButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../MainMenu")
 theme_override_font_sizes/font_size = 42
 text = "
 "
+script = ExtResource("3_5x83p")
 
 [node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/OptionsButton" instance=ExtResource("3_ds8rb")]
 
@@ -181,6 +193,8 @@ region_rect = Rect2(922.893, 83.477, 1094.75, 324.143)
 [node name="MainMenu" type="Button" parent="UI/DefaultView/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../Back")
 theme_override_font_sizes/font_size = 42
 text = "
 "
@@ -209,9 +223,11 @@ region_rect = Rect2(174.548, 424.49, 523.465, 259.374)
 [node name="Back" type="Button" parent="UI/DefaultView/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenu")
 theme_override_font_sizes/font_size = 42
 text = "
 "
+script = ExtResource("3_5x83p")
 
 [node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/Back"]
 position = Vector2(159, 32)
@@ -233,7 +249,7 @@ region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
 
 [node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/Back" instance=ExtResource("3_ds8rb")]
 
-[node name="OptionsView" type="Control" parent="UI"]
+[node name="OptionsView" type="Control" parent="UI" node_paths=PackedStringArray("first_button", "triggered_by")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -242,6 +258,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_7doss")
+first_button = NodePath("VBoxContainer/MuteSoundCheckButton")
+triggered_by = NodePath("../DefaultView/VBoxContainer/OptionsButton")
 
 [node name="FancyButton" type="Node2D" parent="UI/OptionsView"]
 position = Vector2(1010, 279)
@@ -278,6 +296,7 @@ theme_override_constants/separation = 30
 
 [node name="MuteSoundCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../MuteMusicAudioCheckButton")
 theme = ExtResource("7_0cg5o")
 theme_override_constants/icon_max_width = 60
 theme_override_font_sizes/font_size = 27
@@ -309,6 +328,8 @@ region_rect = Rect2(125.917, 1541.75, 1504.51, 287.448)
 
 [node name="MuteMusicAudioCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../MuteSoundCheckButton")
+focus_neighbor_bottom = NodePath("../BackButton")
 theme = ExtResource("7_0cg5o")
 theme_override_constants/icon_max_width = 60
 theme_override_font_sizes/font_size = 27
@@ -341,9 +362,11 @@ region_rect = Rect2(95.3379, 1823.08, 1498.4, 244.636)
 [node name="BackButton" type="Button" parent="UI/OptionsView/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../MuteMusicAudioCheckButton")
 theme_override_font_sizes/font_size = 42
 text = "
 "
+script = ExtResource("3_5x83p")
 
 [node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/BackButton"]
 position = Vector2(173.5, 25)
@@ -365,31 +388,43 @@ region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
 
 [node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/BackButton" instance=ExtResource("3_ds8rb")]
 
-[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_focus_entered"]
+[connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton" method="_on_focus_entered"]
+[connection signal="focus_exited" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView" method="HideMe"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/OptionsView" method="showMe"]
-[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/FancyButton" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/FancyButton" method="_on_focus_entered"]
+[connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/ButtonAudioPlayer" method="_on_focus_entered"]
+[connection signal="focus_exited" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/FancyButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu" method="_on_mouse_exited"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu" method="backMainMenu"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/MainMenu" to="UI/DefaultView/VBoxContainer/MainMenu/ButtonAudioPlayer" method="_on_click"]
-[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/FancyButton" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/FancyButton" method="_on_focus_entered"]
+[connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/ButtonAudioPlayer" method="_on_focus_entered"]
+[connection signal="focus_exited" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/FancyButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back" method="_on_mouse_exited"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/Back" to="UI/DefaultView/VBoxContainer/Back/ButtonAudioPlayer" method="_on_click"]
-[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="focus_entered" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/ButtonAudioPlayer" method="_on_focus_entered"]
+[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" to="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" method="_on_pressed"]
-[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_hover"]
+[connection signal="focus_entered" from="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_focus_entered"]
+[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" to="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/ButtonAudioPlayer" method="_on_click"]
-[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/FancyButton" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="mouse_exited" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="focus_entered" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/FancyButton" method="_on_focus_entered"]
+[connection signal="focus_entered" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_focus_entered"]
+[connection signal="focus_exited" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/FancyButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/DefaultView" method="showMe"]
 [connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView" method="HideMe"]
 [connection signal="pressed" from="UI/OptionsView/VBoxContainer/BackButton" to="UI/OptionsView/VBoxContainer/BackButton/ButtonAudioPlayer" method="_on_click"]

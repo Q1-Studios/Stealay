@@ -6,6 +6,6 @@ extends Node2D
 func _on_click() -> void:
 	if is_inside_tree():
 		click_sound.play()
-	
-func _on_hover() -> void:
+
+func _on_focus_entered() -> void:
 	hover_sound.play()

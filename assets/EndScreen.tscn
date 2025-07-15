@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://c60mal05vn06b"]
+[gd_scene load_steps=9 format=3 uid="uid://c60mal05vn06b"]
 
 [ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="1_4km7q"]
 [ext_resource type="Script" uid="uid://dec3topr56m3y" path="res://scripts/end_screen.gd" id="1_d221y"]
 [ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/ui/post_its/death.png" id="2_d221y"]
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="3_lpr8p"]
+[ext_resource type="Script" uid="uid://c4hkhw4gnfr0b" path="res://scripts/smart_button.gd" id="4_lpr8p"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="4_pc0bh"]
 [ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="5_5vroo"]
 [ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="6_8knio"]
 
-[node name="EndScreen" type="Control"]
+[node name="EndScreen" type="Control" node_paths=PackedStringArray("first_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +19,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_d221y")
+first_button = NodePath("UI/DefaultView/VBoxContainer/Continue")
 
 [node name="Empty" type="Sprite2D" parent="."]
 position = Vector2(946, 459)
@@ -79,6 +81,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "
 "
+script = ExtResource("4_lpr8p")
 
 [node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/Continue"]
 position = Vector2(159, 32)
@@ -100,8 +103,10 @@ region_rect = Rect2(150.381, 92.2806, 574.896, 336.375)
 
 [node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/Continue" instance=ExtResource("6_8knio")]
 
-[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/FancyButton" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/ButtonAudioPlayer" method="_on_hover"]
-[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/FancyButton" method="_on_area_2d_mouse_exited"]
+[connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/FancyButton" method="_on_focus_entered"]
+[connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/ButtonAudioPlayer" method="_on_focus_entered"]
+[connection signal="focus_exited" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/FancyButton" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue" method="_on_mouse_exited"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/Continue" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/ButtonAudioPlayer" method="_on_click"]
