@@ -28,6 +28,13 @@ func _process(_delta):
 	if get_tree().current_scene.name == Globals.game_scene_name:
 		if not check_win():
 			check_lose()
+		
+		if Input.is_action_pressed("Speedup") and Globals.allow_speedup:
+			Globals.time_between_moves = 0.3
+			Globals.speed = 4.8
+		else:
+			Globals.time_between_moves = 1.2
+			Globals.speed = 1.2
 
 func toggle_pause():
 	$"../PauseMenu".visible = not $"../PauseMenu".visible
@@ -35,17 +42,6 @@ func toggle_pause():
 		$"../TuringBandlUI".visible = not $"../TuringBandlUI".visible
 	get_tree().paused = not get_tree().paused
 	$"../PauseMenu".resetUI()
-
-func _input(event: InputEvent) -> void:
-	
-	if get_tree().current_scene.name == Globals.game_scene_name and not game_over:
-		if event.is_action("Speedup"):
-			if event.pressed and Globals.allow_speedup:
-				Globals.time_between_moves = 0.3
-				Globals.speed = 4.8
-			else:
-				Globals.time_between_moves = 1.2
-				Globals.speed = 1.2
 
 func check_win():
 	if goal.transform.origin.distance_to(player.transform.origin) <= 3 and not game_over:
