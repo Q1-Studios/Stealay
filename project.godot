@@ -22,7 +22,7 @@ boot_splash/minimum_display_time=10
 [autoload]
 
 Globals="*res://scripts/globals.gd"
-SceneManager="*res://assets/scene_manager.tscn"
+SceneManager="*res://scenes/non_playable/scene_manager.tscn"
 
 [display]
 

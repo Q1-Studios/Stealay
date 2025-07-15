@@ -2,9 +2,9 @@ extends Node
 
 @export var player: Node3D
 
-var PathElementScene: PackedScene = preload("res://assets/PathElement.tscn")
-var HideElementScene: PackedScene = preload("res://assets/HideElement.tscn")
-var SkullElementScene: PackedScene = preload("res://assets/SkullElement.tscn")
+@export var PathElementScene: PackedScene
+@export var HideElementScene: PackedScene
+@export var SkullElementScene: PackedScene
 
 @onready
 var current_position: Vector2i

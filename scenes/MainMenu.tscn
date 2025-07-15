@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="1_7la6k"]
 [ext_resource type="Texture2D" uid="uid://caiv810gq1dvv" path="res://assets/newui/paper.jpg" id="1_bky6r"]
-[ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://assets/ui/button_audio_player.tscn" id="1_mipys"]
+[ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://scenes/non_playable/ui/button_audio_player.tscn" id="1_mipys"]
 [ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="2_2nypq"]
-[ext_resource type="PackedScene" uid="uid://u155dxc1ieh" path="res://assets/ui/page_audio_player.tscn" id="2_8a8k8"]
+[ext_resource type="PackedScene" uid="uid://u155dxc1ieh" path="res://scenes/non_playable/ui/page_audio_player.tscn" id="2_8a8k8"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/CheckButtonBetter/BetterButton.tres" id="3_2wh52"]
 [ext_resource type="Script" uid="uid://dxfbi5lg82tc3" path="res://scripts/pageflip.gd" id="4_826wr"]
 [ext_resource type="Texture2D" uid="uid://cq3u3h02epvfg" path="res://assets/sprites/menu_placeholder.png" id="4_l72w3"]
-[ext_resource type="Material" uid="uid://cux2uimlb1q0u" path="res://scenes/flippermaterial.tres" id="6_826wr"]
+[ext_resource type="Material" uid="uid://cux2uimlb1q0u" path="res://assets/map_final/material/flippermaterial.tres" id="6_826wr"]
 [ext_resource type="Script" uid="uid://c4hkhw4gnfr0b" path="res://scripts/smart_button.gd" id="6_i7r3k"]
 [ext_resource type="Texture2D" uid="uid://cnjhuew5ssw74" path="res://assets/models/flippage/papertexture.jpg" id="7_ucygd"]
 [ext_resource type="Texture2D" uid="uid://ctg6jvq15i2l3" path="res://assets/ui/post_its/DiaPostits.png" id="7_v41fp"]
@@ -19,14 +19,16 @@
 [ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="10_1n6yq"]
 [ext_resource type="Texture2D" uid="uid://bnpx5induylqr" path="res://assets/ui/post_its/eye.png" id="12_yovvs"]
 [ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/ui/post_its/death.png" id="13_2axsc"]
+[ext_resource type="Script" uid="uid://cl445xvypm8d6" path="res://scripts/mute_sound_switch.gd" id="13_duata"]
 [ext_resource type="AudioStream" uid="uid://cb88ggjx4kabs" path="res://assets/music/main_theme.ogg" id="13_l4mxc"]
+[ext_resource type="Script" uid="uid://cs2klgshiqlfs" path="res://scripts/mute_music_switch.gd" id="13_os5dr"]
 [ext_resource type="Texture2D" uid="uid://301bnjb80arh" path="res://assets/ui/post_its/hand.png" id="14_2axsc"]
 [ext_resource type="Texture2D" uid="uid://ciakldria1fgl" path="res://assets/ui/post_its/turn.png" id="15_wrgne"]
 [ext_resource type="Texture2D" uid="uid://cj2qv55fkab47" path="res://assets/ui/post_its/x.png" id="16_hm0al"]
 [ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="17_i7r3k"]
 [ext_resource type="Texture2D" uid="uid://cw5kpeeq2q0sv" path="res://assets/ui/post_its/check.png" id="18_os5dr"]
 [ext_resource type="Script" uid="uid://bu6ajbqlfoedm" path="res://scripts/music_fadeout.gd" id="25_hm0al"]
-[ext_resource type="Script" uid="uid://bpkvxlh2113p8" path="res://scenes/fader.gd" id="25_wrgne"]
+[ext_resource type="Script" uid="uid://bpkvxlh2113p8" path="res://scripts/fader.gd" id="25_wrgne"]
 
 [sub_resource type="GDScript" id="GDScript_ow34m"]
 resource_name = "buttonlogic"
@@ -88,33 +90,6 @@ func HideMe() -> void:
 	hide()
 	triggered_by.grab_focus()
 	
-"
-
-[sub_resource type="GDScript" id="GDScript_mipys"]
-resource_name = "sfxSetting"
-script/source = "extends SmartButton
-
-var soundBus = AudioServer.get_bus_index(\"SFX\")
-
-func _ready() -> void:
-	button_pressed = AudioServer.is_bus_mute(soundBus)
-
-func _on_pressed() -> void:
-	AudioServer.set_bus_mute(soundBus, not AudioServer.is_bus_mute(soundBus))
-"
-
-[sub_resource type="GDScript" id="GDScript_8a8k8"]
-resource_name = "musicsetting"
-script/source = "extends SmartButton
-
-var musicBus = AudioServer.get_bus_index(\"Music\")
-
-func _ready() -> void:
-	button_pressed = AudioServer.is_bus_mute(musicBus)
-
-func _on_pressed() -> void:
-	AudioServer.set_bus_mute(musicBus, not AudioServer.is_bus_mute(musicBus))
-	print(AudioServer.is_bus_mute(musicBus))
 "
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ow34m"]
@@ -569,7 +544,7 @@ text = "
 "
 vertical_icon_alignment = 0
 expand_icon = true
-script = SubResource("GDScript_mipys")
+script = ExtResource("13_duata")
 
 [node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteSoundCheckButton" instance=ExtResource("1_mipys")]
 
@@ -591,7 +566,7 @@ text = "
 "
 vertical_icon_alignment = 0
 expand_icon = true
-script = SubResource("GDScript_8a8k8")
+script = ExtResource("13_os5dr")
 
 [node name="ButtonAudioPlayer" parent="SubViewport/Node2D/UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" instance=ExtResource("1_mipys")]
 

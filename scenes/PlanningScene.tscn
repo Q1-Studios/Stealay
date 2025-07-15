@@ -1,16 +1,16 @@
-[gd_scene load_steps=44 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=47 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
-[ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://assets/HeistPlanner.tscn" id="2_sfq2c"]
+[ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="3_pbho8"]
 [ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TuringBandUIManager.gd" id="7_1rttj"]
 [ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scripts/bandlController.gd" id="8_0acuf"]
 [ext_resource type="Texture2D" uid="uid://ccllpjpc2upk8" path="res://assets/sprites/keys/shift.png" id="8_01txo"]
-[ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://assets/Map.tscn" id="8_rly6o"]
-[ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://assets/guard.tscn" id="9_0acuf"]
-[ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://assets/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
-[ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://assets/player.tscn" id="10_ec7cf"]
-[ext_resource type="PackedScene" uid="uid://crkpn5vqe2wwa" path="res://assets/ui/chat.tscn" id="10_ibx1f"]
+[ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://scenes/non_playable/Map.tscn" id="8_rly6o"]
+[ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://scenes/non_playable/guard.tscn" id="9_0acuf"]
+[ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://scenes/non_playable/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
+[ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://scenes/non_playable/player.tscn" id="10_ec7cf"]
+[ext_resource type="PackedScene" uid="uid://crkpn5vqe2wwa" path="res://scenes/non_playable/ui/chat.tscn" id="10_ibx1f"]
 [ext_resource type="AudioStream" uid="uid://dpchh6yw6wdxn" path="res://assets/sounds/voicelines/tutorial/voiceline1.ogg" id="10_lxu5f"]
 [ext_resource type="Script" uid="uid://bncnyql6noftg" path="res://scripts/tutorial_manager.gd" id="10_nivii"]
 [ext_resource type="AudioStream" uid="uid://cwc3amyupydne" path="res://assets/sounds/voicelines/tutorial/voiceline2.ogg" id="11_ntchk"]
@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://il8nn1kyps6r" path="res://assets/sounds/voicelines/tutorial/voiceline4.ogg" id="13_m2q86"]
 [ext_resource type="Texture2D" uid="uid://cwu2sxpm5by5h" path="res://assets/ui/planningscreenmap/map_in_lineart_scaled.png" id="13_un3xe"]
 [ext_resource type="AudioStream" uid="uid://brfhrtwxt1nw" path="res://assets/sounds/voicelines/tutorial/voiceline5.ogg" id="14_kitgh"]
-[ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://assets/GoalObject.tscn" id="14_un3xe"]
+[ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://scenes/non_playable/GoalObject.tscn" id="14_un3xe"]
 [ext_resource type="AudioStream" uid="uid://bd5g7tc1nufnr" path="res://assets/sounds/voicelines/tutorial/voiceline6.ogg" id="15_yivre"]
 [ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="16_ibx1f"]
 [ext_resource type="AudioStream" uid="uid://c8hxsk8w5cdvs" path="res://assets/sounds/voicelines/tutorial/voiceline7.ogg" id="16_jlbm7"]
@@ -33,10 +33,13 @@
 [ext_resource type="AudioStream" uid="uid://5dskxy82tsru" path="res://assets/sounds/voicelines/tutorial/voiceline14.ogg" id="22_b5yxx"]
 [ext_resource type="Texture2D" uid="uid://bp4ut1tshuu0t" path="res://assets/sprites/Tutorial/skip.png" id="27_jlbm7"]
 [ext_resource type="AudioStream" uid="uid://da1ct5vg5ohpk" path="res://assets/sounds/voicelines/tutorial/voiceline15.ogg" id="28_ynj1n"]
-[ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://assets/pause_menu.tscn" id="29_yefry"]
+[ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://scenes/non_playable/pause_menu.tscn" id="29_yefry"]
 [ext_resource type="Texture2D" uid="uid://bogsrnq6djf7d" path="res://assets/sprites/keys/enter.png" id="33_kitgh"]
+[ext_resource type="PackedScene" uid="uid://bg05c2k8pghfo" path="res://scenes/non_playable/PathElement.tscn" id="34_nup1x"]
 [ext_resource type="Texture2D" uid="uid://dhpy1ykqcskhk" path="res://assets/sprites/keys/backspace.png" id="34_yivre"]
+[ext_resource type="PackedScene" uid="uid://dj60x8hw0xguq" path="res://scenes/non_playable/HideElement.tscn" id="35_b5yxx"]
 [ext_resource type="Texture2D" uid="uid://boa7jf3ocbkmv" path="res://assets/sprites/keys/arrow_keys.png" id="35_jlbm7"]
+[ext_resource type="PackedScene" uid="uid://wg8m75jsgvyy" path="res://scenes/non_playable/SkullElement.tscn" id="36_01txo"]
 [ext_resource type="AudioStream" uid="uid://dgku8m2ydkvlt" path="res://assets/music/planning_theme.ogg" id="36_yivre"]
 [ext_resource type="Texture2D" uid="uid://dsxfyk0txjm5a" path="res://assets/ui/planningscreenmap/getdia.png" id="38_yefry"]
 
@@ -278,6 +281,9 @@ guard_list = [NodePath("../../startingGumba"), NodePath("../../mainCircleGuard")
 [node name="PlanningScenePlayerController" type="Node" parent="MovementManager" node_paths=PackedStringArray("player")]
 script = ExtResource("12_y7sd5")
 player = NodePath("../../Player")
+PathElementScene = ExtResource("34_nup1x")
+HideElementScene = ExtResource("35_b5yxx")
+SkullElementScene = ExtResource("36_01txo")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2.325, 0, 0, 0, -1.01629e-07, 2.325, 0, -2.325, -1.01629e-07, -11.955, -1.443, -11.964)
