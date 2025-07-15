@@ -39,7 +39,7 @@ func toggle_pause():
 func _input(event: InputEvent) -> void:
 	
 	if get_tree().current_scene.name == Globals.game_scene_name and not game_over:
-		if event.is_action("Speedup") and event is InputEventKey:
+		if event.is_action("Speedup"):
 			if event.pressed and Globals.allow_speedup:
 				Globals.time_between_moves = 0.3
 				Globals.speed = 4.8

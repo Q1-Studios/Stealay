@@ -6,6 +6,7 @@ signal remove_last_movement(pos: Vector2i)
 signal place_skull(pos: Vector2i)
 
 @export var player: Node3D
+@export var input_delta: float = 0.125
 
 @onready var invalid_sound: AudioStreamPlayer = $InvalidSound
 @onready var turncount_label: Label = $Turncount
@@ -14,6 +15,8 @@ var input_sequence: Array[Globals.movement] = []
 
 var allow_move: bool = false
 var allow_commit: bool = false
+
+var delta_since_last_input: float = 0
 
 var valid_pos: Array[Vector2i] = Globals.valid_pos.duplicate(true)
 var current_pos: Vector2i #= starting_pos
@@ -47,29 +50,24 @@ func _process(delta: float) -> void:
 		init_done = true
 	elif not init_done:
 		init_done = true
-
-
-
-func _input(event: InputEvent) -> void:
-	if not event.is_pressed():
-		return
-
+	
 	var move: Globals.movement = Globals.movement.NULL
+	delta_since_last_input += delta
 	
 	if allow_move:
-		if event.is_action("PlannerUp", true):
+		if action_pressed("PlannerUp"):
 			move = Globals.movement.UP
-		elif event.is_action("PlannerDown", true):
+		elif action_pressed("PlannerDown"):
 			move = Globals.movement.DOWN
-		elif event.is_action("PlannerLeft", true):
+		elif action_pressed("PlannerLeft"):
 			move = Globals.movement.LEFT
-		elif event.is_action("PlannerRight", true):
+		elif action_pressed("PlannerRight"):
 			move = Globals.movement.RIGHT
-		elif event.is_action("PlannerHide", true):
+		elif action_pressed("PlannerHide"):
 			move = Globals.movement.HIDE
-		elif event.is_action("PlannerDelete", true):
+		elif action_pressed("PlannerDelete"):
 			remove_last_action()
-		elif event.is_action("PlannerCommit", true) and allow_commit:
+		elif action_pressed("PlannerCommit") and allow_commit:
 			finalize_sequence()
 
 	if move != Globals.movement.NULL:
@@ -82,6 +80,21 @@ func _input(event: InputEvent) -> void:
 	
 	turncount_label.text = str(input_sequence.size())
 	
+
+# Custom function that returns true either when an input is pressed just now
+# Or when a key is held but only in allowed intervals
+func action_pressed(action_name: String) -> bool:
+	var allow_holding: bool = false
+
+	if delta_since_last_input >= input_delta:
+		allow_holding = true
+
+	if (Input.is_action_just_pressed(action_name, true) or
+	(Input.is_action_pressed(action_name, true) and allow_holding)):
+		delta_since_last_input = 0
+		return true
+	
+	return false
 
 func add_action(action: Globals.movement) -> void:
 	input_sequence.append(action)
