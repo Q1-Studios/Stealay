@@ -1,6 +1,7 @@
 extends Node
 
 signal out_of_moves()
+signal scores_updated()
 signal send_data(movecount: int, input_sequence: Array[Globals.movement])
 
 @export var player: Node3D
@@ -77,3 +78,4 @@ func _on_game_manager_request_data() -> void:
 
 func _on_game_manager_won() -> void:
 	Globals.submit_result(movecount)
+	scores_updated.emit()

@@ -287,13 +287,13 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="request_data" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_request_data"]
-[connection signal="won" from="GameManager" to="WinScreen/Score Component" method="_on_won"]
 [connection signal="won" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_won"]
 [connection signal="button_pressed" from="CaughtScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="IncompleteScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="WinScreen" to="GameManager" method="_on_main_menu_button_pressed"]
 [connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]
 [connection signal="out_of_moves" from="MovementManager/PlayerMovementController" to="GameManager" method="_on_player_movement_controller_out_of_moves"]
+[connection signal="scores_updated" from="MovementManager/PlayerMovementController" to="WinScreen/Score Component" method="_on_scores_updated"]
 [connection signal="send_data" from="MovementManager/PlayerMovementController" to="GameManager" method="_on_player_movement_controller_send_data"]
 
 [editable path="IncompleteScreen"]

@@ -5,7 +5,7 @@ extends Node2D
 @onready var highscore_beaten_label: Label = $NewBestHeist
 
 
-func _on_won() -> void:
+func _on_scores_updated() -> void:
 	var run_turns: int = Globals.run_turns
 	var prev_best_turns: int = Globals.prev_best_turns
 	
