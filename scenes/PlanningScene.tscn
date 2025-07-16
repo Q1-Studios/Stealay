@@ -190,9 +190,9 @@ offset_bottom = 1080.0
 
 [node name="Move" type="Label" parent="Hints/Panel"]
 layout_mode = 0
-offset_left = 140.0
+offset_left = 147.0
 offset_top = 22.0
-offset_right = 817.0
+offset_right = 824.0
 offset_bottom = 371.0
 text = "Plan"
 label_settings = SubResource("LabelSettings_yefry")
@@ -202,12 +202,26 @@ position = Vector2(-70, 35)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("35_jlbm7")
 
+[node name="Hide" type="Label" parent="Hints/Panel"]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 127.0
+offset_right = 824.0
+offset_bottom = 476.0
+text = "Hide"
+label_settings = SubResource("LabelSettings_yefry")
+
+[node name="ArrowKeysSprite" type="Sprite2D" parent="Hints/Panel/Hide"]
+position = Vector2(-70, 35)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("8_01txo")
+
 [node name="Undo" type="Label" parent="Hints/Panel"]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 127.0
-offset_right = 819.0
-offset_bottom = 476.0
+offset_left = 147.0
+offset_top = 237.0
+offset_right = 824.0
+offset_bottom = 586.0
 text = "Undo"
 label_settings = SubResource("LabelSettings_yefry")
 
@@ -219,9 +233,9 @@ texture = ExtResource("34_yivre")
 [node name="Start" type="Label" parent="Hints/Panel"]
 layout_mode = 0
 offset_left = 147.0
-offset_top = 237.0
+offset_top = 338.0
 offset_right = 824.0
-offset_bottom = 586.0
+offset_bottom = 687.0
 text = "Start"
 label_settings = SubResource("LabelSettings_yefry")
 
@@ -229,20 +243,6 @@ label_settings = SubResource("LabelSettings_yefry")
 position = Vector2(-70, 35)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("33_kitgh")
-
-[node name="Hide" type="Label" parent="Hints/Panel"]
-layout_mode = 0
-offset_left = 148.0
-offset_top = 338.0
-offset_right = 825.0
-offset_bottom = 687.0
-text = "Hide"
-label_settings = SubResource("LabelSettings_yefry")
-
-[node name="ArrowKeysSprite" type="Sprite2D" parent="Hints/Panel/Hide"]
-position = Vector2(-70, 35)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("8_01txo")
 
 [node name="TuringBandlUI" type="Control" parent="."]
 layout_mode = 3
