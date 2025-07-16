@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=63 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://bd5g7tc1nufnr" path="res://assets/sounds/voicelines/tutorial/voiceline6.ogg" id="15_yivre"]
 [ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="16_ibx1f"]
 [ext_resource type="AudioStream" uid="uid://c8hxsk8w5cdvs" path="res://assets/sounds/voicelines/tutorial/voiceline7.ogg" id="16_jlbm7"]
+[ext_resource type="Script" uid="uid://djo1vvuimo46i" path="res://scripts/voiceline_resource.gd" id="17_b5yxx"]
 [ext_resource type="AudioStream" uid="uid://blr07d13c8auj" path="res://assets/sounds/voicelines/tutorial/voiceline8.ogg" id="17_ntchk"]
 [ext_resource type="AudioStream" uid="uid://fro82uqsswa3" path="res://assets/sounds/voicelines/tutorial/voiceline9.ogg" id="17_yefry"]
 [ext_resource type="AudioStream" uid="uid://dxm7vwhuaydcp" path="res://assets/sounds/voicelines/tutorial/voiceline10.ogg" id="18_ynj1n"]
@@ -51,6 +52,98 @@ ambient_light_energy = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_yefry"]
 font_size = 46
+
+[sub_resource type="Resource" id="Resource_01txo"]
+script = ExtResource("17_b5yxx")
+text = "I fulfilled my part of the bargain.
+..."
+audio_stream = ExtResource("10_lxu5f")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_vf1sc"]
+script = ExtResource("17_b5yxx")
+text = "The building plan and patrol routes are all yours.
+..."
+audio_stream = ExtResource("11_ntchk")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_4fghf"]
+script = ExtResource("17_b5yxx")
+text = "But this won't be easy. You'll have to come up with a foolproof plan."
+audio_stream = ExtResource("12_jerq1")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_b5yxx"]
+script = ExtResource("17_b5yxx")
+text = "But with my intel, this should be as easy as..."
+audio_stream = ExtResource("13_m2q86")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_xgh5o"]
+script = ExtResource("17_b5yxx")
+text = "... heh... stealing candy from a baby. Or stealing a gem from a museum."
+audio_stream = ExtResource("14_kitgh")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_b31oo"]
+script = ExtResource("17_b5yxx")
+text = "You can plan your heist using the arrow keys. Go ahead."
+audio_stream = ExtResource("15_yivre")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_06788"]
+script = ExtResource("17_b5yxx")
+text = "Splendid. On the right, you can see your move sequence."
+audio_stream = ExtResource("16_jlbm7")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_255cg"]
+script = ExtResource("17_b5yxx")
+text = "Don't let these guards see you. Unless you really like jail."
+audio_stream = ExtResource("17_ntchk")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_7doss"]
+script = ExtResource("17_b5yxx")
+text = "If you're behind a corner when a guard walks by, you may be able to hide using shift."
+audio_stream = ExtResource("17_yefry")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_hypni"]
+script = ExtResource("17_b5yxx")
+text = "If you mess up your plan, you can always hit \"backspace\" to undo."
+audio_stream = ExtResource("18_ynj1n")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_0hyt6"]
+script = ExtResource("17_b5yxx")
+text = "If you're confident about your plan, hit enter."
+audio_stream = ExtResource("19_po8np")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_bdlay"]
+script = ExtResource("17_b5yxx")
+text = "Then get in there, and steal that precious gem."
+audio_stream = ExtResource("20_w8kyp")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_a4yck"]
+script = ExtResource("17_b5yxx")
+text = "And remember..."
+audio_stream = ExtResource("21_nup1x")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_latlh"]
+script = ExtResource("17_b5yxx")
+text = "You owe me."
+audio_stream = ExtResource("22_b5yxx")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
+
+[sub_resource type="Resource" id="Resource_50e7h"]
+script = ExtResource("17_b5yxx")
+text = "I'm watching you."
+audio_stream = ExtResource("28_ynj1n")
+metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ibx1f"]
 font_size = 48
@@ -210,26 +303,19 @@ start_hint = NodePath("../Hints/Panel/Start")
 hide_hint = NodePath("../Hints/Panel/Hide")
 
 [node name="Chat" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
-messages = Array[String](["I fulfilled my part of the bargain.
-...", "The building plan and patrol routes are all yours.
-...", "But this won't be easy. You'll have to come up with a foolproof plan."])
-voicelines = Array[AudioStream]([ExtResource("10_lxu5f"), ExtResource("11_ntchk"), ExtResource("12_jerq1")])
+lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_01txo"), SubResource("Resource_vf1sc"), SubResource("Resource_4fghf")])
 
 [node name="Chat2" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
-messages = Array[String](["But with my intel, this should be as easy as...", "... heh... stealing candy from a baby. Or stealing a gem from a museum.", "You can plan your heist using the arrow keys. Go ahead."])
-voicelines = Array[AudioStream]([ExtResource("13_m2q86"), ExtResource("14_kitgh"), ExtResource("15_yivre")])
+lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_b5yxx"), SubResource("Resource_xgh5o"), SubResource("Resource_b31oo")])
 
 [node name="Chat3" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
-messages = Array[String](["Splendid. On the right, you can see your move sequence.", "Don't let these guards see you. Unless you really like jail.", "If you're behind a corner when a guard walks by, you may be able to hide using shift."])
-voicelines = Array[AudioStream]([ExtResource("16_jlbm7"), ExtResource("17_ntchk"), ExtResource("17_yefry")])
+lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_06788"), SubResource("Resource_255cg"), SubResource("Resource_7doss")])
 
 [node name="Chat4" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
-messages = Array[String](["If you mess up your plan, you can always hit \"backspace\" to undo.", "If you're confident about your plan, hit enter.", "Then get in there, and steal that precious gem."])
-voicelines = Array[AudioStream]([ExtResource("18_ynj1n"), ExtResource("19_po8np"), ExtResource("20_w8kyp")])
+lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_hypni"), SubResource("Resource_0hyt6"), SubResource("Resource_bdlay")])
 
 [node name="Chat5" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
-messages = Array[String](["And remember...", "You owe me.", "I'm watching you."])
-voicelines = Array[AudioStream]([ExtResource("21_nup1x"), ExtResource("22_b5yxx"), ExtResource("28_ynj1n")])
+lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_a4yck"), SubResource("Resource_latlh"), SubResource("Resource_50e7h")])
 chat_icon = 1
 
 [node name="Instructions" type="Label" parent="TutorialUI2"]

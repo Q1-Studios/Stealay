@@ -1,8 +1,7 @@
 extends Node2D
 class_name ChatSection
 
-@export_multiline var messages: Array[String] = []
-@export var voicelines: Array[AudioStream] = []
+@export var lines: Array[Voiceline]
 @export var chat_icon: int = 0
 @export var characters_per_second: float = 20
 
@@ -48,7 +47,7 @@ func _process(delta: float) -> void:
 		var current_bubble = speech_bubbles[current_msg_index]
 		var current_label = bubble_labels[current_msg_index]
 
-		var current_message = messages[current_msg_index]
+		var current_message = lines[current_msg_index].text
 		
 		current_bubble.show()
 		
@@ -57,7 +56,7 @@ func _process(delta: float) -> void:
 			prev_msg_index = current_msg_index
 			text_finished = false
 			character_index = 0
-			voiceline_player.stream = voicelines[current_msg_index]
+			voiceline_player.stream = lines[current_msg_index].audio_stream
 			voiceline_player.play()
 		
 		while time_elapsed > time_btwn_chars:
@@ -78,13 +77,13 @@ func advance_dialogue() -> void:
 	if not text_finished:
 		finalize_bubble()
 		voiceline_player.stop()
-	elif current_msg_index < messages.size() - 1:
+	elif current_msg_index < lines.size() - 1:
 		current_msg_index += 1
 	else:
 		done = true
 	
 func finalize_bubble() -> void:
-	bubble_labels[current_msg_index].text = messages[current_msg_index]
+	bubble_labels[current_msg_index].text = lines[current_msg_index].text
 	text_finished = true
 
 func silence() -> void:
