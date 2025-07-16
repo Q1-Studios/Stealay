@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 			move = Globals.movement.HIDE
 		elif action_pressed("PlannerDelete"):
 			remove_last_action()
-		elif action_pressed("PlannerCommit") and allow_commit:
+		elif Input.is_action_just_pressed("PlannerCommit", true) and allow_commit:
 			finalize_sequence()
 
 	if move != Globals.movement.NULL:
