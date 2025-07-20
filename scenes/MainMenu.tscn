@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=49 format=4 uid="uid://bg4w7m5cvf82n"]
 
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="1_7la6k"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cw5kpeeq2q0sv" path="res://assets/ui/post_its/check.png" id="18_os5dr"]
 [ext_resource type="Script" uid="uid://bu6ajbqlfoedm" path="res://scripts/music_fadeout.gd" id="25_hm0al"]
 [ext_resource type="Script" uid="uid://bpkvxlh2113p8" path="res://scripts/fader.gd" id="25_wrgne"]
+[ext_resource type="Script" uid="uid://de1nc1oj51tr7" path="res://scripts/input_icon.gd" id="29_lw0hr"]
 
 [sub_resource type="GDScript" id="GDScript_ow34m"]
 resource_name = "buttonlogic"
@@ -801,6 +802,9 @@ volume_db = -7.0
 autoplay = true
 bus = &"Music"
 script = ExtResource("25_hm0al")
+
+[node name="InputTypeDetector" type="Sprite2D" parent="."]
+script = ExtResource("29_lw0hr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)

@@ -5,6 +5,9 @@ var tutorial_enabled: bool = true
 
 var is_web: bool = OS.get_name() == "Web"
 
+enum InputSrc {KEYBOARD, PLAYSTATION, XBOX, NINTENDO, GENERIC}
+var last_input_src: InputSrc = InputSrc.KEYBOARD
+
 enum movement { 
 	UP,
 	DOWN,

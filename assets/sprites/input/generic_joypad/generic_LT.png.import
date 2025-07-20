@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhpy1ykqcskhk"
-path="res://.godot/imported/backspace.png-f3ab6abdb7878c73f3af706129f961e8.ctex"
+uid="uid://bpuxo4sm8ksrs"
+path="res://.godot/imported/generic_LT.png-62a8e5ff02802e739bb9ae01457347b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/keys/backspace.png"
-dest_files=["res://.godot/imported/backspace.png-f3ab6abdb7878c73f3af706129f961e8.ctex"]
+source_file="res://assets/sprites/input/generic_joypad/generic_LT.png"
+dest_files=["res://.godot/imported/generic_LT.png-62a8e5ff02802e739bb9ae01457347b6.ctex"]
 
 [params]
 

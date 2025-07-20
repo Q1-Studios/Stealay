@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=35 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://scenes/non_playable/Map.tscn" id="3_cxv17"]
@@ -9,22 +9,29 @@
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://scenes/non_playable/player.tscn" id="5_7s5hy"]
 [ext_resource type="PackedScene" uid="uid://c60mal05vn06b" path="res://scenes/non_playable/EndScreen.tscn" id="6_6nmf6"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="6_xs4ih"]
+[ext_resource type="Texture2D" uid="uid://cl0sy73cmaqs2" path="res://assets/sprites/input/keyboard/space.png" id="7_3t3mo"]
 [ext_resource type="Script" uid="uid://fve4ylqy7j1n" path="res://scripts/player_mover.gd" id="7_6ytau"]
 [ext_resource type="Script" uid="uid://bq4rqp7ow711n" path="res://scripts/score_display.gd" id="7_icif4"]
 [ext_resource type="AudioStream" uid="uid://bwiwh1ddpoigc" path="res://assets/sounds/game_over_jingle/game_over.ogg" id="8_2gh7q"]
 [ext_resource type="Texture2D" uid="uid://cw5kpeeq2q0sv" path="res://assets/ui/post_its/check.png" id="8_6nmf6"]
+[ext_resource type="Script" uid="uid://de1nc1oj51tr7" path="res://scripts/input_icon.gd" id="8_a8ip2"]
 [ext_resource type="Texture2D" uid="uid://caiv810gq1dvv" path="res://assets/newui/paper.jpg" id="8_iaegw"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://scenes/non_playable/GoalObject.tscn" id="8_vijgj"]
+[ext_resource type="Texture2D" uid="uid://d31y2as40r5tg" path="res://assets/sprites/input/playstation/playstation_Cross.png" id="9_03l4r"]
 [ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="9_pynjx"]
 [ext_resource type="AudioStream" uid="uid://csb3t8vt3lf7x" path="res://assets/sounds/victory_jingle/victory.ogg" id="10_a5tct"]
+[ext_resource type="Texture2D" uid="uid://c1ymc2lrtlr1w" path="res://assets/sprites/input/xbox/xbox_A.png" id="10_lpvha"]
 [ext_resource type="Texture2D" uid="uid://cnjhuew5ssw74" path="res://assets/models/flippage/papertexture.jpg" id="11_21xg8"]
 [ext_resource type="AudioStream" uid="uid://cb88ggjx4kabs" path="res://assets/music/main_theme.ogg" id="11_j40tv"]
+[ext_resource type="Texture2D" uid="uid://priiirq3022c" path="res://assets/sprites/input/generic_joypad/generic_B.png" id="11_s4ole"]
+[ext_resource type="Texture2D" uid="uid://jfnda028lhil" path="res://assets/sprites/input/generic_joypad/generic_A.png" id="12_x1py8"]
 [ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://scenes/non_playable/pause_menu.tscn" id="13_1npfk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lk0vr"]
 font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_6nmf6"]
+font_size = 90
 
 [sub_resource type="LabelSettings" id="LabelSettings_1npfk"]
 font_size = 90
@@ -102,21 +109,33 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_6nmf6")
 
-[node name="Label" type="Label" parent="SpeedupIndicator"]
-layout_mode = 0
-offset_left = 1788.0
-offset_top = 83.0
-offset_right = 1893.0
-offset_bottom = 132.0
-text = "Hold space to
+[node name="Sprite2D" type="Sprite2D" parent="SpeedupIndicator"]
+position = Vector2(1843, 43)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_1npfk")
+
+[node name="Label" type="Label" parent="SpeedupIndicator/Sprite2D"]
+offset_left = -293.333
+offset_top = 206.667
+offset_right = 296.667
+offset_bottom = 457.667
+text = "Hold            to
 replay faster"
 label_settings = SubResource("LabelSettings_6nmf6")
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="SpeedupIndicator/Label"]
-position = Vector2(55, -40)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("4_1npfk")
+[node name="InputIcon" type="Sprite2D" parent="SpeedupIndicator/Sprite2D/Label"]
+process_mode = 3
+position = Vector2(346.667, 66.6667)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("7_3t3mo")
+script = ExtResource("8_a8ip2")
+keyboard_icon = ExtResource("7_3t3mo")
+playstation_icon = ExtResource("9_03l4r")
+xbox_icon = ExtResource("10_lpvha")
+nintendo_icon = ExtResource("11_s4ole")
+generic_icon = ExtResource("12_x1py8")
 
 [node name="CaughtScreen" parent="." instance=ExtResource("6_6nmf6")]
 visible = false

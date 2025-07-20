@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bogsrnq6djf7d"
-path="res://.godot/imported/enter.png-309668e5df723f8465cdddf02b131e7f.ctex"
+uid="uid://b78qp54wvgwhq"
+path="res://.godot/imported/generic_LStick.png-b2a0a628a94eab54e8faccb1dc18cc8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/keys/enter.png"
-dest_files=["res://.godot/imported/enter.png-309668e5df723f8465cdddf02b131e7f.ctex"]
+source_file="res://assets/sprites/input/generic_joypad/generic_LStick.png"
+dest_files=["res://.godot/imported/generic_LStick.png-b2a0a628a94eab54e8faccb1dc18cc8f.ctex"]
 
 [params]
 
