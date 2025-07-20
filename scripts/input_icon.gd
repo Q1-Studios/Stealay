@@ -24,13 +24,13 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		var joy_name: String = Input.get_joy_name(event.device)
+		var joy_name: String = Input.get_joy_name(event.device).to_lower()
 		
-		if joy_name.contains("PlayStation") or joy_name.contains("DualShock"):
+		if joy_name.contains("playstation") or joy_name.contains("dualshock") or joy_name.contains("dualsense"):
 			current = Globals.InputSrc.PLAYSTATION
-		elif joy_name.contains("Xbox"):
+		elif joy_name.contains("xbox"):
 			current = Globals.InputSrc.XBOX
-		elif joy_name.contains("Switch"):
+		elif joy_name.contains("switch"):
 			current = Globals.InputSrc.NINTENDO
 		else:
 			current = Globals.InputSrc.GENERIC
