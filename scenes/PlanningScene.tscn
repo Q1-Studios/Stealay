@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=78 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://dhpy1ykqcskhk" path="res://assets/sprites/input/keyboard/backspace.png" id="34_yivre"]
 [ext_resource type="PackedScene" uid="uid://dj60x8hw0xguq" path="res://scenes/non_playable/HideElement.tscn" id="35_b5yxx"]
 [ext_resource type="PackedScene" uid="uid://wg8m75jsgvyy" path="res://scenes/non_playable/SkullElement.tscn" id="36_01txo"]
+[ext_resource type="Texture2D" uid="uid://bu4mfblnh1q70" path="res://assets/sprites/Tutorial/arrow.png" id="36_a4yck"]
 [ext_resource type="AudioStream" uid="uid://dgku8m2ydkvlt" path="res://assets/music/planning_theme.ogg" id="36_yivre"]
 [ext_resource type="Texture2D" uid="uid://dsxfyk0txjm5a" path="res://assets/ui/planningscreenmap/getdia.png" id="38_yefry"]
 [ext_resource type="Texture2D" uid="uid://dikpwl32fxdsg" path="res://assets/sprites/input/keyboard/key_x.png" id="39_latlh"]
@@ -158,6 +159,43 @@ metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ibx1f"]
 font_size = 48
+
+[sub_resource type="Animation" id="Animation_a4yck"]
+resource_name = "arrow_up_down"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1115, 900), Vector2(1115, 870), Vector2(1115, 900)]
+}
+
+[sub_resource type="Animation" id="Animation_latlh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1115, 900)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_50e7h"]
+_data = {
+&"RESET": SubResource("Animation_latlh"),
+&"arrow_up_down": SubResource("Animation_a4yck")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1aly"]
 font_size = 36
@@ -349,6 +387,18 @@ offset_bottom = 110.0
 text = "Use the arrow keys to plan your heist."
 label_settings = SubResource("LabelSettings_ibx1f")
 horizontal_alignment = 1
+
+[node name="Arrow" type="Sprite2D" parent="TutorialUI2"]
+visible = false
+position = Vector2(1115, 900)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("36_a4yck")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialUI2/Arrow"]
+libraries = {
+&"": SubResource("AnimationLibrary_50e7h")
+}
+autoplay = "arrow_up_down"
 
 [node name="ColorRect" type="ColorRect" parent="TutorialUI2"]
 layout_mode = 0

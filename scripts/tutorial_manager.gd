@@ -16,6 +16,7 @@ var tutorial_progress: int = 0
 	$Chat5
 ]
 @onready var instructions: Label = $Instructions
+@onready var player_arrow: Sprite2D = $Arrow
 
 var tutorial_completed: bool = false
 
@@ -50,6 +51,7 @@ func _process(delta: float) -> void:
 		if tutorial_progress == 2:
 			instructions.text = "Plan your moves using the arrow keys."
 			instructions.show()
+			player_arrow.show()
 			movement_hint.show()
 			heist_planner.allow_move = true
 			
@@ -58,6 +60,7 @@ func _process(delta: float) -> void:
 				tutorial_progress += 1
 				heist_planner.allow_move = false
 				instructions.hide()
+				player_arrow.hide()
 		
 		if tutorial_progress == 3:
 			current_chat = chats[2]
