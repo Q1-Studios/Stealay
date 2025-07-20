@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://bq4rqp7ow711n" path="res://scripts/score_display.gd" id="7_icif4"]
 [ext_resource type="AudioStream" uid="uid://bwiwh1ddpoigc" path="res://assets/sounds/game_over_jingle/game_over.ogg" id="8_2gh7q"]
 [ext_resource type="Texture2D" uid="uid://cw5kpeeq2q0sv" path="res://assets/ui/post_its/check.png" id="8_6nmf6"]
-[ext_resource type="Script" uid="uid://de1nc1oj51tr7" path="res://scripts/input_icon.gd" id="8_a8ip2"]
 [ext_resource type="Texture2D" uid="uid://caiv810gq1dvv" path="res://assets/newui/paper.jpg" id="8_iaegw"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://scenes/non_playable/GoalObject.tscn" id="8_vijgj"]
 [ext_resource type="Texture2D" uid="uid://d31y2as40r5tg" path="res://assets/sprites/input/playstation/playstation_Cross.png" id="9_03l4r"]
@@ -26,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://priiirq3022c" path="res://assets/sprites/input/generic_joypad/generic_B.png" id="11_s4ole"]
 [ext_resource type="Texture2D" uid="uid://jfnda028lhil" path="res://assets/sprites/input/generic_joypad/generic_A.png" id="12_x1py8"]
 [ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://scenes/non_playable/pause_menu.tscn" id="13_1npfk"]
+[ext_resource type="PackedScene" uid="uid://6vblt84jg1hv" path="res://scenes/non_playable/ui/input_icon.tscn" id="13_a8ip2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lk0vr"]
 font_size = 48
@@ -125,12 +125,10 @@ label_settings = SubResource("LabelSettings_6nmf6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InputIcon" type="Sprite2D" parent="SpeedupIndicator/Sprite2D/Label"]
-process_mode = 3
+[node name="InputIcon" parent="SpeedupIndicator/Sprite2D/Label" instance=ExtResource("13_a8ip2")]
 position = Vector2(346.667, 66.6667)
 scale = Vector2(0.32, 0.32)
 texture = ExtResource("7_3t3mo")
-script = ExtResource("8_a8ip2")
 keyboard_icon = ExtResource("7_3t3mo")
 playstation_icon = ExtResource("9_03l4r")
 xbox_icon = ExtResource("10_lpvha")

@@ -803,7 +803,7 @@ autoplay = true
 bus = &"Music"
 script = ExtResource("25_hm0al")
 
-[node name="InputTypeDetector" type="Sprite2D" parent="."]
+[node name="InputTypeUpdater" type="Sprite2D" parent="."]
 script = ExtResource("29_lw0hr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
