@@ -152,12 +152,12 @@ func check_move(move: Globals.movement) -> bool:
 
 
 func calculate_pos_vector_from_global_pos() -> Vector2i:
-	var position: Vector2i = Vector2i(0, 0)
-	position.y = player.transform.origin.x
-	position.x = -player.transform.origin.z
+	var pos: Vector2i = Vector2i(0, 0)
+	pos.y = player.transform.origin.x
+	pos.x = -player.transform.origin.z
 	#print(player.transform.origin)
-	#print(position)
-	return position
+	#print(pos)
+	return pos
 
 
 func load_sequence() -> void:

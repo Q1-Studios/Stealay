@@ -27,7 +27,7 @@ func _ready() -> void:
 	for chat in chats:
 		chat.hide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("SkipTutorial"):
 		Globals.tutorial_enabled = false
 	
