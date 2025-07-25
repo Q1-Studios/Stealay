@@ -1,9 +1,12 @@
-[gd_scene load_steps=78 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=86 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
+[ext_resource type="Script" uid="uid://d37i3xarnsfn" path="res://scripts/2d_projector.gd" id="3_latlh"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="3_pbho8"]
+[ext_resource type="Script" uid="uid://btilhenabwlsc" path="res://scripts/touch_control.gd" id="4_2gjlv"]
 [ext_resource type="PackedScene" uid="uid://6vblt84jg1hv" path="res://scenes/non_playable/ui/input_icon.tscn" id="5_a4yck"]
+[ext_resource type="Script" uid="uid://ckr6ft76xwr0e" path="res://scripts/stretching_collision_rect.gd" id="5_c8b5d"]
 [ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TuringBandUIManager.gd" id="7_1rttj"]
 [ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scripts/bandlController.gd" id="8_0acuf"]
 [ext_resource type="Texture2D" uid="uid://ccllpjpc2upk8" path="res://assets/sprites/input/keyboard/shift.png" id="8_01txo"]
@@ -56,11 +59,20 @@
 [ext_resource type="Texture2D" uid="uid://cs7tai0fp4xxw" path="res://assets/sprites/input/generic_joypad/generic_X.png" id="42_c8b5d"]
 [ext_resource type="Texture2D" uid="uid://44m5l4ulq0i5" path="res://assets/sprites/input/generic_joypad/generic_Y.png" id="43_tvnrp"]
 
-[sub_resource type="Environment" id="Environment_1rttj"]
-background_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
-background_energy_multiplier = 0.0
-ambient_light_source = 2
-ambient_light_energy = 0.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gjlv"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8b5d"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvnrp"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smyhc"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54x30"]
+size = Vector2(100, 100)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yefry"]
 font_size = 46
@@ -160,6 +172,21 @@ metadata/_custom_type_script = "uid://djo1vvuimo46i"
 [sub_resource type="LabelSettings" id="LabelSettings_ibx1f"]
 font_size = 48
 
+[sub_resource type="Animation" id="Animation_latlh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1115, 900)]
+}
+
 [sub_resource type="Animation" id="Animation_a4yck"]
 resource_name = "arrow_up_down"
 loop_mode = 1
@@ -176,21 +203,6 @@ tracks/0/keys = {
 "values": [Vector2(1115, 900), Vector2(1115, 870), Vector2(1115, 900)]
 }
 
-[sub_resource type="Animation" id="Animation_latlh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1115, 900)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_50e7h"]
 _data = {
 &"RESET": SubResource("Animation_latlh"),
@@ -200,35 +212,95 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_r1aly"]
 font_size = 36
 
-[node name="PlanningScene" type="Node3D"]
+[sub_resource type="Environment" id="Environment_1rttj"]
+background_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+background_energy_multiplier = 0.0
+ambient_light_source = 2
+ambient_light_energy = 0.0
+
+[node name="PlanningScene" type="SubViewportContainer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_i05ib")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("10_ec7cf")]
+[node name="HeistPlanner" parent="." node_paths=PackedStringArray("player", "left_btn", "right_btn", "up_btn", "down_btn", "hide_btn") instance=ExtResource("2_sfq2c")]
+layout_mode = 2
+mouse_filter = 1
+player = NodePath("../SubViewport/3DScene/Player")
+left_btn = NodePath("../2DProjectedPlayer/TouchControls/Left")
+right_btn = NodePath("../2DProjectedPlayer/TouchControls/Right")
+up_btn = NodePath("../2DProjectedPlayer/TouchControls/Up")
+down_btn = NodePath("../2DProjectedPlayer/TouchControls/Down")
+hide_btn = NodePath("../2DProjectedPlayer/TouchControls/Center")
 
-[node name="HeistPlanner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_sfq2c")]
-player = NodePath("../Player")
+[node name="TouchControlBounds" type="ColorRect" parent="HeistPlanner"]
+visible = false
+layout_mode = 2
+offset_right = 1251.0
+offset_bottom = 1080.0
+mouse_filter = 1
+color = Color(0.45098, 1, 0, 0.301961)
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal")]
-script = ExtResource("3_pbho8")
-player = NodePath("..")
-goal = NodePath("../GoalObject")
+[node name="2DProjectedPlayer" type="Node2D" parent="." node_paths=PackedStringArray("camera_3d", "target")]
+position = Vector2(1110, 1020)
+script = ExtResource("3_latlh")
+camera_3d = NodePath("../SubViewport/3DScene/Camera3D")
+target = NodePath("../SubViewport/3DScene/Player")
 
-[node name="DiaPostit" type="Sprite2D" parent="."]
-position = Vector2(45, 125)
-scale = Vector2(0.09, 0.09)
+[node name="TouchControls" type="Node2D" parent="2DProjectedPlayer"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.64, 7.594, -11.905)
-environment = SubResource("Environment_1rttj")
-projection = 1
-fov = 50.0
-size = 26.478
+[node name="Left" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+script = ExtResource("4_2gjlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Left" node_paths=PackedStringArray("origin", "bbox")]
+shape = SubResource("RectangleShape2D_2gjlv")
+script = ExtResource("5_c8b5d")
+grow_left = true
+origin = NodePath("../../..")
+origin_offset = Vector2(-50, 0)
+bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
+
+[node name="Right" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+script = ExtResource("4_2gjlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Right" node_paths=PackedStringArray("origin", "bbox")]
+shape = SubResource("RectangleShape2D_c8b5d")
+script = ExtResource("5_c8b5d")
+grow_right = true
+origin = NodePath("../../..")
+origin_offset = Vector2(50, 0)
+bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
+
+[node name="Up" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+script = ExtResource("4_2gjlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Up" node_paths=PackedStringArray("origin", "bbox")]
+shape = SubResource("RectangleShape2D_tvnrp")
+script = ExtResource("5_c8b5d")
+grow_up = true
+origin = NodePath("../../..")
+origin_offset = Vector2(0, -50)
+bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
+
+[node name="Down" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+script = ExtResource("4_2gjlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Down" node_paths=PackedStringArray("origin", "bbox")]
+shape = SubResource("RectangleShape2D_smyhc")
+script = ExtResource("5_c8b5d")
+grow_down = true
+origin = NodePath("../../..")
+origin_offset = Vector2(0, 50)
+bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
+
+[node name="Center" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+script = ExtResource("4_2gjlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Center"]
+shape = SubResource("RectangleShape2D_54x30")
 
 [node name="Hints" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 
 [node name="Panel" type="Panel" parent="Hints"]
 layout_mode = 0
@@ -303,18 +375,30 @@ xbox_icon = ExtResource("14_0hyt6")
 nintendo_icon = ExtResource("15_bdlay")
 generic_icon = ExtResource("16_a4yck")
 
-[node name="TuringBandlUI" type="Control" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("goal")]
+script = ExtResource("3_pbho8")
+goal = NodePath("../SubViewport/3DScene/GoalObject")
+
+[node name="DiaPostit" type="Sprite2D" parent="."]
+position = Vector2(45, 125)
+scale = Vector2(0.09, 0.09)
+
+[node name="TuringBandlComponent" type="Node2D" parent="."]
+
+[node name="TuringBandlUI" type="Control" parent="TuringBandlComponent"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_1rttj")
 
-[node name="Panel" type="Panel" parent="TuringBandlUI"]
+[node name="Panel" type="Panel" parent="TuringBandlComponent/TuringBandlUI"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -324,7 +408,7 @@ offset_left = -372.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlUI/Panel" node_paths=PackedStringArray("bandl1", "bandl2", "bandl3", "bandl4")]
+[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlComponent/TuringBandlUI/Panel" node_paths=PackedStringArray("bandl1", "bandl2", "bandl3", "bandl4")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -338,22 +422,21 @@ bandl2 = NodePath("TuringBandlInstruction2")
 bandl3 = NodePath("TuringBandlInstruction3")
 bandl4 = NodePath("TuringBandlInstruction4")
 
-[node name="TuringBandlInstruction" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+[node name="TuringBandlInstruction" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TuringBandlInstruction2" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+[node name="TuringBandlInstruction2" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TuringBandlInstruction3" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+[node name="TuringBandlInstruction3" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TuringBandlInstruction4" parent="TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+[node name="TuringBandlInstruction4" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
 [node name="TutorialUI2" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "movement_hint", "undo_hint", "start_hint", "hide_hint")]
 visible = false
-layout_mode = 3
-anchors_preset = 0
+layout_mode = 2
 script = ExtResource("10_nivii")
 heist_planner = NodePath("../HeistPlanner")
 movement_hint = NodePath("../Hints/Panel/Move")
@@ -433,77 +516,95 @@ nintendo_icon = ExtResource("42_c8b5d")
 generic_icon = ExtResource("43_tvnrp")
 
 [node name="PauseMenu" parent="." instance=ExtResource("29_yefry")]
+layout_mode = 2
 
-[node name="Map" parent="." instance=ExtResource("8_rly6o")]
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="3DScene" type="Node3D" parent="SubViewport"]
+
+[node name="Player" parent="SubViewport/3DScene" groups=["player"] instance=ExtResource("10_ec7cf")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/3DScene"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.64, 7.594, -11.905)
+environment = SubResource("Environment_1rttj")
+projection = 1
+current = true
+fov = 50.0
+size = 26.478
+
+[node name="Map" parent="SubViewport/3DScene" instance=ExtResource("8_rly6o")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
 visible = false
 
-[node name="MovementManager" type="Node" parent="."]
+[node name="MovementManager" type="Node" parent="SubViewport/3DScene"]
 
-[node name="GuardMovementController" type="Node" parent="MovementManager" node_paths=PackedStringArray("guard_list")]
+[node name="GuardMovementController" type="Node" parent="SubViewport/3DScene/MovementManager" node_paths=PackedStringArray("guard_list")]
 script = ExtResource("11_y7sd5")
 guard_list = [NodePath("../../startingGumba"), NodePath("../../mainCircleGuard"), NodePath("../../redfloorGuard"), NodePath("../../randompillarroomguard"), NodePath("../../theFinalBoss")]
 
-[node name="PlanningScenePlayerController" type="Node" parent="MovementManager" node_paths=PackedStringArray("player")]
+[node name="PlanningScenePlayerController" type="Node" parent="SubViewport/3DScene/MovementManager" node_paths=PackedStringArray("player")]
 script = ExtResource("12_y7sd5")
 player = NodePath("../../Player")
 PathElementScene = ExtResource("34_nup1x")
 HideElementScene = ExtResource("35_b5yxx")
 SkullElementScene = ExtResource("36_01txo")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="SubViewport/3DScene"]
 transform = Transform3D(2.325, 0, 0, 0, -1.01629e-07, 2.325, 0, -2.325, -1.01629e-07, -11.955, -1.443, -11.964)
 texture = ExtResource("13_un3xe")
 
-[node name="GoalObject" parent="." instance=ExtResource("14_un3xe")]
+[node name="GoalObject" parent="SubViewport/3DScene" instance=ExtResource("14_un3xe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -22)
 
-[node name="Walls" type="Node3D" parent="."]
+[node name="Walls" type="Node3D" parent="SubViewport/3DScene"]
 visible = false
 script = ExtResource("16_ibx1f")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SubViewport/3DScene"]
 stream = ExtResource("36_yivre")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
 
-[node name="DiamondSticker" type="Sprite3D" parent="."]
+[node name="DiamondSticker" type="Sprite3D" parent="SubViewport/3DScene"]
 transform = Transform3D(1.2, 0, 0, 0, -5.24537e-08, 1.2, 0, -1.2, -5.24537e-08, -24.2727, 3.08171, -21.7178)
 texture = ExtResource("38_yefry")
 
-[node name="mainCircleGuard" parent="." instance=ExtResource("9_0acuf")]
+[node name="mainCircleGuard" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -7)
 input_sequence = Array[int]([1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 1, 3, 1, 1, 3, 1])
 id = 1
 
-[node name="redfloorGuard" parent="." instance=ExtResource("9_0acuf")]
+[node name="redfloorGuard" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -6)
 input_sequence = Array[int]([3, 3, 1, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3])
 id = 2
 
-[node name="randompillarroomguard" parent="." instance=ExtResource("9_0acuf")]
+[node name="randompillarroomguard" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -21)
 input_sequence = Array[int]([1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 3, 3, 3, 3, 1])
 id = 3
 
-[node name="theFinalBoss" parent="." instance=ExtResource("9_0acuf")]
+[node name="theFinalBoss" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -23)
 input_sequence = Array[int]([3, 3, 3, 1, 3, 3, 0, 3, 3, 3, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 3, 3, 3])
 id = 4
 
-[node name="startingGumba" parent="." instance=ExtResource("9_0acuf")]
+[node name="startingGumba" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
 input_sequence = Array[int]([2, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 3, 3, 3, 2, 0, 0, 2, 2, 1, 1, 3, 3, 0, 0, 0, 0, 3, 3, 3, 0, 3, 3, 3, 1, 1, 3, 3, 3, 1, 1, 1, 2, 1, 1, 1, 3, 1, 1, 1, 1, 2, 2])
 id = 5
 
 [connection signal="load_game_board" from="." to="GameManager" method="_on_planning_scene_load_game_board"]
-[connection signal="ready" from="Player" to="HeistPlanner" method="_on_player_ready"]
-[connection signal="add_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_add_movement"]
-[connection signal="add_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_add_movement"]
+[connection signal="add_movement" from="HeistPlanner" to="TuringBandlComponent/TuringBandlUI" method="_on_heist_planner_add_movement"]
+[connection signal="add_movement" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_add_movement"]
 [connection signal="heist_planned" from="HeistPlanner" to="." method="_on_heist_planner_heist_planned"]
-[connection signal="heist_planned" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_heist_planned"]
-[connection signal="place_skull" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_place_skull"]
-[connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
-[connection signal="remove_last_movement" from="HeistPlanner" to="MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
+[connection signal="heist_planned" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_heist_planned"]
+[connection signal="place_skull" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_place_skull"]
+[connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlComponent/TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
+[connection signal="remove_last_movement" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
 [connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]
+[connection signal="ready" from="SubViewport/3DScene/Player" to="HeistPlanner" method="_on_player_ready"]

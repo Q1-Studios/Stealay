@@ -8,6 +8,14 @@ signal place_skull(pos: Vector2i)
 @export var player: Node3D
 @export var input_delta: float = 0.125
 
+@export_group("Touch Controls")
+@export var left_btn: TouchControl
+@export var right_btn: TouchControl
+@export var up_btn: TouchControl
+@export var down_btn: TouchControl
+@export var hide_btn: TouchControl
+@export var delete_btn: TouchControl
+
 @onready var invalid_sound: AudioStreamPlayer = $InvalidSound
 @onready var turncount_label: Label = $Turncount
 
@@ -55,17 +63,17 @@ func _process(delta: float) -> void:
 	delta_since_last_input += delta
 	
 	if allow_move:
-		if action_pressed("PlannerUp"):
+		if action_pressed("PlannerUp", up_btn):
 			move = Globals.movement.UP
-		elif action_pressed("PlannerDown"):
+		elif action_pressed("PlannerDown", down_btn):
 			move = Globals.movement.DOWN
-		elif action_pressed("PlannerLeft"):
+		elif action_pressed("PlannerLeft", left_btn):
 			move = Globals.movement.LEFT
-		elif action_pressed("PlannerRight"):
+		elif action_pressed("PlannerRight", right_btn):
 			move = Globals.movement.RIGHT
-		elif action_pressed("PlannerHide"):
+		elif action_pressed("PlannerHide", hide_btn):
 			move = Globals.movement.HIDE
-		elif action_pressed("PlannerDelete"):
+		elif action_pressed("PlannerDelete", delete_btn):
 			remove_last_action()
 		elif Input.is_action_just_pressed("PlannerCommit", true) and allow_commit:
 			finalize_sequence()
@@ -83,7 +91,7 @@ func _process(delta: float) -> void:
 
 # Custom function that returns true either when an input is pressed just now
 # Or when a key is held but only in allowed intervals
-func action_pressed(action_name: String) -> bool:
+func action_pressed(action_name: String, touch_control: TouchControl = null) -> bool:
 	var allow_holding: bool = false
 
 	if delta_since_last_input >= input_delta:
@@ -91,6 +99,10 @@ func action_pressed(action_name: String) -> bool:
 
 	if (Input.is_action_just_pressed(action_name, true) or
 	(Input.is_action_pressed(action_name, true) and allow_holding)):
+		delta_since_last_input = 0
+		return true
+	elif (touch_control != null and (touch_control.just_pressed or 
+	(touch_control.pressed and allow_holding))):
 		delta_since_last_input = 0
 		return true
 	
