@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=100 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://djo1vvuimo46i" path="res://scripts/voiceline_resource.gd" id="17_b5yxx"]
 [ext_resource type="AudioStream" uid="uid://blr07d13c8auj" path="res://assets/sounds/voicelines/tutorial/voiceline8.ogg" id="17_ntchk"]
 [ext_resource type="AudioStream" uid="uid://fro82uqsswa3" path="res://assets/sounds/voicelines/tutorial/voiceline9.ogg" id="17_yefry"]
+[ext_resource type="Script" uid="uid://cmqoijlw5jqar" path="res://scripts/click_darken.gd" id="18_0bynk"]
 [ext_resource type="Texture2D" uid="uid://b8xapg321c7dk" path="res://assets/sprites/mobile_buttons/touchbtn_hide.png" id="18_o7vux"]
 [ext_resource type="AudioStream" uid="uid://dxm7vwhuaydcp" path="res://assets/sounds/voicelines/tutorial/voiceline10.ogg" id="18_ynj1n"]
 [ext_resource type="AudioStream" uid="uid://c31bejwv0f251" path="res://assets/sounds/voicelines/tutorial/voiceline11.ogg" id="19_po8np"]
@@ -442,6 +443,7 @@ script = ExtResource("4_2gjlv")
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Start/StartBtn"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("17_54x30")
+script = ExtResource("18_0bynk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/Start/StartBtn"]
 position = Vector2(4.5, 4)
@@ -465,6 +467,7 @@ script = ExtResource("4_2gjlv")
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("18_o7vux")
+script = ExtResource("18_0bynk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn"]
 position = Vector2(4.5, 4)
@@ -488,6 +491,7 @@ script = ExtResource("4_2gjlv")
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("19_rjyge")
+script = ExtResource("18_0bynk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn"]
 position = Vector2(4.5, 4)
@@ -676,19 +680,21 @@ shape = SubResource("RectangleShape2D_o7vux")
 [node name="PauseMenu" parent="." instance=ExtResource("29_yefry")]
 layout_mode = 2
 
-[node name="PauseButton" type="Sprite2D" parent="."]
+[node name="PauseButton" type="Node2D" parent="."]
 position = Vector2(60, 60)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("50_o7vux")
 script = ExtResource("51_rjyge")
 
 [node name="PauseBtn" type="Area2D" parent="PauseButton"]
 process_mode = 3
-scale = Vector2(10, 10)
 script = ExtResource("4_2gjlv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PauseButton/PauseBtn"]
 shape = SubResource("RectangleShape2D_rjyge")
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseButton/PauseBtn"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("50_o7vux")
+script = ExtResource("18_0bynk")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
@@ -778,5 +784,13 @@ id = 5
 [connection signal="place_skull" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_place_skull"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlComponent/TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
+[connection signal="mouse_entered" from="Hints/MobileSwitcher/MobileButtons/Start/StartBtn" to="Hints/MobileSwitcher/MobileButtons/Start/StartBtn/Sprite2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hints/MobileSwitcher/MobileButtons/Start/StartBtn" to="Hints/MobileSwitcher/MobileButtons/Start/StartBtn/Sprite2D" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn" to="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn/Sprite2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn" to="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn/Sprite2D" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn" to="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn/Sprite2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn" to="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn/Sprite2D" method="_on_mouse_exited"]
 [connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]
+[connection signal="mouse_entered" from="PauseButton/PauseBtn" to="PauseButton/PauseBtn/Sprite2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PauseButton/PauseBtn" to="PauseButton/PauseBtn/Sprite2D" method="_on_mouse_exited"]
 [connection signal="ready" from="SubViewport/3DScene/Player" to="HeistPlanner" method="_on_player_ready"]
