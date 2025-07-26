@@ -375,9 +375,11 @@ xbox_icon = ExtResource("14_0hyt6")
 nintendo_icon = ExtResource("15_bdlay")
 generic_icon = ExtResource("16_a4yck")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("goal")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("goal", "pause_menu", "turing_bandl_ui")]
 script = ExtResource("3_pbho8")
 goal = NodePath("../SubViewport/3DScene/GoalObject")
+pause_menu = NodePath("../PauseMenu")
+turing_bandl_ui = NodePath("../TuringBandlComponent/TuringBandlUI")
 
 [node name="DiaPostit" type="Sprite2D" parent="."]
 position = Vector2(45, 125)

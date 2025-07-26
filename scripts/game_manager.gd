@@ -6,6 +6,8 @@ signal request_data()
 
 @export var player: Node3D
 @export var goal: Node3D
+@export var pause_menu: Control
+@export var turing_bandl_ui: Control
 @export var caught: Control
 @export var incomplete: Control
 @export var win: Control
@@ -37,11 +39,11 @@ func _process(_delta):
 			Globals.speed = 1.2
 
 func toggle_pause():
-	$"../PauseMenu".visible = not $"../PauseMenu".visible
+	pause_menu.visible = not pause_menu.visible
 	if get_tree().current_scene.name != Globals.game_scene_name:
-		$"../TuringBandlUI".visible = not $"../TuringBandlUI".visible
+		turing_bandl_ui.visible = not turing_bandl_ui.visible
 	get_tree().paused = not get_tree().paused
-	$"../PauseMenu".resetUI()
+	pause_menu.resetUI()
 
 func check_win():
 	if goal.transform.origin.distance_to(player.transform.origin) <= 3 and not game_over:

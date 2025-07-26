@@ -65,10 +65,11 @@ func _process(delta: float) -> void:
 
 [node name="Game" type="Node3D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal", "caught", "incomplete", "win", "win_jingle", "lose_jingle", "music")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal", "pause_menu", "caught", "incomplete", "win", "win_jingle", "lose_jingle", "music")]
 script = ExtResource("1_xy3my")
 player = NodePath("../Player")
 goal = NodePath("../GoalObject")
+pause_menu = NodePath("../PauseMenu")
 caught = NodePath("../CaughtScreen")
 incomplete = NodePath("../IncompleteScreen")
 win = NodePath("../WinScreen")
