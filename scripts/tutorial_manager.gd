@@ -18,6 +18,7 @@ var tutorial_progress: int = 0
 	$Chat4,
 	$Chat5
 ]
+@onready var clickable_area: TouchControl = $ClickableArea
 @onready var skip_progress: ProgressBar = $SkipProgressBar
 @onready var instructions: Label = $Instructions
 @onready var player_arrow: Sprite2D = $Arrow
@@ -102,7 +103,7 @@ func _process(delta: float) -> void:
 				Globals.tutorial_enabled = false
 				
 		if (Input.is_action_just_pressed("PlannerCommit") or
-		Input.is_action_just_pressed("Click")):
+		clickable_area.just_pressed):
 			current_chat.advance_dialogue()
 			Globals.require_mouse_release = true
 	

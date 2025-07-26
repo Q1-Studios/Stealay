@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=41 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://scenes/non_playable/Map.tscn" id="3_cxv17"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://scenes/non_playable/pause_menu.tscn" id="13_1npfk"]
 [ext_resource type="Script" uid="uid://btilhenabwlsc" path="res://scripts/touch_control_area2d.gd" id="13_03l4r"]
 [ext_resource type="PackedScene" uid="uid://6vblt84jg1hv" path="res://scenes/non_playable/ui/input_icon.tscn" id="13_a8ip2"]
+[ext_resource type="Texture2D" uid="uid://caja4gb2t0nn3" path="res://assets/sprites/mobile_buttons/pause.png" id="20_lpvha"]
+[ext_resource type="Script" uid="uid://dwxke28c72pqk" path="res://scripts/hide_on_pc.gd" id="21_s4ole"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lk0vr"]
 font_size = 48
@@ -53,6 +55,9 @@ font_color = Color(0.393086, 0.393086, 0.393085, 1)
 font_size = 24
 font_color = Color(0, 0.410708, 0.818128, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ole"]
+size = Vector2(120, 120)
+
 [sub_resource type="Environment" id="Environment_18ig4"]
 background_color = Color(0.323074, 0.389237, 0.503971, 1)
 ambient_light_source = 3
@@ -70,7 +75,7 @@ func _process(delta: float) -> void:
 
 [node name="Game" type="Node3D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal", "pause_menu", "caught", "incomplete", "win", "speedup_btn", "win_jingle", "lose_jingle", "music")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal", "pause_menu", "caught", "incomplete", "win", "speedup_btn", "pause_btn", "win_jingle", "lose_jingle", "music")]
 script = ExtResource("1_xy3my")
 player = NodePath("../Player")
 goal = NodePath("../GoalObject")
@@ -79,6 +84,7 @@ caught = NodePath("../CaughtScreen")
 incomplete = NodePath("../IncompleteScreen")
 win = NodePath("../WinScreen")
 speedup_btn = NodePath("../SpeedupIndicator/SpeedupBtn")
+pause_btn = NodePath("../PauseButton/PauseBtn")
 win_jingle = NodePath("../WinJingle")
 lose_jingle = NodePath("../LoseJingle")
 music = NodePath("../MusicPlayer")
@@ -133,7 +139,6 @@ pc_variant = NodePath("PCLabel")
 mobile_variant = NodePath("MobileLabel")
 
 [node name="PCLabel" type="Label" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher"]
-visible = false
 offset_left = -293.333
 offset_top = 206.667
 offset_right = 296.667
@@ -155,6 +160,7 @@ nintendo_icon = ExtResource("11_s4ole")
 generic_icon = ExtResource("12_x1py8")
 
 [node name="MobileLabel" type="Label" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher"]
+visible = false
 offset_left = -293.333
 offset_top = 206.667
 offset_right = 296.667
@@ -260,6 +266,20 @@ scale = Vector2(0.532, 0.532)
 texture = ExtResource("8_6nmf6")
 
 [node name="PauseMenu" parent="." instance=ExtResource("13_1npfk")]
+
+[node name="PauseButton" type="Sprite2D" parent="."]
+position = Vector2(60, 60)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("20_lpvha")
+script = ExtResource("21_s4ole")
+
+[node name="PauseBtn" type="Area2D" parent="PauseButton"]
+process_mode = 3
+scale = Vector2(10, 10)
+script = ExtResource("13_03l4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseButton/PauseBtn"]
+shape = SubResource("RectangleShape2D_s4ole")
 
 [node name="Map" parent="." instance=ExtResource("3_cxv17")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)

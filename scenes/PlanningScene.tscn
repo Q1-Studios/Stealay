@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=99 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -62,6 +62,8 @@
 [ext_resource type="Texture2D" uid="uid://7ibjlpjt0w3g" path="res://assets/sprites/input/xbox/xbox_Y.png" id="41_2gjlv"]
 [ext_resource type="Texture2D" uid="uid://cs7tai0fp4xxw" path="res://assets/sprites/input/generic_joypad/generic_X.png" id="42_c8b5d"]
 [ext_resource type="Texture2D" uid="uid://44m5l4ulq0i5" path="res://assets/sprites/input/generic_joypad/generic_Y.png" id="43_tvnrp"]
+[ext_resource type="Texture2D" uid="uid://caja4gb2t0nn3" path="res://assets/sprites/mobile_buttons/pause.png" id="50_o7vux"]
+[ext_resource type="Script" uid="uid://dwxke28c72pqk" path="res://scripts/hide_on_pc.gd" id="51_rjyge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gjlv"]
 size = Vector2(0, 0)
@@ -176,6 +178,9 @@ text = "I'm watching you."
 audio_stream = ExtResource("28_ynj1n")
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doda7"]
+size = Vector2(1098, 1080)
+
 [sub_resource type="LabelSettings" id="LabelSettings_ibx1f"]
 font_size = 48
 
@@ -239,6 +244,9 @@ font_size = 36
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7vux"]
 size = Vector2(550, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjyge"]
+size = Vector2(120, 120)
 
 [sub_resource type="Environment" id="Environment_1rttj"]
 background_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
@@ -485,11 +493,12 @@ texture = ExtResource("19_rjyge")
 position = Vector2(4.5, 4)
 shape = SubResource("RectangleShape2D_0bynk")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("goal", "pause_menu", "turing_bandl_ui")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("goal", "pause_menu", "turing_bandl_ui", "pause_btn")]
 script = ExtResource("3_pbho8")
 goal = NodePath("../SubViewport/3DScene/GoalObject")
 pause_menu = NodePath("../PauseMenu")
 turing_bandl_ui = NodePath("../TuringBandlComponent/TuringBandlUI")
+pause_btn = NodePath("../PauseButton/PauseBtn")
 
 [node name="DiaPostit" type="Sprite2D" parent="."]
 position = Vector2(45, 125)
@@ -575,6 +584,13 @@ lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_hypni"), SubResour
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_a4yck"), SubResource("Resource_latlh"), SubResource("Resource_50e7h")])
 chat_icon = 1
 
+[node name="ClickableArea" type="Area2D" parent="TutorialUI"]
+script = ExtResource("4_2gjlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialUI/ClickableArea"]
+position = Vector2(1371, 540)
+shape = SubResource("RectangleShape2D_doda7")
+
 [node name="Instructions" type="Label" parent="TutorialUI"]
 visible = false
 layout_mode = 0
@@ -659,6 +675,20 @@ shape = SubResource("RectangleShape2D_o7vux")
 
 [node name="PauseMenu" parent="." instance=ExtResource("29_yefry")]
 layout_mode = 2
+
+[node name="PauseButton" type="Sprite2D" parent="."]
+position = Vector2(60, 60)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("50_o7vux")
+script = ExtResource("51_rjyge")
+
+[node name="PauseBtn" type="Area2D" parent="PauseButton"]
+process_mode = 3
+scale = Vector2(10, 10)
+script = ExtResource("4_2gjlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseButton/PauseBtn"]
+shape = SubResource("RectangleShape2D_rjyge")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false

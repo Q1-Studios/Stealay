@@ -12,6 +12,7 @@ signal request_data()
 @export var incomplete: Control
 @export var win: Control
 @export var speedup_btn: TouchControl
+@export var pause_btn: TouchControl
 
 @export var win_jingle: AudioStreamPlayer
 @export var lose_jingle: AudioStreamPlayer
@@ -25,7 +26,7 @@ func _ready():
 	Globals.time_between_moves = 1.2
 		
 func _process(_delta):
-	if Input.is_action_just_pressed("Escape"):
+	if Input.is_action_just_pressed("Escape") or pause_btn.just_pressed:
 		toggle_pause()
 		
 	if get_tree().current_scene.name == Globals.game_scene_name:
