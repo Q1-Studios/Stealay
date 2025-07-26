@@ -10,7 +10,9 @@ class_name ChatSection
 	$SpeechRect,
 	$SpeechRect2
 ]
-@onready var continue_label: Label = $ContinueLabel
+@onready var continue_label_container: Node2D = $ContinueLabelSwitcher
+@onready var continue_label: Label = continue_label_container.current
+
 @onready var chat_sprite: AnimatedSprite2D = $ChatGuy
 @onready var voiceline_player: AudioStreamPlayer = $VoicelinePlayer
 
@@ -68,10 +70,10 @@ func _process(delta: float) -> void:
 					text_finished = true
 		
 		if text_finished:
-			continue_label.show()
+			continue_label_container.show()
 			continue_label.position.y = current_bubble.position.y + 170
 		else:
-			continue_label.hide()
+			continue_label_container.hide()
 
 func advance_dialogue() -> void:
 	if not text_finished:

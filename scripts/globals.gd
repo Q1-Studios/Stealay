@@ -4,9 +4,11 @@ extends Node
 var tutorial_enabled: bool = true
 
 var is_web: bool = OS.get_name() == "Web"
+var is_mobile: bool = OS.get_name() == "Android" or OS.get_name() == "iOS"
 
 enum InputSrc {KEYBOARD, PLAYSTATION, XBOX, NINTENDO, GENERIC}
 var last_input_src: InputSrc = InputSrc.KEYBOARD
+var require_mouse_release: bool = false
 
 enum movement { 
 	UP,
@@ -53,7 +55,10 @@ func _init() -> void:
 		for x in range(-27, 4):
 			if Vector2i(y, x) not in valid_pos:
 				invalid_pos.append(Vector2i(y , x))
-	
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
+		require_mouse_release = false
 
 func calculate_global_position_from_pos(pos: Vector2i) -> Vector3:
 	var myPosition: Vector3 = Vector3(0, 0, 0)

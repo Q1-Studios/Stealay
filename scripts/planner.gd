@@ -13,8 +13,10 @@ signal place_skull(pos: Vector2i)
 @export var right_btn: TouchControl
 @export var up_btn: TouchControl
 @export var down_btn: TouchControl
+@export var on_player_btn: TouchControl
 @export var hide_btn: TouchControl
 @export var delete_btn: TouchControl
+@export var commit_btn: TouchControl
 
 @onready var invalid_sound: AudioStreamPlayer = $InvalidSound
 @onready var turncount_label: Label = $Turncount
@@ -23,6 +25,8 @@ var input_sequence: Array[Globals.movement] = []
 
 var allow_move: bool = false
 var allow_commit: bool = false
+
+var prev_require_mouse_release: bool = false
 
 var delta_since_last_input: float = 0
 
@@ -63,19 +67,20 @@ func _process(delta: float) -> void:
 	delta_since_last_input += delta
 	
 	if allow_move:
-		if action_pressed("PlannerUp", up_btn):
+		if action_pressed("PlannerUp") or control_pressed(up_btn):
 			move = Globals.movement.UP
-		elif action_pressed("PlannerDown", down_btn):
+		elif action_pressed("PlannerDown") or control_pressed(down_btn):
 			move = Globals.movement.DOWN
-		elif action_pressed("PlannerLeft", left_btn):
+		elif action_pressed("PlannerLeft") or control_pressed(left_btn):
 			move = Globals.movement.LEFT
-		elif action_pressed("PlannerRight", right_btn):
+		elif action_pressed("PlannerRight") or control_pressed(right_btn):
 			move = Globals.movement.RIGHT
-		elif action_pressed("PlannerHide", hide_btn):
+		elif action_pressed("PlannerHide") or control_pressed(on_player_btn) or control_pressed(hide_btn):
 			move = Globals.movement.HIDE
-		elif action_pressed("PlannerDelete", delete_btn):
+		elif action_pressed("PlannerDelete") or control_pressed(delete_btn):
 			remove_last_action()
-		elif Input.is_action_just_pressed("PlannerCommit", true) and allow_commit:
+		elif (Input.is_action_just_pressed("PlannerCommit", true) or control_pressed(commit_btn)
+		and allow_commit):
 			finalize_sequence()
 
 	if move != Globals.movement.NULL:
@@ -88,10 +93,14 @@ func _process(delta: float) -> void:
 	
 	turncount_label.text = str(input_sequence.size())
 	
+	# Allow acccess to mouse release requirement, intentionally delayed by one frame
+	# This should prevent the mouse being released but a "past" click registering in the same frame
+	prev_require_mouse_release = Globals.require_mouse_release
+	
 
 # Custom function that returns true either when an input is pressed just now
 # Or when a key is held but only in allowed intervals
-func action_pressed(action_name: String, touch_control: TouchControl = null) -> bool:
+func action_pressed(action_name: String) -> bool:
 	var allow_holding: bool = false
 
 	if delta_since_last_input >= input_delta:
@@ -101,8 +110,17 @@ func action_pressed(action_name: String, touch_control: TouchControl = null) -> 
 	(Input.is_action_pressed(action_name, true) and allow_holding)):
 		delta_since_last_input = 0
 		return true
-	elif (touch_control != null and (touch_control.just_pressed or 
-	(touch_control.pressed and allow_holding))):
+	
+	return false
+
+func control_pressed(touch_control: TouchControl):
+	var allow_holding: bool = false
+
+	if delta_since_last_input >= input_delta:
+		allow_holding = true
+	
+	if (not prev_require_mouse_release and (touch_control.just_pressed
+	or (touch_control.pressed and allow_holding))):
 		delta_since_last_input = 0
 		return true
 	

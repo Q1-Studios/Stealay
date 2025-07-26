@@ -7,6 +7,7 @@ var tutorial_progress: int = 0
 @export var undo_hint: Control
 @export var start_hint: Control
 @export var hide_hint: Control
+@export var skip_control: TouchControl
 
 @export var skip_duration: float = 1.5
 
@@ -31,11 +32,12 @@ func _ready() -> void:
 		chat.hide()
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("SkipTutorial"):
+	if Input.is_action_pressed("SkipTutorial") or skip_control.pressed:
 		skip_progress.value += delta * (skip_progress.max_value / skip_duration)
+		Globals.require_mouse_release = true
 		if(skip_progress.value >= 100):
 			Globals.tutorial_enabled = false
-	if Input.is_action_just_released("SkipTutorial"):
+	if Input.is_action_just_released("SkipTutorial") or skip_control.just_released:
 		skip_progress.value = 0
 	
 	if Globals.tutorial_enabled and not tutorial_completed:
@@ -99,8 +101,10 @@ func _process(delta: float) -> void:
 				tutorial_completed = true
 				Globals.tutorial_enabled = false
 				
-		if Input.is_action_just_pressed("PlannerCommit"):
+		if (Input.is_action_just_pressed("PlannerCommit") or
+		Input.is_action_just_pressed("Click")):
 			current_chat.advance_dialogue()
+			Globals.require_mouse_release = true
 	
 	else:
 		hide()

@@ -3,6 +3,7 @@ class_name TouchControl
 
 var pressed: bool = false
 var just_pressed: bool = false
+var just_released: bool = false
 var _mouse_inside: bool = false
 
 func _ready() -> void:
@@ -17,6 +18,10 @@ func _process(_delta: float) -> void:
 			just_pressed = false
 		pressed = true
 	else:
+		if pressed:
+			just_released = true
+		else:
+			just_released = false
 		just_pressed = false
 		pressed = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=38 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://scenes/non_playable/Map.tscn" id="3_cxv17"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://fve4ylqy7j1n" path="res://scripts/player_mover.gd" id="7_6ytau"]
 [ext_resource type="Script" uid="uid://bq4rqp7ow711n" path="res://scripts/score_display.gd" id="7_icif4"]
 [ext_resource type="AudioStream" uid="uid://bwiwh1ddpoigc" path="res://assets/sounds/game_over_jingle/game_over.ogg" id="8_2gh7q"]
+[ext_resource type="Script" uid="uid://d1h4u5lrv27ui" path="res://scripts/mobile_switcher.gd" id="8_03l4r"]
 [ext_resource type="Texture2D" uid="uid://cw5kpeeq2q0sv" path="res://assets/ui/post_its/check.png" id="8_6nmf6"]
 [ext_resource type="Texture2D" uid="uid://caiv810gq1dvv" path="res://assets/newui/paper.jpg" id="8_iaegw"]
 [ext_resource type="PackedScene" uid="uid://dsn1mnxuhm7jh" path="res://scenes/non_playable/GoalObject.tscn" id="8_vijgj"]
@@ -25,10 +26,14 @@
 [ext_resource type="Texture2D" uid="uid://priiirq3022c" path="res://assets/sprites/input/generic_joypad/generic_B.png" id="11_s4ole"]
 [ext_resource type="Texture2D" uid="uid://jfnda028lhil" path="res://assets/sprites/input/generic_joypad/generic_A.png" id="12_x1py8"]
 [ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://scenes/non_playable/pause_menu.tscn" id="13_1npfk"]
+[ext_resource type="Script" uid="uid://btilhenabwlsc" path="res://scripts/touch_control_area2d.gd" id="13_03l4r"]
 [ext_resource type="PackedScene" uid="uid://6vblt84jg1hv" path="res://scenes/non_playable/ui/input_icon.tscn" id="13_a8ip2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lk0vr"]
 font_size = 48
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpvha"]
+size = Vector2(1026.67, 573.333)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6nmf6"]
 font_size = 90
@@ -65,7 +70,7 @@ func _process(delta: float) -> void:
 
 [node name="Game" type="Node3D"]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal", "pause_menu", "caught", "incomplete", "win", "win_jingle", "lose_jingle", "music")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal", "pause_menu", "caught", "incomplete", "win", "speedup_btn", "win_jingle", "lose_jingle", "music")]
 script = ExtResource("1_xy3my")
 player = NodePath("../Player")
 goal = NodePath("../GoalObject")
@@ -73,6 +78,7 @@ pause_menu = NodePath("../PauseMenu")
 caught = NodePath("../CaughtScreen")
 incomplete = NodePath("../IncompleteScreen")
 win = NodePath("../WinScreen")
+speedup_btn = NodePath("../SpeedupIndicator/SpeedupBtn")
 win_jingle = NodePath("../WinJingle")
 lose_jingle = NodePath("../LoseJingle")
 music = NodePath("../MusicPlayer")
@@ -110,12 +116,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_6nmf6")
 
-[node name="Sprite2D" type="Sprite2D" parent="SpeedupIndicator"]
+[node name="SpeedupBtn" type="Area2D" parent="SpeedupIndicator"]
 position = Vector2(1843, 43)
 scale = Vector2(0.15, 0.15)
+script = ExtResource("13_03l4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpeedupIndicator/SpeedupBtn"]
+shape = SubResource("RectangleShape2D_lpvha")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpeedupIndicator/SpeedupBtn"]
 texture = ExtResource("4_1npfk")
 
-[node name="Label" type="Label" parent="SpeedupIndicator/Sprite2D"]
+[node name="MobileSwitcher" type="Node2D" parent="SpeedupIndicator/SpeedupBtn/Sprite2D" node_paths=PackedStringArray("pc_variant", "mobile_variant")]
+script = ExtResource("8_03l4r")
+pc_variant = NodePath("PCLabel")
+mobile_variant = NodePath("MobileLabel")
+
+[node name="PCLabel" type="Label" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher"]
+visible = false
 offset_left = -293.333
 offset_top = 206.667
 offset_right = 296.667
@@ -126,7 +144,7 @@ label_settings = SubResource("LabelSettings_6nmf6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InputIcon" parent="SpeedupIndicator/Sprite2D/Label" instance=ExtResource("13_a8ip2")]
+[node name="InputIcon" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher/PCLabel" instance=ExtResource("13_a8ip2")]
 position = Vector2(346.667, 66.6667)
 scale = Vector2(0.32, 0.32)
 texture = ExtResource("7_3t3mo")
@@ -135,6 +153,17 @@ playstation_icon = ExtResource("9_03l4r")
 xbox_icon = ExtResource("10_lpvha")
 nintendo_icon = ExtResource("11_s4ole")
 generic_icon = ExtResource("12_x1py8")
+
+[node name="MobileLabel" type="Label" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher"]
+offset_left = -293.333
+offset_top = 206.667
+offset_right = 296.667
+offset_bottom = 457.667
+text = "Hold to
+replay faster"
+label_settings = SubResource("LabelSettings_6nmf6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CaughtScreen" parent="." instance=ExtResource("6_6nmf6")]
 visible = false

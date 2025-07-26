@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://crkpn5vqe2wwa"]
+[gd_scene load_steps=16 format=3 uid="uid://crkpn5vqe2wwa"]
 
 [ext_resource type="Script" uid="uid://8ypg4mvasyqw" path="res://scripts/chat.gd" id="1_1vpf0"]
 [ext_resource type="Texture2D" uid="uid://dlpc8t81caida" path="res://assets/sprites/Tutorial/speech_bubble.png" id="2_bhmos"]
 [ext_resource type="Texture2D" uid="uid://c5w5mt4ir5daw" path="res://assets/sprites/Tutorial/speech_rect.PNG" id="3_fnrej"]
 [ext_resource type="Texture2D" uid="uid://qsm0kleuyn4t" path="res://assets/sprites/Tutorial/chat_guy.png" id="4_1vpvk"]
 [ext_resource type="Script" uid="uid://de1nc1oj51tr7" path="res://scripts/input_icon.gd" id="4_ah8ck"]
+[ext_resource type="Script" uid="uid://d1h4u5lrv27ui" path="res://scripts/mobile_switcher.gd" id="4_w6dnx"]
 [ext_resource type="Texture2D" uid="uid://c2wn5l7pkj5qk" path="res://assets/sprites/Tutorial/chat_guy_angry.png" id="5_7tx8e"]
 [ext_resource type="Texture2D" uid="uid://bogsrnq6djf7d" path="res://assets/sprites/input/keyboard/enter.png" id="5_w6dnx"]
 [ext_resource type="Texture2D" uid="uid://d31y2as40r5tg" path="res://assets/sprites/input/playstation/playstation_Cross.png" id="6_14id3"]
@@ -87,7 +88,12 @@ text = "But this won't be easy. You'll have to come up with a foolproof plan."
 label_settings = SubResource("LabelSettings_t1nil")
 autowrap_mode = 3
 
-[node name="ContinueLabel" type="Label" parent="."]
+[node name="ContinueLabelSwitcher" type="Node2D" parent="." node_paths=PackedStringArray("pc_variant", "mobile_variant")]
+script = ExtResource("4_w6dnx")
+pc_variant = NodePath("ContinueLabel")
+mobile_variant = NodePath("MobileContinueLabel")
+
+[node name="ContinueLabel" type="Label" parent="ContinueLabelSwitcher"]
 offset_left = 1150.5
 offset_top = 977.6
 offset_right = 1555.5
@@ -95,7 +101,7 @@ offset_bottom = 1027.6
 text = "Press            to continue"
 label_settings = SubResource("LabelSettings_l2q88")
 
-[node name="InputIcon" type="Sprite2D" parent="ContinueLabel"]
+[node name="InputIcon" type="Sprite2D" parent="ContinueLabelSwitcher/ContinueLabel"]
 process_mode = 3
 position = Vector2(147.5, 23.4)
 scale = Vector2(0.125, 0.125)
@@ -107,6 +113,15 @@ xbox_icon = ExtResource("7_r30l3")
 nintendo_icon = ExtResource("8_il146")
 generic_icon = ExtResource("9_igpr6")
 preview = 1
+
+[node name="MobileContinueLabel" type="Label" parent="ContinueLabelSwitcher"]
+visible = false
+offset_left = 1283.0
+offset_top = 978.0
+offset_right = 1556.0
+offset_bottom = 1028.0
+text = "Tap to continue"
+label_settings = SubResource("LabelSettings_l2q88")
 
 [node name="ChatGuy" type="AnimatedSprite2D" parent="."]
 position = Vector2(1780.5, 330.6)
