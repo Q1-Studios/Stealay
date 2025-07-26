@@ -440,10 +440,11 @@ vertical_alignment = 1
 position = Vector2(143, 144)
 script = ExtResource("4_2gjlv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Start/StartBtn"]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Start/StartBtn" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("17_54x30")
 script = ExtResource("18_0bynk")
+btn_src = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/Start/StartBtn"]
 position = Vector2(4.5, 4)
@@ -464,10 +465,11 @@ vertical_alignment = 1
 position = Vector2(143, 144)
 script = ExtResource("4_2gjlv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn"]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("18_o7vux")
 script = ExtResource("18_0bynk")
+btn_src = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn"]
 position = Vector2(4.5, 4)
@@ -488,10 +490,11 @@ vertical_alignment = 1
 position = Vector2(143, 144)
 script = ExtResource("4_2gjlv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn"]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("19_rjyge")
 script = ExtResource("18_0bynk")
+btn_src = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn"]
 position = Vector2(4.5, 4)
@@ -691,10 +694,11 @@ script = ExtResource("4_2gjlv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PauseButton/PauseBtn"]
 shape = SubResource("RectangleShape2D_rjyge")
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseButton/PauseBtn"]
+[node name="Sprite2D" type="Sprite2D" parent="PauseButton/PauseBtn" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("50_o7vux")
 script = ExtResource("18_0bynk")
+btn_src = NodePath("..")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
@@ -784,13 +788,5 @@ id = 5
 [connection signal="place_skull" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_place_skull"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlComponent/TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
-[connection signal="mouse_entered" from="Hints/MobileSwitcher/MobileButtons/Start/StartBtn" to="Hints/MobileSwitcher/MobileButtons/Start/StartBtn/Sprite2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Hints/MobileSwitcher/MobileButtons/Start/StartBtn" to="Hints/MobileSwitcher/MobileButtons/Start/StartBtn/Sprite2D" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn" to="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn/Sprite2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn" to="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn/Sprite2D" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn" to="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn/Sprite2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn" to="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn/Sprite2D" method="_on_mouse_exited"]
 [connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]
-[connection signal="mouse_entered" from="PauseButton/PauseBtn" to="PauseButton/PauseBtn/Sprite2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseButton/PauseBtn" to="PauseButton/PauseBtn/Sprite2D" method="_on_mouse_exited"]
 [connection signal="ready" from="SubViewport/3DScene/Player" to="HeistPlanner" method="_on_player_ready"]

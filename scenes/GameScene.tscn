@@ -132,9 +132,10 @@ script = ExtResource("13_03l4r")
 position = Vector2(0, 183.333)
 shape = SubResource("RectangleShape2D_lpvha")
 
-[node name="Sprite2D" type="Sprite2D" parent="SpeedupIndicator/SpeedupBtn"]
+[node name="Sprite2D" type="Sprite2D" parent="SpeedupIndicator/SpeedupBtn" node_paths=PackedStringArray("btn_src")]
 texture = ExtResource("4_1npfk")
 script = ExtResource("8_x1py8")
+btn_src = NodePath("..")
 
 [node name="MobileSwitcher" type="Node2D" parent="SpeedupIndicator/SpeedupBtn/Sprite2D" node_paths=PackedStringArray("pc_variant", "mobile_variant")]
 script = ExtResource("8_03l4r")
@@ -283,10 +284,11 @@ script = ExtResource("13_03l4r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PauseButton/PauseBtn"]
 shape = SubResource("RectangleShape2D_s4ole")
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseButton/PauseBtn"]
+[node name="Sprite2D" type="Sprite2D" parent="PauseButton/PauseBtn" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_lpvha")
 script = ExtResource("8_x1py8")
+btn_src = NodePath("..")
 
 [node name="Map" parent="." instance=ExtResource("3_cxv17")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
@@ -361,14 +363,10 @@ bus = &"Music"
 
 [connection signal="request_data" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_request_data"]
 [connection signal="won" from="GameManager" to="MovementManager/PlayerMovementController" method="_on_game_manager_won"]
-[connection signal="mouse_entered" from="SpeedupIndicator/SpeedupBtn" to="SpeedupIndicator/SpeedupBtn/Sprite2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="SpeedupIndicator/SpeedupBtn" to="SpeedupIndicator/SpeedupBtn/Sprite2D" method="_on_mouse_exited"]
 [connection signal="button_pressed" from="CaughtScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="IncompleteScreen" to="GameManager" method="post_lose_precedure"]
 [connection signal="button_pressed" from="WinScreen" to="GameManager" method="_on_main_menu_button_pressed"]
 [connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]
-[connection signal="mouse_entered" from="PauseButton/PauseBtn" to="PauseButton/PauseBtn/Sprite2D" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PauseButton/PauseBtn" to="PauseButton/PauseBtn/Sprite2D" method="_on_mouse_exited"]
 [connection signal="out_of_moves" from="MovementManager/PlayerMovementController" to="GameManager" method="_on_player_movement_controller_out_of_moves"]
 [connection signal="scores_updated" from="MovementManager/PlayerMovementController" to="WinScreen/Score Component" method="_on_scores_updated"]
 [connection signal="send_data" from="MovementManager/PlayerMovementController" to="GameManager" method="_on_player_movement_controller_send_data"]
