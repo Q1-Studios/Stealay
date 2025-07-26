@@ -139,13 +139,13 @@ offset_right = 118.5
 offset_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 12
 
 [node name="OptionsButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../MainMenu")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 60
 text = "
 "
 script = ExtResource("3_tkxux")
@@ -175,7 +175,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../Back")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 60
 text = "
 "
 script = SubResource("GDScript_255cg")
@@ -204,7 +204,7 @@ region_rect = Rect2(174.548, 424.49, 523.465, 259.374)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../MainMenu")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 60
 text = "
 "
 script = ExtResource("3_tkxux")

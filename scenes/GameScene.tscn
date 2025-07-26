@@ -35,7 +35,7 @@
 font_size = 48
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpvha"]
-size = Vector2(1026.67, 573.333)
+size = Vector2(1030, 940)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6nmf6"]
 font_size = 90
@@ -128,6 +128,7 @@ scale = Vector2(0.15, 0.15)
 script = ExtResource("13_03l4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpeedupIndicator/SpeedupBtn"]
+position = Vector2(0, 183.333)
 shape = SubResource("RectangleShape2D_lpvha")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpeedupIndicator/SpeedupBtn"]
