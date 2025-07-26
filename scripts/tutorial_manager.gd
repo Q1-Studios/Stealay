@@ -7,6 +7,10 @@ var tutorial_progress: int = 0
 @export var undo_hint: Control
 @export var start_hint: Control
 @export var hide_hint: Control
+
+@export var mobile_start: Control
+@export var mobile_hide: Control
+@export var mobile_undo: Control
 @export var skip_control: TouchControl
 
 @export var skip_duration: float = 1.5
@@ -95,8 +99,6 @@ func _process(delta: float) -> void:
 				tutorial_progress += 1
 				instructions.text = "Finish your plan, then execute it by pressing enter."
 				instructions.show()
-				undo_hint.show()
-				start_hint.show()
 				heist_planner.allow_move = true
 				heist_planner.allow_commit = true
 				tutorial_completed = true
@@ -120,3 +122,7 @@ func set_hint_visibility(visibility: bool) -> void:
 	undo_hint.visible = visibility
 	start_hint.visible = visibility
 	hide_hint.visible = visibility
+	
+	mobile_start.visible = visibility
+	mobile_hide.visible = visibility
+	mobile_undo.visible = visibility

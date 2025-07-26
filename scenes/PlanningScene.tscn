@@ -563,7 +563,7 @@ layout_mode = 2
 [node name="TuringBandlInstruction4" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TutorialUI" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "movement_hint", "undo_hint", "start_hint", "hide_hint", "skip_control")]
+[node name="TutorialUI" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "movement_hint", "undo_hint", "start_hint", "hide_hint", "mobile_start", "mobile_hide", "mobile_undo", "skip_control")]
 visible = false
 layout_mode = 2
 mouse_filter = 1
@@ -573,6 +573,9 @@ movement_hint = NodePath("../Hints/MobileSwitcher/PCHints/Move")
 undo_hint = NodePath("../Hints/MobileSwitcher/PCHints/Undo")
 start_hint = NodePath("../Hints/MobileSwitcher/PCHints/Start")
 hide_hint = NodePath("../Hints/MobileSwitcher/PCHints/Hide")
+mobile_start = NodePath("../Hints/MobileSwitcher/MobileButtons/Start")
+mobile_hide = NodePath("../Hints/MobileSwitcher/MobileButtons/Hide")
+mobile_undo = NodePath("../Hints/MobileSwitcher/MobileButtons/Undo")
 skip_control = NodePath("SkipProgressBar/SkipClickableArea")
 
 [node name="Chat" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
