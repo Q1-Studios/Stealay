@@ -63,7 +63,10 @@ func _process(delta: float) -> void:
 				tutorial_progress += 1
 		
 		if tutorial_progress == 2:
-			instructions.text = "Plan your moves using the arrow keys."
+			if Globals.is_mobile:
+				instructions.text = "Plan your moves by tapping on the plan."
+			else:
+				instructions.text = "Plan your moves using the arrow keys."
 			instructions.show()
 			player_arrow.show()
 			movement_hint.show()
@@ -97,7 +100,10 @@ func _process(delta: float) -> void:
 				current_chat.hide()
 				
 				tutorial_progress += 1
-				instructions.text = "Finish your plan, then execute it by pressing enter."
+				if Globals.is_mobile:
+					instructions.text = "Finish your plan, then execute it by pressing 'Start'."
+				else:
+					instructions.text = "Finish your plan, then execute it by pressing enter."
 				instructions.show()
 				heist_planner.allow_move = true
 				heist_planner.allow_commit = true
