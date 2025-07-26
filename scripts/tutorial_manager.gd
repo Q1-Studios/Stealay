@@ -66,9 +66,9 @@ func _process(delta: float) -> void:
 			heist_planner.allow_move = true
 			
 			if heist_planner.move_history.size() > 1:
-				print(heist_planner.move_history)
 				tutorial_progress += 1
 				heist_planner.allow_move = false
+				Globals.require_mouse_release = true
 				instructions.hide()
 				player_arrow.hide()
 		
@@ -103,7 +103,7 @@ func _process(delta: float) -> void:
 				Globals.tutorial_enabled = false
 				
 		if (Input.is_action_just_pressed("PlannerCommit") or
-		clickable_area.just_pressed):
+		clickable_area.just_pressed and not Globals.require_mouse_release):
 			current_chat.advance_dialogue()
 			Globals.require_mouse_release = true
 	
