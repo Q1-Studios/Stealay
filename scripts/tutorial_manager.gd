@@ -8,6 +8,8 @@ var tutorial_progress: int = 0
 @export var start_hint: Control
 @export var hide_hint: Control
 
+@export var skip_duration: float = 1.5
+
 @onready var chats: Array[ChatSection] = [
 	$Chat,
 	$Chat2,
@@ -15,6 +17,7 @@ var tutorial_progress: int = 0
 	$Chat4,
 	$Chat5
 ]
+@onready var skip_progress: ProgressBar = $SkipProgressBar
 @onready var instructions: Label = $Instructions
 @onready var player_arrow: Sprite2D = $Arrow
 
@@ -27,9 +30,13 @@ func _ready() -> void:
 	for chat in chats:
 		chat.hide()
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("SkipTutorial"):
-		Globals.tutorial_enabled = false
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("SkipTutorial"):
+		skip_progress.value += delta * (skip_progress.max_value / skip_duration)
+		if(skip_progress.value >= 100):
+			Globals.tutorial_enabled = false
+	if Input.is_action_just_released("SkipTutorial"):
+		skip_progress.value = 0
 	
 	if Globals.tutorial_enabled and not tutorial_completed:
 		show()

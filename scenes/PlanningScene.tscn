@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=89 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -208,6 +208,24 @@ _data = {
 &"RESET": SubResource("Animation_latlh"),
 &"arrow_up_down": SubResource("Animation_a4yck")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gjlv"]
+bg_color = Color(0.384314, 0.384314, 0.384314, 0.737255)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8b5d"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_2gjlv"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_2gjlv")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_c8b5d")
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1aly"]
 font_size = 36
@@ -436,8 +454,7 @@ layout_mode = 2
 [node name="TuringBandlInstruction4" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TutorialUI2" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "movement_hint", "undo_hint", "start_hint", "hide_hint")]
-visible = false
+[node name="TutorialUI" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "movement_hint", "undo_hint", "start_hint", "hide_hint")]
 layout_mode = 2
 script = ExtResource("10_nivii")
 heist_planner = NodePath("../HeistPlanner")
@@ -446,23 +463,23 @@ undo_hint = NodePath("../Hints/Panel/Undo")
 start_hint = NodePath("../Hints/Panel/Start")
 hide_hint = NodePath("../Hints/Panel/Hide")
 
-[node name="Chat" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+[node name="Chat" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_01txo"), SubResource("Resource_vf1sc"), SubResource("Resource_4fghf")])
 
-[node name="Chat2" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+[node name="Chat2" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_b5yxx"), SubResource("Resource_xgh5o"), SubResource("Resource_b31oo")])
 
-[node name="Chat3" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+[node name="Chat3" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_06788"), SubResource("Resource_255cg"), SubResource("Resource_7doss")])
 
-[node name="Chat4" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+[node name="Chat4" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_hypni"), SubResource("Resource_0hyt6"), SubResource("Resource_bdlay")])
 
-[node name="Chat5" parent="TutorialUI2" instance=ExtResource("10_ibx1f")]
+[node name="Chat5" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_a4yck"), SubResource("Resource_latlh"), SubResource("Resource_50e7h")])
 chat_icon = 1
 
-[node name="Instructions" type="Label" parent="TutorialUI2"]
+[node name="Instructions" type="Label" parent="TutorialUI"]
 visible = false
 layout_mode = 0
 offset_left = -1.0
@@ -473,42 +490,43 @@ text = "Use the arrow keys to plan your heist."
 label_settings = SubResource("LabelSettings_ibx1f")
 horizontal_alignment = 1
 
-[node name="Arrow" type="Sprite2D" parent="TutorialUI2"]
+[node name="Arrow" type="Sprite2D" parent="TutorialUI"]
 visible = false
 position = Vector2(1115, 900)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("36_a4yck")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialUI2/Arrow"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialUI/Arrow"]
 libraries = {
 &"": SubResource("AnimationLibrary_50e7h")
 }
 autoplay = "arrow_up_down"
 
-[node name="ColorRect" type="ColorRect" parent="TutorialUI2"]
+[node name="SkipProgressBar" type="ProgressBar" parent="TutorialUI"]
 layout_mode = 0
-offset_left = 23.0
+offset_left = 24.0
 offset_top = 975.0
-offset_right = 581.0
-offset_bottom = 1055.0
-color = Color(0.306923, 0.306923, 0.306923, 1)
+offset_right = 574.0
+offset_bottom = 1054.0
+theme = SubResource("Theme_2gjlv")
+show_percentage = false
 
-[node name="SkipLabel" type="Label" parent="TutorialUI2"]
+[node name="SkipLabel" type="Label" parent="TutorialUI/SkipProgressBar"]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 989.0
-offset_right = 562.0
-offset_bottom = 1039.0
-text = "Press        to skip tutorial"
+offset_left = 117.0
+offset_top = 14.0
+offset_right = 538.0
+offset_bottom = 64.0
+text = "Hold        to skip tutorial"
 label_settings = SubResource("LabelSettings_r1aly")
 
-[node name="Sprite2D" type="Sprite2D" parent="TutorialUI2/SkipLabel"]
+[node name="Sprite2D" type="Sprite2D" parent="TutorialUI/SkipProgressBar/SkipLabel"]
 position = Vector2(-60, 25)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("27_jlbm7")
 
-[node name="InputIcon" parent="TutorialUI2/SkipLabel" instance=ExtResource("5_a4yck")]
-position = Vector2(130, 24)
+[node name="InputIcon" parent="TutorialUI/SkipProgressBar/SkipLabel" instance=ExtResource("5_a4yck")]
+position = Vector2(117, 24)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("39_latlh")
 keyboard_icon = ExtResource("39_latlh")
