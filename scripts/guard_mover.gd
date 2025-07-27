@@ -12,7 +12,7 @@ func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
-	if time_passed >= Globals.time_between_moves and not Globals.player_spotted:
+	if time_passed >= Globals.time_between_moves and not Globals.stop_moving:
 		time_passed = 0.0
 		move()
 	

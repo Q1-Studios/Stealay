@@ -23,6 +23,7 @@ func start_game():
 		return
 
 	print("Start game: ", Globals.player_sequence)
+	Globals.stop_moving = false
 	Globals.player_spotted = false
 	emit_signal("load_game_board", SceneManager.game_scene)
 	

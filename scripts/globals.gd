@@ -30,7 +30,9 @@ var sequence_to_visit_all_pos: Array[int] = [2, 0, 0, 2, 0, 0, 0, 3, 3, 3, 3, 3,
 var player_sequence: Array[movement] = []
 var dev_mode: bool = false
 
+var stop_moving: bool = false
 var player_spotted: bool = false
+
 var game_scene_name: String = "Game"
 
 var max_sight:int = 4

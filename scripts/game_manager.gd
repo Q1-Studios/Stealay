@@ -21,6 +21,7 @@ var game_over: bool = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	Globals.stop_moving = false
 	Globals.player_spotted = false
 	Globals.time_between_moves = 1.2
 		
@@ -50,6 +51,7 @@ func check_win():
 	if goal.transform.origin.distance_to(player.transform.origin) <= 3 and not game_over:
 		print("You won.")
 		game_over = true
+		Globals.stop_moving = true
 		Globals.previous_sequence = [] 
 		Globals.previous_move_count = 0
 		win.show()
@@ -67,6 +69,7 @@ func check_lose():
 	if Globals.player_spotted and not game_over:
 		print("Game over")
 		game_over = true
+		Globals.stop_moving = true
 		Globals.time_between_moves *= 100
 		caught.show()
 		music.stop()
@@ -76,6 +79,7 @@ func check_lose():
 func _on_player_movement_controller_out_of_moves() -> void:
 	if not game_over:
 		game_over = true
+		Globals.stop_moving = true
 		Globals.time_between_moves *= 100
 		incomplete.show()
 		music.stop()
