@@ -183,7 +183,7 @@ visible = false
 
 [node name="Label" parent="IncompleteScreen/UI" index="0"]
 offset_top = 113.04
-offset_bottom = 270.04
+offset_bottom = 154.96
 text = "Plan incomplete"
 label_settings = SubResource("LabelSettings_1npfk")
 

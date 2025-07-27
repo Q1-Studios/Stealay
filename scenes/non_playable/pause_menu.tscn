@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dj8ocoeajpxud"]
+[gd_scene load_steps=17 format=3 uid="uid://dj8ocoeajpxud"]
 
 [ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="1_je4cm"]
 [ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="2_5upjr"]
@@ -33,6 +33,9 @@ func resetUI():
 func _on_back_pressed() -> void:
 	back_pressed.emit()
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_5upjr"]
+font_size = 90
 
 [sub_resource type="GDScript" id="GDScript_06788"]
 resource_name = "buttonlogic"
@@ -110,10 +113,12 @@ anchors_preset = -1
 anchor_top = 0.062
 anchor_right = 1.0
 anchor_bottom = 0.138
-offset_bottom = 157.0
+offset_top = 13.04
+offset_bottom = 54.96
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 115
 text = "Game paused"
+label_settings = SubResource("LabelSettings_5upjr")
 horizontal_alignment = 1
 
 [node name="DefaultView" type="Control" parent="UI"]
@@ -267,10 +272,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.5
+offset_left = -190.0
 offset_top = -177.0
-offset_right = 118.5
-offset_bottom = 177.0
+offset_right = 169.0
+offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -289,7 +294,6 @@ expand_icon = true
 script = ExtResource("9_qs6f5")
 
 [node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton"]
-position = Vector2(40.5, 31)
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("5_nkuvg")
 
@@ -301,7 +305,8 @@ region_enabled = true
 region_rect = Rect2(125.917, 1541.75, 1504.51, 287.448)
 
 [node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/FancyButton"]
-position = Vector2(-212.01, 8.99738)
+position = Vector2(550, 170)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(125.917, 1541.75, 1504.51, 287.448)
@@ -323,7 +328,6 @@ expand_icon = true
 script = ExtResource("10_qbbyt")
 
 [node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton"]
-position = Vector2(40.5, 31)
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("5_nkuvg")
 
@@ -335,7 +339,8 @@ region_enabled = true
 region_rect = Rect2(95.3379, 1823.08, 1498.4, 244.636)
 
 [node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/FancyButton"]
-position = Vector2(-212.01, 8.99738)
+position = Vector2(550, 170)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(95.3379, 1823.08, 1498.4, 244.636)
@@ -358,13 +363,13 @@ script = ExtResource("5_nkuvg")
 
 [node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/BackButton/FancyButton"]
 visible = false
-position = Vector2(-212.01, 8.99738)
+position = Vector2(50, 0)
 texture = ExtResource("6_fer7r")
 region_enabled = true
 region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
 
 [node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/BackButton/FancyButton"]
-position = Vector2(-212.01, 8.99738)
+position = Vector2(50, 0)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
