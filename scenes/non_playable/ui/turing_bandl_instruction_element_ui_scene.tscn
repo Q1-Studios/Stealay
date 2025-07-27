@@ -45,6 +45,7 @@ layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 script = ExtResource("1_0xnjm")
 UpArrowSymbol = NodePath("HBoxContainer/BandlSymbol/UpArrow")
 DownArrowSymbol = NodePath("HBoxContainer/BandlSymbol/DownArrow")
@@ -67,6 +68,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.33
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_8itmi")
 
 [node name="SelectionIcon" type="Panel" parent="HBoxContainer/SelectionRibbon"]
@@ -79,6 +81,7 @@ offset_left = -4.0
 offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_urn0h")
 
 [node name="NotSelectIcon" type="Panel" parent="HBoxContainer/SelectionRibbon"]
@@ -90,11 +93,13 @@ offset_left = -4.0
 offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_mhnxi")
 
 [node name="BandlSymbol" type="Panel" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_ojfeb")
 
 [node name="UpArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
@@ -105,6 +110,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_pcu6u")
 
 [node name="DownArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
@@ -115,6 +121,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_48324")
 
 [node name="LeftArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
@@ -125,6 +132,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_s88lv")
 
 [node name="RightArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
@@ -135,6 +143,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_0de6y")
 
 [node name="HideArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
@@ -145,6 +154,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_60um3")
 
 [node name="EmptyArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
@@ -155,4 +165,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_0xnjm")
