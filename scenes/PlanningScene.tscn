@@ -767,6 +767,13 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("50_o7vux")
 script = ExtResource("57_lu33s")
 
+[node name="InputConsumer" type="ColorRect" parent="PauseButton"]
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+color = Color(1, 1, 1, 0)
+
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
