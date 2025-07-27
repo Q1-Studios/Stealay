@@ -55,6 +55,7 @@ func check_win():
 		win.show()
 		music.stop()
 		win_jingle.play()
+		vibrate(0.75, 0.5)
 		emit_signal("won")
 		return true
 	return false
@@ -70,6 +71,7 @@ func check_lose():
 		caught.show()
 		music.stop()
 		lose_jingle.play()
+		vibrate(0.75, 0.5)
 
 func _on_player_movement_controller_out_of_moves() -> void:
 	if not game_over:
@@ -78,6 +80,7 @@ func _on_player_movement_controller_out_of_moves() -> void:
 		incomplete.show()
 		music.stop()
 		lose_jingle.play()
+		vibrate(0.75, 0.5)
 	#post_lose_precedure()
 	
 func post_lose_precedure():
@@ -105,3 +108,9 @@ func _on_main_menu_button_pressed() -> void:
 
 func _on_pause_button_pressed() -> void:
 	toggle_pause()
+
+func vibrate(amplitude: float, duration: float) -> void:
+	if Input.get_connected_joypads().size() > 0:
+		Input.start_joy_vibration(0, 0, amplitude, duration)
+	elif Globals.is_mobile:
+		Input.vibrate_handheld(duration * 1000, amplitude)
