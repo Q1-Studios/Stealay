@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=107 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -69,6 +69,7 @@
 [ext_resource type="Texture2D" uid="uid://44m5l4ulq0i5" path="res://assets/sprites/input/generic_joypad/generic_Y.png" id="43_tvnrp"]
 [ext_resource type="Texture2D" uid="uid://caja4gb2t0nn3" path="res://assets/sprites/mobile_buttons/pause.png" id="50_o7vux"]
 [ext_resource type="Script" uid="uid://dwxke28c72pqk" path="res://scripts/hide_on_pc.gd" id="51_rjyge"]
+[ext_resource type="Script" uid="uid://bjh651rh5xu1w" path="res://scripts/touch_darken.gd" id="57_lu33s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gjlv"]
 size = Vector2(0, 0)
@@ -559,12 +560,11 @@ btn_src = NodePath("..")
 position = Vector2(4.5, 4)
 shape = SubResource("RectangleShape2D_0bynk")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("goal", "pause_menu", "turing_bandl_ui", "pause_btn")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("goal", "pause_menu", "turing_bandl_ui")]
 script = ExtResource("3_pbho8")
 goal = NodePath("../SubViewport/3DScene/GoalObject")
 pause_menu = NodePath("../PauseMenu")
 turing_bandl_ui = NodePath("../TuringBandlComponent/TuringBandlUI")
-pause_btn = NodePath("../PauseButton/PauseBtn")
 
 [node name="DiaPostit" type="Sprite2D" parent="."]
 position = Vector2(45, 125)
@@ -753,22 +753,17 @@ shape = SubResource("RectangleShape2D_o7vux")
 [node name="PauseMenu" parent="." instance=ExtResource("29_yefry")]
 layout_mode = 2
 
-[node name="PauseButton" type="Node2D" parent="."]
+[node name="PauseButton" type="TouchScreenButton" parent="."]
+process_mode = 3
 position = Vector2(60, 60)
+shape = SubResource("RectangleShape2D_rjyge")
 script = ExtResource("51_rjyge")
 
-[node name="PauseBtn" type="Area2D" parent="PauseButton"]
-process_mode = 3
-script = ExtResource("4_2gjlv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseButton/PauseBtn"]
-shape = SubResource("RectangleShape2D_rjyge")
-
-[node name="Sprite2D" type="Sprite2D" parent="PauseButton/PauseBtn" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="PauseButton"]
+position = Vector2(3.8147e-06, 3.8147e-06)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("50_o7vux")
-script = ExtResource("18_0bynk")
-btn_src = NodePath("..")
+script = ExtResource("57_lu33s")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
@@ -859,4 +854,7 @@ id = 5
 [connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlComponent/TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
 [connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]
+[connection signal="pressed" from="PauseButton" to="GameManager" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="PauseButton" to="PauseButton/Sprite2D" method="_on_pressed"]
+[connection signal="released" from="PauseButton" to="PauseButton/Sprite2D" method="_on_released"]
 [connection signal="ready" from="SubViewport/3DScene/Player" to="HeistPlanner" method="_on_player_ready"]
