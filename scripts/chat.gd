@@ -48,8 +48,13 @@ func _process(delta: float) -> void:
 		
 		var current_bubble = speech_bubbles[current_msg_index]
 		var current_label = bubble_labels[current_msg_index]
-
-		var current_message = lines[current_msg_index].text
+		var voiceline = lines[current_msg_index]
+		
+		var current_message: String
+		if Globals.is_mobile and voiceline.touch_alternative:
+			current_message = voiceline.text_touch
+		else:
+			current_message = voiceline.text
 		
 		current_bubble.show()
 		
@@ -58,7 +63,12 @@ func _process(delta: float) -> void:
 			prev_msg_index = current_msg_index
 			text_finished = false
 			character_index = 0
-			voiceline_player.stream = lines[current_msg_index].audio_stream
+			
+			if Globals.is_mobile and voiceline.touch_alternative:
+				voiceline_player.stream = voiceline.audio_stream_touch
+			else:
+				voiceline_player.stream = voiceline.audio_stream
+			
 			voiceline_player.play()
 		
 		while time_elapsed > time_btwn_chars:

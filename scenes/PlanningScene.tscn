@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=104 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -50,16 +50,20 @@
 [ext_resource type="AudioStream" uid="uid://da1ct5vg5ohpk" path="res://assets/sounds/voicelines/tutorial/voiceline15.ogg" id="28_ynj1n"]
 [ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://scenes/non_playable/pause_menu.tscn" id="29_yefry"]
 [ext_resource type="Texture2D" uid="uid://bogsrnq6djf7d" path="res://assets/sprites/input/keyboard/enter.png" id="33_kitgh"]
+[ext_resource type="AudioStream" uid="uid://dubh6xu8o5f7n" path="res://assets/sounds/voicelines/tutorial/touch_alternatives/voiceline6_touch.ogg" id="34_65r8s"]
 [ext_resource type="PackedScene" uid="uid://bg05c2k8pghfo" path="res://scenes/non_playable/PathElement.tscn" id="34_nup1x"]
 [ext_resource type="Texture2D" uid="uid://dhpy1ykqcskhk" path="res://assets/sprites/input/keyboard/backspace.png" id="34_yivre"]
 [ext_resource type="PackedScene" uid="uid://dj60x8hw0xguq" path="res://scenes/non_playable/HideElement.tscn" id="35_b5yxx"]
 [ext_resource type="PackedScene" uid="uid://wg8m75jsgvyy" path="res://scenes/non_playable/SkullElement.tscn" id="36_01txo"]
 [ext_resource type="Texture2D" uid="uid://bu4mfblnh1q70" path="res://assets/sprites/Tutorial/arrow.png" id="36_a4yck"]
 [ext_resource type="AudioStream" uid="uid://dgku8m2ydkvlt" path="res://assets/music/planning_theme.ogg" id="36_yivre"]
+[ext_resource type="AudioStream" uid="uid://c7nn8q7ruk4aw" path="res://assets/sounds/voicelines/tutorial/touch_alternatives/voiceline9_touch.ogg" id="37_j23g3"]
+[ext_resource type="AudioStream" uid="uid://bov203072s2yy" path="res://assets/sounds/voicelines/tutorial/touch_alternatives/voiceline10_touch.ogg" id="38_6oyhn"]
 [ext_resource type="Texture2D" uid="uid://dsxfyk0txjm5a" path="res://assets/ui/planningscreenmap/getdia.png" id="38_yefry"]
 [ext_resource type="Script" uid="uid://d1h4u5lrv27ui" path="res://scripts/mobile_switcher.gd" id="39_c8b5d"]
 [ext_resource type="Texture2D" uid="uid://dikpwl32fxdsg" path="res://assets/sprites/input/keyboard/key_x.png" id="39_latlh"]
 [ext_resource type="Texture2D" uid="uid://s3m77o8c2d4s" path="res://assets/sprites/input/playstation/playstation_Triangle.png" id="40_50e7h"]
+[ext_resource type="AudioStream" uid="uid://cguatjvgniwkj" path="res://assets/sounds/voicelines/tutorial/touch_alternatives/voiceline11_touch.ogg" id="40_j23g3"]
 [ext_resource type="Texture2D" uid="uid://7ibjlpjt0w3g" path="res://assets/sprites/input/xbox/xbox_Y.png" id="41_2gjlv"]
 [ext_resource type="Texture2D" uid="uid://cs7tai0fp4xxw" path="res://assets/sprites/input/generic_joypad/generic_X.png" id="42_c8b5d"]
 [ext_resource type="Texture2D" uid="uid://44m5l4ulq0i5" path="res://assets/sprites/input/generic_joypad/generic_Y.png" id="43_tvnrp"]
@@ -92,6 +96,8 @@ script = ExtResource("17_b5yxx")
 text = "I fulfilled my part of the bargain.
 ..."
 audio_stream = ExtResource("10_lxu5f")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_vf1sc"]
@@ -99,84 +105,116 @@ script = ExtResource("17_b5yxx")
 text = "The building plan and patrol routes are all yours.
 ..."
 audio_stream = ExtResource("11_ntchk")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_4fghf"]
 script = ExtResource("17_b5yxx")
 text = "But this won't be easy. You'll have to come up with a foolproof plan."
 audio_stream = ExtResource("12_jerq1")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_b5yxx"]
 script = ExtResource("17_b5yxx")
 text = "But with my intel, this should be as easy as..."
 audio_stream = ExtResource("13_m2q86")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_xgh5o"]
 script = ExtResource("17_b5yxx")
 text = "... heh... stealing candy from a baby. Or stealing a gem from a museum."
 audio_stream = ExtResource("14_kitgh")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_b31oo"]
 script = ExtResource("17_b5yxx")
 text = "You can plan your heist using the arrow keys. Go ahead."
 audio_stream = ExtResource("15_yivre")
+touch_alternative = true
+text_touch = "You can plan your heist by tapping on the screen. Go ahead."
+audio_stream_touch = ExtResource("34_65r8s")
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_06788"]
 script = ExtResource("17_b5yxx")
 text = "Splendid. On the right, you can see your move sequence."
 audio_stream = ExtResource("16_jlbm7")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_255cg"]
 script = ExtResource("17_b5yxx")
 text = "Don't let these guards see you. Unless you really like jail."
 audio_stream = ExtResource("17_ntchk")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_7doss"]
 script = ExtResource("17_b5yxx")
 text = "If you're behind a corner when a guard walks by, you may be able to hide using shift."
 audio_stream = ExtResource("17_yefry")
+touch_alternative = true
+text_touch = "If you're behind a corner when a guard walks by, you may be able to hide."
+audio_stream_touch = ExtResource("37_j23g3")
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_hypni"]
 script = ExtResource("17_b5yxx")
 text = "If you mess up your plan, you can always hit \"backspace\" to undo."
 audio_stream = ExtResource("18_ynj1n")
+touch_alternative = true
+text_touch = "If you mess up your plan, you can always hit undo."
+audio_stream_touch = ExtResource("38_6oyhn")
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_0hyt6"]
 script = ExtResource("17_b5yxx")
 text = "If you're confident about your plan, hit enter."
 audio_stream = ExtResource("19_po8np")
+touch_alternative = true
+text_touch = "If you're confident about your plan, hit \"Start\"."
+audio_stream_touch = ExtResource("40_j23g3")
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_bdlay"]
 script = ExtResource("17_b5yxx")
 text = "Then get in there, and steal that precious gem."
 audio_stream = ExtResource("20_w8kyp")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_a4yck"]
 script = ExtResource("17_b5yxx")
 text = "And remember..."
 audio_stream = ExtResource("21_nup1x")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_latlh"]
 script = ExtResource("17_b5yxx")
 text = "You owe me."
 audio_stream = ExtResource("22_b5yxx")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_50e7h"]
 script = ExtResource("17_b5yxx")
 text = "I'm watching you."
 audio_stream = ExtResource("28_ynj1n")
+touch_alternative = false
+text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doda7"]
