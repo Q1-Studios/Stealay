@@ -79,7 +79,7 @@ func _process(delta: float) -> void:
 			move = Globals.movement.HIDE
 		elif action_pressed("PlannerDelete") or control_pressed(delete_btn):
 			remove_last_action()
-		elif (Input.is_action_just_pressed("PlannerCommit", true) or control_pressed(commit_btn)
+		elif (Input.is_action_just_pressed("PlannerCommit", true) or control_pressed(commit_btn, true)
 		and allow_commit):
 			finalize_sequence()
 
@@ -113,16 +113,20 @@ func action_pressed(action_name: String) -> bool:
 	
 	return false
 
-func control_pressed(touch_control: TouchControl):
+func control_pressed(touch_control: TouchControl, release_inside: bool = false):
 	var allow_holding: bool = false
 
 	if delta_since_last_input >= input_delta:
 		allow_holding = true
 	
-	if (not prev_require_mouse_release and (touch_control.just_pressed
-	or (touch_control.pressed and allow_holding))):
-		delta_since_last_input = 0
-		return true
+	if not prev_require_mouse_release:
+		if release_inside and touch_control.just_released_inside:
+			delta_since_last_input = 0
+			return true
+		if (not release_inside and (touch_control.just_pressed or
+		(touch_control.pressed and allow_holding))):
+			delta_since_last_input = 0
+			return true
 	
 	return false
 
