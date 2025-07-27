@@ -346,10 +346,11 @@ script = ExtResource("4_2gjlv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Left" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_2gjlv")
+debug_color = Color(0, 0.623019, 0.541202, 0.42)
 script = ExtResource("5_c8b5d")
-grow_left = true
 origin = NodePath("../../..")
 origin_offset = Vector2(-50, 0)
+cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
 [node name="Right" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
@@ -357,10 +358,12 @@ script = ExtResource("4_2gjlv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Right" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_c8b5d")
+debug_color = Color(0.967773, 0, 0.472129, 0.42)
 script = ExtResource("5_c8b5d")
-grow_right = true
+cone_direction = 1
 origin = NodePath("../../..")
 origin_offset = Vector2(50, 0)
+cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
 [node name="Up" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
@@ -368,10 +371,12 @@ script = ExtResource("4_2gjlv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Up" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_tvnrp")
+debug_color = Color(0.38881, 0.47205, 1, 0.42)
 script = ExtResource("5_c8b5d")
-grow_up = true
+cone_direction = 2
 origin = NodePath("../../..")
 origin_offset = Vector2(0, -50)
+cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
 [node name="Down" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
@@ -379,10 +384,12 @@ script = ExtResource("4_2gjlv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Down" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_smyhc")
+debug_color = Color(0.647922, 0.520916, 0, 0.42)
 script = ExtResource("5_c8b5d")
-grow_down = true
+cone_direction = 3
 origin = NodePath("../../..")
 origin_offset = Vector2(0, 50)
+cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
 [node name="Center" type="Area2D" parent="2DProjectedPlayer/TouchControls"]

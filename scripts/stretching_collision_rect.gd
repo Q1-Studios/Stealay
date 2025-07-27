@@ -1,55 +1,62 @@
 extends CollisionShape2D
 
-@export var grow_left: bool = false
-@export var grow_right: bool = false
-@export var grow_up: bool = false
-@export var grow_down: bool = false
+enum Direction {LEFT, RIGHT, UP, DOWN}
+@export var cone_direction: Direction
 
 @export var origin: Node2D
 @export var origin_offset: Vector2 = Vector2(0, 0)
+@export var cone_base_length: float
 @export var bbox: ColorRect
-@export var base_size: Vector2 = Vector2(100, 100)
 
-@onready var rect: RectangleShape2D = shape
+var top_left: Vector2
+var top_right: Vector2
+var btm_left: Vector2
+var btm_right: Vector2
 
-var bbox_top: float
-var bbox_btm: float
-var bbox_left: float
-var bbox_right: float
+var end_pt_dict: Dictionary[Direction, PackedVector2Array]
 
 func _ready() -> void:
-	bbox_top = bbox.global_position.y
-	bbox_btm = bbox.global_position.y + bbox.size.y
-	bbox_left = bbox.global_position.x
-	bbox_right = bbox.global_position.x + bbox.size.x
+	shape = ConvexPolygonShape2D.new()
+	
+	var bbox_top: float = bbox.global_position.y
+	var bbox_btm: float = bbox.global_position.y + bbox.size.y
+	var bbox_left: float = bbox.global_position.x
+	var bbox_right: float = bbox.global_position.x + bbox.size.x
+	
+	top_left = Vector2(bbox_left, bbox_top)
+	top_right = Vector2(bbox_right, bbox_top)
+	btm_left = Vector2(bbox_left, bbox_btm)
+	btm_right = Vector2(bbox_right, bbox_btm)
+	
+	end_pt_dict = {
+		Direction.LEFT: [btm_left, top_left],
+		Direction.RIGHT: [btm_right, top_right],
+		Direction.UP: [top_right, top_left],
+		Direction.DOWN: [btm_right, btm_left]
+	}
 
 func _process(_delta: float) -> void:
-	var length_left: float = sanitize_length(grow_left, (origin.global_position.x + origin_offset.x) - bbox_left)
-	var length_right: float = sanitize_length(grow_right, bbox_right - (origin.global_position.x + origin_offset.x))
-	var length_up: float = sanitize_length(grow_up, (origin.global_position.y + origin_offset.y) - bbox_top)
-	var length_down: float = sanitize_length(grow_down, bbox_btm - (origin.global_position.y + origin_offset.y))
+	var cone_center: Vector2 = Vector2(origin.global_position.x + origin_offset.x, origin.global_position.y + origin_offset.y)
 	
-	if grow_left or grow_right:
-		rect.size.x = length_left + length_right
-	else:
-		rect.size.x = base_size.x
+	var cone_pt_a: Vector2 = to_local(cone_center)
+	var cone_pt_b: Vector2 = to_local(cone_center)
 	
-	if grow_up or grow_down:
-		rect.size.y = length_up + length_down
-	else:
-		rect.size.y = base_size.y
+	assert(cone_base_length >= 0, "Length must be positive")
 	
-	position.x = (length_right-length_left) / 2 + origin_offset.x
-	position.y = (length_down-length_up) / 2 + origin_offset.y
-
-
-func sanitize_length(affected: bool, length: float) -> float:
-	# Lengths may not be negative
-	if length < 0:
-		return 0
+	if cone_direction == Direction.LEFT or cone_direction == Direction.RIGHT:
+		cone_pt_a.y -= cone_base_length / 2
+		cone_pt_b.y += cone_base_length / 2
+	if cone_direction == Direction.UP or cone_direction == Direction.DOWN:
+		cone_pt_a.x -= cone_base_length / 2
+		cone_pt_b.x += cone_base_length / 2
 	
-	# If the given length is supposed to grow
-	if affected:
-		return length
+	var points: PackedVector2Array = []
 	
-	return 0
+	points.append(cone_pt_a)
+	if cone_pt_a != cone_pt_b:
+		points.append(cone_pt_b)
+	
+	for point in end_pt_dict[cone_direction]:
+		points.append(to_local(point))
+	
+	shape.points = points
