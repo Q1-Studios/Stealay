@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 		
 		if tutorial_progress == 2:
 			if Globals.is_mobile:
-				instructions.text = "Plan your moves by tapping on the plan."
+				instructions.text = "Plan your moves by tapping on the screen."
 			else:
 				instructions.text = "Plan your moves using the arrow keys."
 			instructions.show()
