@@ -3,6 +3,7 @@ extends Control
 var tutorial_progress: int = 0
 
 @export var heist_planner: Control
+@export var instructions: Label
 @export var movement_hint: Control
 @export var undo_hint: Control
 @export var start_hint: Control
@@ -24,7 +25,6 @@ var tutorial_progress: int = 0
 ]
 @onready var clickable_area: TouchControl = $ClickableArea
 @onready var skip_progress: ProgressBar = $SkipProgressBar
-@onready var instructions: Label = $Instructions
 @onready var player_arrow: Sprite2D = $Arrow
 
 var tutorial_completed: bool = false
@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 		Globals.require_mouse_release = true
 		if(skip_progress.value >= 100):
 			Globals.tutorial_enabled = false
+			instructions.hide()
 	if Input.is_action_just_released("SkipTutorial") or skip_control.just_released:
 		skip_progress.value = 0
 	

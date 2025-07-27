@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=106 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -90,6 +90,23 @@ font_size = 46
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bynk"]
 size = Vector2(151, 154)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65r8s"]
+bg_color = Color(0.167451, 0.167451, 0.167451, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 15.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Theme" id="Theme_lu33s"]
+Label/styles/normal = SubResource("StyleBoxFlat_65r8s")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ibx1f"]
+font_size = 36
 
 [sub_resource type="Resource" id="Resource_01txo"]
 script = ExtResource("17_b5yxx")
@@ -219,9 +236,6 @@ metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doda7"]
 size = Vector2(1098, 1080)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ibx1f"]
-font_size = 48
 
 [sub_resource type="Animation" id="Animation_latlh"]
 length = 0.001
@@ -601,12 +615,31 @@ layout_mode = 2
 [node name="TuringBandlInstruction4" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TutorialUI" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "movement_hint", "undo_hint", "start_hint", "hide_hint", "mobile_start", "mobile_hide", "mobile_undo", "skip_control")]
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 2
+offset_top = 22.0
+offset_right = 1255.0
+offset_bottom = 90.0
+
+[node name="Instructions" type="Label" parent="Control/CenterContainer"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_lu33s")
+text = "Use the arrow keys to plan your heist."
+label_settings = SubResource("LabelSettings_ibx1f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialUI" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "instructions", "movement_hint", "undo_hint", "start_hint", "hide_hint", "mobile_start", "mobile_hide", "mobile_undo", "skip_control")]
 visible = false
 layout_mode = 2
 mouse_filter = 1
 script = ExtResource("10_nivii")
 heist_planner = NodePath("../HeistPlanner")
+instructions = NodePath("../Control/CenterContainer/Instructions")
 movement_hint = NodePath("../Hints/MobileSwitcher/PCHints/Move")
 undo_hint = NodePath("../Hints/MobileSwitcher/PCHints/Undo")
 start_hint = NodePath("../Hints/MobileSwitcher/PCHints/Start")
@@ -638,17 +671,6 @@ script = ExtResource("4_2gjlv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialUI/ClickableArea"]
 position = Vector2(1371, 540)
 shape = SubResource("RectangleShape2D_doda7")
-
-[node name="Instructions" type="Label" parent="TutorialUI"]
-visible = false
-layout_mode = 0
-offset_left = -1.0
-offset_top = 43.0
-offset_right = 1913.0
-offset_bottom = 110.0
-text = "Use the arrow keys to plan your heist."
-label_settings = SubResource("LabelSettings_ibx1f")
-horizontal_alignment = 1
 
 [node name="Arrow" type="Sprite2D" parent="TutorialUI"]
 visible = false
