@@ -21,9 +21,9 @@ script = ExtResource("1_qk7fk")
 
 [node name="TurncountTitle" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1350.0
+offset_left = 1431.0
 offset_top = 30.0
-offset_right = 1500.0
+offset_right = 1581.0
 offset_bottom = 97.0
 text = "Moves"
 label_settings = SubResource("LabelSettings_dcjuf")
@@ -32,9 +32,9 @@ vertical_alignment = 1
 
 [node name="Turncount" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1350.0
+offset_left = 1431.0
 offset_top = 90.0
-offset_right = 1496.0
+offset_right = 1577.0
 offset_bottom = 157.0
 text = "0"
 label_settings = SubResource("LabelSettings_j03c0")

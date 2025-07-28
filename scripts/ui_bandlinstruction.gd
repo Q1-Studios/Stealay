@@ -6,7 +6,6 @@ extends Control
 @export var RightArrowSymbol: Control
 @export var HideArrowSymbol: Control
 @export var EmptyArrowSymbol: Control
-@export var SelectionRibbon: Control
 
 var movementPos = movement.NONE
 
