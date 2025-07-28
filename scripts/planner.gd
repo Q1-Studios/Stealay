@@ -9,14 +9,13 @@ signal place_skull(pos: Vector2i)
 @export var input_delta: float = 0.125
 
 @export_group("Touch Controls")
-@export var left_btn: TouchControl
-@export var right_btn: TouchControl
-@export var up_btn: TouchControl
-@export var down_btn: TouchControl
-@export var on_player_btn: TouchControl
-@export var hide_btn: TouchControl
-@export var delete_btn: TouchControl
-@export var commit_btn: TouchControl
+@export var left_btns: Array[TouchControl]
+@export var right_btns: Array[TouchControl]
+@export var up_btns: Array[TouchControl]
+@export var down_btns: Array[TouchControl]
+@export var hide_btns: Array[TouchControl]
+@export var delete_btns: Array[TouchControl]
+@export var commit_btns: Array[TouchControl]
 
 @onready var invalid_sound: AudioStreamPlayer = $InvalidSound
 @onready var turncount_label: Label = $Turncount
@@ -67,19 +66,19 @@ func _process(delta: float) -> void:
 	delta_since_last_input += delta
 	
 	if allow_move:
-		if action_pressed("PlannerUp") or control_pressed(up_btn):
+		if action_pressed("PlannerUp") or control_pressed(up_btns):
 			move = Globals.movement.UP
-		elif action_pressed("PlannerDown") or control_pressed(down_btn):
+		elif action_pressed("PlannerDown") or control_pressed(down_btns):
 			move = Globals.movement.DOWN
-		elif action_pressed("PlannerLeft") or control_pressed(left_btn):
+		elif action_pressed("PlannerLeft") or control_pressed(left_btns):
 			move = Globals.movement.LEFT
-		elif action_pressed("PlannerRight") or control_pressed(right_btn):
+		elif action_pressed("PlannerRight") or control_pressed(right_btns):
 			move = Globals.movement.RIGHT
-		elif action_pressed("PlannerHide") or control_pressed(on_player_btn) or control_pressed(hide_btn):
+		elif action_pressed("PlannerHide") or control_pressed(hide_btns):
 			move = Globals.movement.HIDE
-		elif action_pressed("PlannerDelete") or control_pressed(delete_btn):
+		elif action_pressed("PlannerDelete") or control_pressed(delete_btns):
 			remove_last_action()
-		elif (Input.is_action_just_pressed("PlannerCommit", true) or control_pressed(commit_btn, true)
+		elif (Input.is_action_just_pressed("PlannerCommit", true) or control_pressed(commit_btns, true)
 		and allow_commit):
 			finalize_sequence()
 
@@ -113,18 +112,20 @@ func action_pressed(action_name: String) -> bool:
 	
 	return false
 
-func control_pressed(touch_control: TouchControl, release_inside: bool = false):
+func control_pressed(touch_control_list: Array[TouchControl], release_inside: bool = false):
 	var allow_holding: bool = false
 
 	if delta_since_last_input >= input_delta:
 		allow_holding = true
 	
+	var control_set: TouchControlSet = TouchControlSet.new(touch_control_list)
+	
 	if not prev_require_mouse_release:
-		if release_inside and touch_control.just_released_inside:
+		if release_inside and control_set.is_just_released_inside():
 			delta_since_last_input = 0
 			return true
-		if (not release_inside and (touch_control.just_pressed or
-		(touch_control.pressed and allow_holding))):
+		if (not release_inside and (control_set.is_just_pressed() or
+		(control_set.is_pressed() and allow_holding))):
 			delta_since_last_input = 0
 			return true
 	

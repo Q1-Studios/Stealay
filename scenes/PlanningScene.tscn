@@ -313,18 +313,17 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_i05ib")
 
-[node name="HeistPlanner" parent="." node_paths=PackedStringArray("player", "left_btn", "right_btn", "up_btn", "down_btn", "on_player_btn", "hide_btn", "delete_btn", "commit_btn") instance=ExtResource("2_sfq2c")]
+[node name="HeistPlanner" parent="." node_paths=PackedStringArray("player", "left_btns", "right_btns", "up_btns", "down_btns", "hide_btns", "delete_btns", "commit_btns") instance=ExtResource("2_sfq2c")]
 layout_mode = 2
 mouse_filter = 1
 player = NodePath("../SubViewport/3DScene/Player")
-left_btn = NodePath("../2DProjectedPlayer/TouchControls/Left")
-right_btn = NodePath("../2DProjectedPlayer/TouchControls/Right")
-up_btn = NodePath("../2DProjectedPlayer/TouchControls/Up")
-down_btn = NodePath("../2DProjectedPlayer/TouchControls/Down")
-on_player_btn = NodePath("../2DProjectedPlayer/TouchControls/Center")
-hide_btn = NodePath("../Hints/MobileSwitcher/MobileButtons/Hide/HideBtn")
-delete_btn = NodePath("../Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn")
-commit_btn = NodePath("../Hints/MobileSwitcher/MobileButtons/Start/StartBtn")
+left_btns = [NodePath("../2DProjectedPlayer/TouchControls/Left")]
+right_btns = [NodePath("../2DProjectedPlayer/TouchControls/Right")]
+up_btns = [NodePath("../2DProjectedPlayer/TouchControls/Up")]
+down_btns = [NodePath("../2DProjectedPlayer/TouchControls/Down")]
+hide_btns = [NodePath("../2DProjectedPlayer/TouchControls/Center"), NodePath("../Hints/MobileSwitcher/MobileButtons/Hide/HideBtn")]
+delete_btns = [NodePath("../Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn")]
+commit_btns = [NodePath("../Hints/MobileSwitcher/MobileButtons/Start/StartBtn")]
 
 [node name="TouchControlBounds" type="ColorRect" parent="HeistPlanner"]
 visible = false
