@@ -4,14 +4,10 @@ var tutorial_progress: int = 0
 
 @export var heist_planner: Control
 @export var instructions: Label
-@export var movement_hint: Control
-@export var undo_hint: Control
-@export var start_hint: Control
-@export var hide_hint: Control
-
-@export var mobile_start: Control
-@export var mobile_hide: Control
-@export var mobile_undo: Control
+@export var movement_hints: Array[CanvasItem]
+@export var undo_hints: Array[CanvasItem]
+@export var start_hints: Array[CanvasItem]
+@export var hide_hints: Array[CanvasItem]
 @export var skip_control: TouchControl
 
 @export var skip_duration: float = 1.5
@@ -23,7 +19,7 @@ var tutorial_progress: int = 0
 	$Chat4,
 	$Chat5
 ]
-@onready var clickable_area: TouchControl = $ClickableArea
+@onready var clickable_area: ButtonTouchControl = $ClickableArea
 @onready var skip_progress: ProgressBar = $SkipProgressBar
 @onready var player_arrow: Sprite2D = $Arrow
 
@@ -61,16 +57,17 @@ func _process(delta: float) -> void:
 			current_chat.show()
 			if current_chat.done:
 				current_chat.hide()
+				clickable_area.hide()
 				tutorial_progress += 1
 		
 		if tutorial_progress == 2:
 			if Globals.is_mobile:
-				instructions.text = "Plan your moves by tapping on the screen."
+				instructions.text = "Plan your moves by tapping the arrow buttons."
 			else:
 				instructions.text = "Plan your moves using the arrow keys."
 			instructions.show()
 			player_arrow.show()
-			movement_hint.show()
+			set_visibility(movement_hints, true)
 			heist_planner.allow_move = true
 			
 			if heist_planner.move_history.size() > 1:
@@ -83,6 +80,9 @@ func _process(delta: float) -> void:
 		if tutorial_progress == 3:
 			current_chat = chats[2]
 			current_chat.show()
+			clickable_area.show()
+			set_visibility(movement_hints, false)
+			
 			if current_chat.done:
 				current_chat.hide()
 				tutorial_progress += 1
@@ -112,7 +112,7 @@ func _process(delta: float) -> void:
 				Globals.tutorial_enabled = false
 				
 		if (Input.is_action_just_pressed("PlannerCommit") or
-		clickable_area.just_pressed and not Globals.require_mouse_release):
+		clickable_area.is_just_pressed and not Globals.require_mouse_release):
 			current_chat.advance_dialogue()
 			Globals.require_mouse_release = true
 	
@@ -125,11 +125,11 @@ func _process(delta: float) -> void:
 		heist_planner.allow_commit = true
 
 func set_hint_visibility(visibility: bool) -> void:
-	movement_hint.visible = visibility
-	undo_hint.visible = visibility
-	start_hint.visible = visibility
-	hide_hint.visible = visibility
-	
-	mobile_start.visible = visibility
-	mobile_hide.visible = visibility
-	mobile_undo.visible = visibility
+	set_visibility(movement_hints, visibility)
+	set_visibility(undo_hints, visibility)
+	set_visibility(start_hints, visibility)
+	set_visibility(hide_hints, visibility)
+
+func set_visibility(item_list: Array[CanvasItem], visibility: bool) -> void:
+	for item in item_list:
+		item.visible = visibility

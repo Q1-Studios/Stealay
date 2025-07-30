@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=116 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -34,15 +34,16 @@
 [ext_resource type="Texture2D" uid="uid://jfnda028lhil" path="res://assets/sprites/input/generic_joypad/generic_A.png" id="16_a4yck"]
 [ext_resource type="Script" uid="uid://cjqf4q1mwbr5e" path="res://scripts/place_walls.gd" id="16_ibx1f"]
 [ext_resource type="AudioStream" uid="uid://c8hxsk8w5cdvs" path="res://assets/sounds/voicelines/tutorial/voiceline7.ogg" id="16_jlbm7"]
-[ext_resource type="Texture2D" uid="uid://diiewdx7vpbwl" path="res://assets/sprites/mobile_buttons/touchbtn_start.png" id="17_54x30"]
 [ext_resource type="Script" uid="uid://djo1vvuimo46i" path="res://scripts/voiceline_resource.gd" id="17_b5yxx"]
 [ext_resource type="AudioStream" uid="uid://blr07d13c8auj" path="res://assets/sounds/voicelines/tutorial/voiceline8.ogg" id="17_ntchk"]
+[ext_resource type="Texture2D" uid="uid://cpu4mkg51g2el" path="res://assets/sprites/mobile_buttons/touchbtn_arrow.png" id="17_swb4v"]
 [ext_resource type="AudioStream" uid="uid://fro82uqsswa3" path="res://assets/sounds/voicelines/tutorial/voiceline9.ogg" id="17_yefry"]
 [ext_resource type="Script" uid="uid://cmqoijlw5jqar" path="res://scripts/click_darken.gd" id="18_0bynk"]
 [ext_resource type="Texture2D" uid="uid://b8xapg321c7dk" path="res://assets/sprites/mobile_buttons/touchbtn_hide.png" id="18_o7vux"]
 [ext_resource type="AudioStream" uid="uid://dxm7vwhuaydcp" path="res://assets/sounds/voicelines/tutorial/voiceline10.ogg" id="18_ynj1n"]
 [ext_resource type="AudioStream" uid="uid://c31bejwv0f251" path="res://assets/sounds/voicelines/tutorial/voiceline11.ogg" id="19_po8np"]
 [ext_resource type="Texture2D" uid="uid://cjn72obsitijh" path="res://assets/sprites/mobile_buttons/touchbtn_undo.png" id="19_rjyge"]
+[ext_resource type="Texture2D" uid="uid://bf130ieq52uvw" path="res://assets/sprites/mobile_buttons/touchbtn_start_big.png" id="20_lu33s"]
 [ext_resource type="AudioStream" uid="uid://b5d5e7rvhi0lc" path="res://assets/sounds/voicelines/tutorial/voiceline12.ogg" id="20_w8kyp"]
 [ext_resource type="AudioStream" uid="uid://dw7hakj4u6b6y" path="res://assets/sounds/voicelines/tutorial/voiceline13.ogg" id="21_nup1x"]
 [ext_resource type="AudioStream" uid="uid://5dskxy82tsru" path="res://assets/sounds/voicelines/tutorial/voiceline14.ogg" id="22_b5yxx"]
@@ -67,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://7ibjlpjt0w3g" path="res://assets/sprites/input/xbox/xbox_Y.png" id="41_2gjlv"]
 [ext_resource type="Texture2D" uid="uid://cs7tai0fp4xxw" path="res://assets/sprites/input/generic_joypad/generic_X.png" id="42_c8b5d"]
 [ext_resource type="Texture2D" uid="uid://44m5l4ulq0i5" path="res://assets/sprites/input/generic_joypad/generic_Y.png" id="43_tvnrp"]
+[ext_resource type="Script" uid="uid://bk8lqeg1coucl" path="res://scripts/touch_control_button.gd" id="48_266aw"]
 [ext_resource type="Texture2D" uid="uid://caja4gb2t0nn3" path="res://assets/sprites/mobile_buttons/pause.png" id="50_o7vux"]
 [ext_resource type="Script" uid="uid://dwxke28c72pqk" path="res://scripts/hide_on_pc.gd" id="51_rjyge"]
 [ext_resource type="Script" uid="uid://bjh651rh5xu1w" path="res://scripts/touch_darken.gd" id="57_lu33s"]
@@ -91,6 +93,13 @@ font_size = 46
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bynk"]
 size = Vector2(151, 154)
+
+[sub_resource type="LabelSettings" id="LabelSettings_swb4v"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_266aw"]
+size = Vector2(335, 141)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65r8s"]
 bg_color = Color(0.167451, 0.167451, 0.167451, 0.784314)
@@ -156,7 +165,7 @@ script = ExtResource("17_b5yxx")
 text = "You can plan your heist using the arrow keys. Go ahead."
 audio_stream = ExtResource("15_yivre")
 touch_alternative = true
-text_touch = "You can plan your heist by tapping on the screen. Go ahead."
+text_touch = "You can plan your heist by tapping the buttons on the screen. Go ahead."
 audio_stream_touch = ExtResource("34_65r8s")
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
@@ -235,8 +244,22 @@ touch_alternative = false
 text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_doda7"]
-size = Vector2(1098, 1080)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2wqn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahqdh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4w3t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d80dn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ltoun"]
+
+[sub_resource type="Theme" id="Theme_dbl34"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_t2wqn")
+Button/styles/focus = SubResource("StyleBoxEmpty_ahqdh")
+Button/styles/hover = SubResource("StyleBoxEmpty_u4w3t")
+Button/styles/normal = SubResource("StyleBoxEmpty_d80dn")
+Button/styles/pressed = SubResource("StyleBoxEmpty_ltoun")
 
 [sub_resource type="Animation" id="Animation_latlh"]
 length = 0.001
@@ -317,13 +340,13 @@ script = ExtResource("1_i05ib")
 layout_mode = 2
 mouse_filter = 1
 player = NodePath("../SubViewport/3DScene/Player")
-left_btns = [NodePath("../2DProjectedPlayer/TouchControls/Left")]
-right_btns = [NodePath("../2DProjectedPlayer/TouchControls/Right")]
-up_btns = [NodePath("../2DProjectedPlayer/TouchControls/Up")]
-down_btns = [NodePath("../2DProjectedPlayer/TouchControls/Down")]
-hide_btns = [NodePath("../2DProjectedPlayer/TouchControls/Center"), NodePath("../Hints/MobileSwitcher/MobileButtons/Hide/HideBtn")]
-delete_btns = [NodePath("../Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn")]
-commit_btns = [NodePath("../Hints/MobileSwitcher/MobileButtons/Start/StartBtn")]
+left_btns = [NodePath("../2DProjectedPlayer/OnPlanControls/Left"), NodePath("../Hints/MobileSwitcher/MobileButtons/ArrowControls/Left")]
+right_btns = [NodePath("../2DProjectedPlayer/OnPlanControls/Right"), NodePath("../Hints/MobileSwitcher/MobileButtons/ArrowControls/Right")]
+up_btns = [NodePath("../2DProjectedPlayer/OnPlanControls/Up"), NodePath("../Hints/MobileSwitcher/MobileButtons/ArrowControls/Up")]
+down_btns = [NodePath("../2DProjectedPlayer/OnPlanControls/Down"), NodePath("../Hints/MobileSwitcher/MobileButtons/ArrowControls/Down")]
+hide_btns = [NodePath("../2DProjectedPlayer/OnPlanControls/Center"), NodePath("../Hints/MobileSwitcher/MobileButtons/HideBtn")]
+delete_btns = [NodePath("../Hints/MobileSwitcher/MobileButtons/UndoBtn")]
+commit_btns = [NodePath("../Hints/MobileSwitcher/MobileButtons/StartBtn")]
 
 [node name="TouchControlBounds" type="ColorRect" parent="HeistPlanner"]
 visible = false
@@ -339,12 +362,12 @@ script = ExtResource("3_latlh")
 camera_3d = NodePath("../SubViewport/3DScene/Camera3D")
 target = NodePath("../SubViewport/3DScene/Player")
 
-[node name="TouchControls" type="Node2D" parent="2DProjectedPlayer"]
+[node name="OnPlanControls" type="Node2D" parent="2DProjectedPlayer"]
 
-[node name="Left" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+[node name="Left" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
 script = ExtResource("4_2gjlv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Left" node_paths=PackedStringArray("origin", "bbox")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Left" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_2gjlv")
 debug_color = Color(0, 0.623019, 0.541202, 0.42)
 script = ExtResource("5_c8b5d")
@@ -353,10 +376,10 @@ origin_offset = Vector2(-50, 0)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Right" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+[node name="Right" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
 script = ExtResource("4_2gjlv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Right" node_paths=PackedStringArray("origin", "bbox")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Right" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_c8b5d")
 debug_color = Color(0.967773, 0, 0.472129, 0.42)
 script = ExtResource("5_c8b5d")
@@ -366,10 +389,10 @@ origin_offset = Vector2(50, 0)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Up" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+[node name="Up" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
 script = ExtResource("4_2gjlv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Up" node_paths=PackedStringArray("origin", "bbox")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Up" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_tvnrp")
 debug_color = Color(0.38881, 0.47205, 1, 0.42)
 script = ExtResource("5_c8b5d")
@@ -379,10 +402,10 @@ origin_offset = Vector2(0, -50)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Down" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+[node name="Down" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
 script = ExtResource("4_2gjlv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Down" node_paths=PackedStringArray("origin", "bbox")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Down" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_smyhc")
 debug_color = Color(0.647922, 0.520916, 0, 0.42)
 script = ExtResource("5_c8b5d")
@@ -392,10 +415,10 @@ origin_offset = Vector2(0, 50)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Center" type="Area2D" parent="2DProjectedPlayer/TouchControls"]
+[node name="Center" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
 script = ExtResource("4_2gjlv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/TouchControls/Center"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Center"]
 shape = SubResource("RectangleShape2D_54x30")
 
 [node name="Hints" type="Control" parent="."]
@@ -485,80 +508,143 @@ offset_top = 275.0
 offset_right = 1634.0
 offset_bottom = 1080.0
 
-[node name="Start" type="Label" parent="Hints/MobileSwitcher/MobileButtons"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 25.0
-offset_right = 339.0
-offset_bottom = 89.0
-text = "Start"
-label_settings = SubResource("LabelSettings_yefry")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="ArrowControls" type="Control" parent="Hints/MobileSwitcher/MobileButtons"]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 35.0
+offset_right = 48.0
+offset_bottom = 75.0
 
-[node name="StartBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/Start"]
-position = Vector2(143, 144)
+[node name="Up" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+position = Vector2(183, -5)
+scale = Vector2(0.75, 0.75)
 script = ExtResource("4_2gjlv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Start/StartBtn" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Up" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("17_54x30")
+texture = ExtResource("17_swb4v")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/Start/StartBtn"]
-position = Vector2(4.5, 4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Up"]
 shape = SubResource("RectangleShape2D_0bynk")
 
-[node name="Hide" type="Label" parent="Hints/MobileSwitcher/MobileButtons"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 275.0
-offset_right = 339.0
-offset_bottom = 339.0
-text = "Hide"
-label_settings = SubResource("LabelSettings_yefry")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HideBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/Hide"]
-position = Vector2(143, 144)
+[node name="Down" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+position = Vector2(183, 224)
+rotation = -3.14159
+scale = Vector2(0.75, 0.75)
 script = ExtResource("4_2gjlv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Down" node_paths=PackedStringArray("btn_src")]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("17_swb4v")
+script = ExtResource("18_0bynk")
+btn_src = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Down"]
+shape = SubResource("RectangleShape2D_0bynk")
+
+[node name="Left" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+position = Vector2(69, 110)
+rotation = -1.5708
+scale = Vector2(0.75, 0.75)
+script = ExtResource("4_2gjlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Left" node_paths=PackedStringArray("btn_src")]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("17_swb4v")
+script = ExtResource("18_0bynk")
+btn_src = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Left"]
+shape = SubResource("RectangleShape2D_0bynk")
+
+[node name="Right" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+position = Vector2(297, 110)
+rotation = 1.5708
+scale = Vector2(0.75, 0.75)
+script = ExtResource("4_2gjlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Right" node_paths=PackedStringArray("btn_src")]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("17_swb4v")
+script = ExtResource("18_0bynk")
+btn_src = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Right"]
+shape = SubResource("RectangleShape2D_0bynk")
+
+[node name="HideBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
+position = Vector2(95, 530)
+script = ExtResource("4_2gjlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/HideBtn" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("18_o7vux")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/Hide/HideBtn"]
-position = Vector2(4.5, 4)
-shape = SubResource("RectangleShape2D_0bynk")
-
-[node name="Undo" type="Label" parent="Hints/MobileSwitcher/MobileButtons"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 525.0
-offset_right = 339.0
-offset_bottom = 589.0
-text = "Undo"
+[node name="Hide" type="Label" parent="Hints/MobileSwitcher/MobileButtons/HideBtn"]
+offset_left = -51.0
+offset_top = -144.0
+offset_right = 52.0
+offset_bottom = -80.0
+text = "Hide"
 label_settings = SubResource("LabelSettings_yefry")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UndoBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/Undo"]
-position = Vector2(143, 144)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/HideBtn"]
+position = Vector2(4.5, 4)
+shape = SubResource("RectangleShape2D_0bynk")
+
+[node name="UndoBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
+position = Vector2(279, 530)
 script = ExtResource("4_2gjlv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("19_rjyge")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/Undo/UndoBtn"]
+[node name="Undo" type="Label" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn"]
+offset_left = -60.0
+offset_top = -144.0
+offset_right = 60.0
+offset_bottom = -80.0
+text = "Undo"
+label_settings = SubResource("LabelSettings_yefry")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn"]
 position = Vector2(4.5, 4)
 shape = SubResource("RectangleShape2D_0bynk")
+
+[node name="StartBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
+position = Vector2(194, 690)
+script = ExtResource("4_2gjlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/StartBtn" node_paths=PackedStringArray("btn_src")]
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("20_lu33s")
+script = ExtResource("18_0bynk")
+btn_src = NodePath("..")
+
+[node name="Start" type="Label" parent="Hints/MobileSwitcher/MobileButtons/StartBtn"]
+offset_left = -50.0
+offset_top = -40.0
+offset_right = 100.0
+offset_bottom = 48.0
+text = "Start"
+label_settings = SubResource("LabelSettings_swb4v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/StartBtn"]
+position = Vector2(-4.5, 9.5)
+shape = SubResource("RectangleShape2D_266aw")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("goal", "pause_menu", "turing_bandl_ui")]
 script = ExtResource("3_pbho8")
@@ -577,8 +663,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -1.0
+offset_top = -9.0
+offset_right = 1919.0
+offset_bottom = 1071.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -593,6 +681,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -287.0
+offset_top = 9.0
+offset_bottom = 9.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
@@ -642,44 +732,45 @@ label_settings = SubResource("LabelSettings_ibx1f")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TutorialUI" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "instructions", "movement_hint", "undo_hint", "start_hint", "hide_hint", "mobile_start", "mobile_hide", "mobile_undo", "skip_control")]
-visible = false
+[node name="TutorialUI" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "instructions", "movement_hints", "undo_hints", "start_hints", "hide_hints", "skip_control")]
 layout_mode = 2
 mouse_filter = 1
 script = ExtResource("10_nivii")
 heist_planner = NodePath("../HeistPlanner")
 instructions = NodePath("../Control/CenterContainer/Instructions")
-movement_hint = NodePath("../Hints/MobileSwitcher/PCHints/Move")
-undo_hint = NodePath("../Hints/MobileSwitcher/PCHints/Undo")
-start_hint = NodePath("../Hints/MobileSwitcher/PCHints/Start")
-hide_hint = NodePath("../Hints/MobileSwitcher/PCHints/Hide")
-mobile_start = NodePath("../Hints/MobileSwitcher/MobileButtons/Start")
-mobile_hide = NodePath("../Hints/MobileSwitcher/MobileButtons/Hide")
-mobile_undo = NodePath("../Hints/MobileSwitcher/MobileButtons/Undo")
+movement_hints = [NodePath("../Hints/MobileSwitcher/PCHints/Move"), NodePath("../Hints/MobileSwitcher/MobileButtons/ArrowControls")]
+undo_hints = [NodePath("../Hints/MobileSwitcher/PCHints/Undo"), NodePath("../Hints/MobileSwitcher/MobileButtons/UndoBtn")]
+start_hints = [NodePath("../Hints/MobileSwitcher/PCHints/Start"), NodePath("../Hints/MobileSwitcher/MobileButtons/StartBtn")]
+hide_hints = [NodePath("../Hints/MobileSwitcher/PCHints/Hide"), NodePath("../Hints/MobileSwitcher/MobileButtons/HideBtn")]
 skip_control = NodePath("SkipProgressBar/SkipClickableArea")
 
 [node name="Chat" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_01txo"), SubResource("Resource_vf1sc"), SubResource("Resource_4fghf")])
 
 [node name="Chat2" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
+visible = false
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_b5yxx"), SubResource("Resource_xgh5o"), SubResource("Resource_b31oo")])
 
 [node name="Chat3" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
+visible = false
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_06788"), SubResource("Resource_255cg"), SubResource("Resource_7doss")])
 
 [node name="Chat4" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
+visible = false
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_hypni"), SubResource("Resource_0hyt6"), SubResource("Resource_bdlay")])
 
 [node name="Chat5" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
+visible = false
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_a4yck"), SubResource("Resource_latlh"), SubResource("Resource_50e7h")])
 chat_icon = 1
 
-[node name="ClickableArea" type="Area2D" parent="TutorialUI"]
-script = ExtResource("4_2gjlv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialUI/ClickableArea"]
-position = Vector2(1371, 540)
-shape = SubResource("RectangleShape2D_doda7")
+[node name="ClickableArea" type="Button" parent="TutorialUI"]
+layout_mode = 0
+offset_left = 822.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = SubResource("Theme_dbl34")
+script = ExtResource("48_266aw")
 
 [node name="Arrow" type="Sprite2D" parent="TutorialUI"]
 visible = false
@@ -862,6 +953,8 @@ id = 5
 [connection signal="place_skull" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_place_skull"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlComponent/TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
+[connection signal="button_down" from="TutorialUI/ClickableArea" to="TutorialUI/ClickableArea" method="_on_button_down"]
+[connection signal="button_up" from="TutorialUI/ClickableArea" to="TutorialUI/ClickableArea" method="_on_button_up"]
 [connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]
 [connection signal="pressed" from="PauseButton" to="GameManager" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PauseButton" to="PauseButton/Sprite2D" method="_on_pressed"]
