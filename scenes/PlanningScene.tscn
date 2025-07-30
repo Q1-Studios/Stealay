@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=117 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -90,6 +90,9 @@ size = Vector2(100, 100)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yefry"]
 font_size = 46
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_266aw"]
+points = PackedVector2Array(-70.6667, 82.6667, 70.6666, 81.3333, 248, -98.6667, -250.667, -98.6667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bynk"]
 size = Vector2(151, 154)
@@ -527,7 +530,7 @@ script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Up"]
-shape = SubResource("RectangleShape2D_0bynk")
+shape = SubResource("ConvexPolygonShape2D_266aw")
 
 [node name="Down" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
 position = Vector2(183, 224)
@@ -542,7 +545,7 @@ script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Down"]
-shape = SubResource("RectangleShape2D_0bynk")
+shape = SubResource("ConvexPolygonShape2D_266aw")
 
 [node name="Left" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
 position = Vector2(69, 110)
@@ -557,7 +560,7 @@ script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Left"]
-shape = SubResource("RectangleShape2D_0bynk")
+shape = SubResource("ConvexPolygonShape2D_266aw")
 
 [node name="Right" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
 position = Vector2(297, 110)
@@ -572,7 +575,7 @@ script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Right"]
-shape = SubResource("RectangleShape2D_0bynk")
+shape = SubResource("ConvexPolygonShape2D_266aw")
 
 [node name="HideBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
 position = Vector2(95, 530)
@@ -733,6 +736,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TutorialUI" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "instructions", "movement_hints", "undo_hints", "start_hints", "hide_hints", "skip_control")]
+visible = false
 layout_mode = 2
 mouse_filter = 1
 script = ExtResource("10_nivii")

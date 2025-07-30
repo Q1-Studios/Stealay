@@ -31,6 +31,7 @@ func _ready() -> void:
 	set_hint_visibility(false)
 	for chat in chats:
 		chat.hide()
+	visible = Globals.tutorial_enabled
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("SkipTutorial") or skip_control.pressed:
