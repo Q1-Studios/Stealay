@@ -11,7 +11,7 @@ signal request_data()
 @export var caught: Control
 @export var incomplete: Control
 @export var win: Control
-@export var speedup_btn: TouchControl
+@export var speedup_btn: Pressable
 
 @export var win_jingle: AudioStreamPlayer
 @export var lose_jingle: AudioStreamPlayer
@@ -33,7 +33,7 @@ func _process(_delta):
 		if not check_win():
 			check_lose()
 		
-		if (Input.is_action_pressed("Speedup") or speedup_btn.pressed) and Globals.allow_speedup:
+		if (Input.is_action_pressed("Speedup") or speedup_btn.is_pressed()) and Globals.allow_speedup:
 			Globals.time_between_moves = 0.3
 			Globals.speed = 4.8
 		else:

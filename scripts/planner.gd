@@ -9,13 +9,13 @@ signal place_skull(pos: Vector2i)
 @export var input_delta: float = 0.125
 
 @export_group("Touch Controls")
-@export var left_btns: Array[TouchControl]
-@export var right_btns: Array[TouchControl]
-@export var up_btns: Array[TouchControl]
-@export var down_btns: Array[TouchControl]
-@export var hide_btns: Array[TouchControl]
-@export var delete_btns: Array[TouchControl]
-@export var commit_btns: Array[TouchControl]
+@export var left_btns: Array[Pressable]
+@export var right_btns: Array[Pressable]
+@export var up_btns: Array[Pressable]
+@export var down_btns: Array[Pressable]
+@export var hide_btns: Array[Pressable]
+@export var delete_btns: Array[Pressable]
+@export var commit_btns: Array[Pressable]
 
 @onready var invalid_sound: AudioStreamPlayer = $InvalidSound
 @onready var turncount_label: Label = $Turncount
@@ -112,13 +112,13 @@ func action_pressed(action_name: String) -> bool:
 	
 	return false
 
-func control_pressed(touch_control_list: Array[TouchControl], release_inside: bool = false):
+func control_pressed(pressables_list: Array[Pressable], release_inside: bool = false):
 	var allow_holding: bool = false
 
 	if delta_since_last_input >= input_delta:
 		allow_holding = true
 	
-	var control_set: TouchControlSet = TouchControlSet.new(touch_control_list)
+	var control_set: PressablesSet = PressablesSet.new(pressables_list)
 	
 	if not prev_require_mouse_release:
 		if release_inside and control_set.is_just_released_inside():

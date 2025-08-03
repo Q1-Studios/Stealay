@@ -8,7 +8,7 @@ var tutorial_progress: int = 0
 @export var undo_hints: Array[CanvasItem]
 @export var start_hints: Array[CanvasItem]
 @export var hide_hints: Array[CanvasItem]
-@export var skip_control: TouchControl
+@export var skip_control: Pressable
 
 @export var skip_duration: float = 1.5
 
@@ -19,7 +19,7 @@ var tutorial_progress: int = 0
 	$Chat4,
 	$Chat5
 ]
-@onready var clickable_area: ButtonTouchControl = $ClickableArea
+@onready var clickable_area: Pressable = $ClickableArea
 @onready var skip_progress: ProgressBar = $SkipProgressBar
 @onready var player_arrow: Sprite2D = $Arrow
 
@@ -34,13 +34,13 @@ func _ready() -> void:
 	visible = Globals.tutorial_enabled
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("SkipTutorial") or skip_control.pressed:
+	if Input.is_action_pressed("SkipTutorial") or skip_control.is_pressed():
 		skip_progress.value += delta * (skip_progress.max_value / skip_duration)
 		Globals.require_mouse_release = true
 		if(skip_progress.value >= 100):
 			Globals.tutorial_enabled = false
 			instructions.hide()
-	if Input.is_action_just_released("SkipTutorial") or skip_control.just_released:
+	if Input.is_action_just_released("SkipTutorial") or skip_control.is_just_released():
 		skip_progress.value = 0
 	
 	if Globals.tutorial_enabled and not tutorial_completed:
@@ -113,7 +113,7 @@ func _process(delta: float) -> void:
 				Globals.tutorial_enabled = false
 				
 		if (Input.is_action_just_pressed("PlannerCommit") or
-		clickable_area.is_just_pressed and not Globals.require_mouse_release):
+		clickable_area.is_just_pressed() and not Globals.require_mouse_release):
 			current_chat.advance_dialogue()
 			Globals.require_mouse_release = true
 	
