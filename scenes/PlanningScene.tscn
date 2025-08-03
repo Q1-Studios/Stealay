@@ -514,9 +514,9 @@ offset_bottom = 1080.0
 [node name="ArrowControls" type="Control" parent="Hints/MobileSwitcher/MobileButtons"]
 anchors_preset = 0
 offset_left = 8.0
-offset_top = 35.0
-offset_right = 48.0
-offset_bottom = 75.0
+offset_top = 450.0
+offset_right = 383.0
+offset_bottom = 750.0
 
 [node name="Up" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
 position = Vector2(183, -5)
@@ -578,7 +578,7 @@ btn_src = NodePath("..")
 shape = SubResource("ConvexPolygonShape2D_266aw")
 
 [node name="HideBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
-position = Vector2(95, 530)
+position = Vector2(95, 175)
 script = ExtResource("4_2gjlv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/HideBtn" node_paths=PackedStringArray("btn_src")]
@@ -589,9 +589,9 @@ btn_src = NodePath("..")
 
 [node name="Hide" type="Label" parent="Hints/MobileSwitcher/MobileButtons/HideBtn"]
 offset_left = -51.0
-offset_top = -144.0
+offset_top = 85.0
 offset_right = 52.0
-offset_bottom = -80.0
+offset_bottom = 149.0
 text = "Hide"
 label_settings = SubResource("LabelSettings_yefry")
 horizontal_alignment = 1
@@ -602,7 +602,7 @@ position = Vector2(4.5, 4)
 shape = SubResource("RectangleShape2D_0bynk")
 
 [node name="UndoBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
-position = Vector2(279, 530)
+position = Vector2(279, 175)
 script = ExtResource("4_2gjlv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn" node_paths=PackedStringArray("btn_src")]
@@ -613,9 +613,9 @@ btn_src = NodePath("..")
 
 [node name="Undo" type="Label" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn"]
 offset_left = -60.0
-offset_top = -144.0
+offset_top = 85.0
 offset_right = 60.0
-offset_bottom = -80.0
+offset_bottom = 149.0
 text = "Undo"
 label_settings = SubResource("LabelSettings_yefry")
 horizontal_alignment = 1
@@ -626,7 +626,7 @@ position = Vector2(4.5, 4)
 shape = SubResource("RectangleShape2D_0bynk")
 
 [node name="StartBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
-position = Vector2(194, 690)
+position = Vector2(194, 0)
 script = ExtResource("4_2gjlv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/StartBtn" node_paths=PackedStringArray("btn_src")]
