@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=120 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scripts/bandlController.gd" id="8_0acuf"]
 [ext_resource type="Texture2D" uid="uid://ccllpjpc2upk8" path="res://assets/sprites/input/keyboard/shift.png" id="8_01txo"]
 [ext_resource type="PackedScene" uid="uid://blbae5xp247m5" path="res://scenes/non_playable/Map.tscn" id="8_rly6o"]
+[ext_resource type="Theme" uid="uid://te5p6soyim8l" path="res://assets/sprites/Tutorial/HintPanel.tres" id="8_u4w3t"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://scenes/non_playable/guard.tscn" id="9_0acuf"]
 [ext_resource type="Texture2D" uid="uid://bpuxo4sm8ksrs" path="res://assets/sprites/input/generic_joypad/generic_LT.png" id="9_4fghf"]
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://scenes/non_playable/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
@@ -427,14 +428,13 @@ layout_mode = 2
 script = ExtResource("39_c8b5d")
 pc_variant = NodePath("PCHints")
 mobile_variant = NodePath("MobileButtons")
-preview = 1
 
 [node name="PCHints" type="Panel" parent="Hints/MobileSwitcher"]
-visible = false
 offset_left = 1251.0
 offset_top = 636.0
 offset_right = 1632.0
 offset_bottom = 1080.0
+theme = ExtResource("8_u4w3t")
 
 [node name="Move" type="Label" parent="Hints/MobileSwitcher/PCHints"]
 layout_mode = 0
@@ -503,10 +503,12 @@ nintendo_icon = ExtResource("15_bdlay")
 generic_icon = ExtResource("16_a4yck")
 
 [node name="MobileButtons" type="Panel" parent="Hints/MobileSwitcher"]
+visible = false
 offset_left = 1251.0
 offset_top = 275.0
 offset_right = 1634.0
 offset_bottom = 1080.0
+theme = ExtResource("8_u4w3t")
 
 [node name="ArrowControls" type="Control" parent="Hints/MobileSwitcher/MobileButtons"]
 anchors_preset = 0
