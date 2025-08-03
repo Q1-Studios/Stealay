@@ -100,7 +100,7 @@ func post_lose_precedure():
 func _on_player_movement_controller_send_data(movecount: int, input_sequence: Array) -> void:
 	Globals.previous_move_count = movecount
 	Globals.previous_sequence = input_sequence
-	get_tree().change_scene_to_packed(SceneManager.planning_scene)
+	SceneManager.change_scene_inst(SceneManager.planning_scene)
 
 
 func _on_planning_scene_load_game_board(scene: Variant) -> void:
@@ -108,7 +108,7 @@ func _on_planning_scene_load_game_board(scene: Variant) -> void:
 
 
 func _on_main_menu_button_pressed() -> void:
-	get_tree().change_scene_to_packed(SceneManager.menu_scene)
+	SceneManager.change_scene_inst(SceneManager.menu_scene)
 
 func _on_pause_button_pressed() -> void:
 	toggle_pause()

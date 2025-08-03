@@ -56,8 +56,8 @@ resource_name = "quitButton"
 script/source = "extends SmartButton
 
 func backMainMenu() -> void:
-	get_tree().paused = false;
-	get_tree().change_scene_to_packed(SceneManager.menu_scene)
+	get_tree().paused = false
+	SceneManager.change_scene_inst(SceneManager.menu_scene)
 "
 
 [sub_resource type="GDScript" id="GDScript_7doss"]

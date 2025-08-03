@@ -7,6 +7,9 @@ extends Node
 
 var target_scene: PackedScene
 
+func change_scene_inst(scene: PackedScene) -> void:
+	get_tree().call_deferred("change_scene_to_packed", scene)
+
 func change_scene(scene: PackedScene) -> void:
 	target_scene = scene
 	
