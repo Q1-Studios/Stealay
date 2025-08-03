@@ -1,10 +1,11 @@
-[gd_scene load_steps=117 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=119 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
 [ext_resource type="Script" uid="uid://d37i3xarnsfn" path="res://scripts/2d_projector.gd" id="3_latlh"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="3_pbho8"]
 [ext_resource type="Script" uid="uid://btilhenabwlsc" path="res://scripts/pressable_area2d.gd" id="4_2gjlv"]
+[ext_resource type="Script" uid="uid://wodgxjtlwjm4" path="res://scripts/pressable_wrapper.gd" id="4_ahqdh"]
 [ext_resource type="PackedScene" uid="uid://6vblt84jg1hv" path="res://scenes/non_playable/ui/input_icon.tscn" id="5_a4yck"]
 [ext_resource type="Script" uid="uid://ckr6ft76xwr0e" path="res://scripts/stretching_collision_rect.gd" id="5_c8b5d"]
 [ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TuringBandUIManager.gd" id="7_1rttj"]
@@ -46,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://bf130ieq52uvw" path="res://assets/sprites/mobile_buttons/touchbtn_start_big.png" id="20_lu33s"]
 [ext_resource type="AudioStream" uid="uid://b5d5e7rvhi0lc" path="res://assets/sounds/voicelines/tutorial/voiceline12.ogg" id="20_w8kyp"]
 [ext_resource type="AudioStream" uid="uid://dw7hakj4u6b6y" path="res://assets/sounds/voicelines/tutorial/voiceline13.ogg" id="21_nup1x"]
+[ext_resource type="Script" uid="uid://bnupccjjlnkp5" path="res://scripts/pressable_touchscreen_button.gd" id="21_t2wqn"]
 [ext_resource type="AudioStream" uid="uid://5dskxy82tsru" path="res://assets/sounds/voicelines/tutorial/voiceline14.ogg" id="22_b5yxx"]
 [ext_resource type="Texture2D" uid="uid://bp4ut1tshuu0t" path="res://assets/sprites/Tutorial/skip.png" id="27_jlbm7"]
 [ext_resource type="AudioStream" uid="uid://da1ct5vg5ohpk" path="res://assets/sounds/voicelines/tutorial/voiceline15.ogg" id="28_ynj1n"]
@@ -92,7 +94,7 @@ size = Vector2(100, 100)
 font_size = 46
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_266aw"]
-points = PackedVector2Array(-70.6667, 82.6667, 70.6666, 81.3333, 248, -98.6667, -250.667, -98.6667)
+points = PackedVector2Array(-56, 77.3334, 54.6666, 77.3334, 240, -101.333, -234.667, -101.333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bynk"]
 size = Vector2(151, 154)
@@ -367,24 +369,22 @@ target = NodePath("../SubViewport/3DScene/Player")
 
 [node name="OnPlanControls" type="Node2D" parent="2DProjectedPlayer"]
 
-[node name="Left" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
-script = ExtResource("4_2gjlv")
+[node name="Left" type="Node2D" parent="2DProjectedPlayer/OnPlanControls"]
+script = ExtResource("4_ahqdh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Left" node_paths=PackedStringArray("origin", "bbox")]
+[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Left" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_2gjlv")
-debug_color = Color(0, 0.623019, 0.541202, 0.42)
 script = ExtResource("5_c8b5d")
 origin = NodePath("../../..")
 origin_offset = Vector2(-50, 0)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Right" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
-script = ExtResource("4_2gjlv")
+[node name="Right" type="Node2D" parent="2DProjectedPlayer/OnPlanControls"]
+script = ExtResource("4_ahqdh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Right" node_paths=PackedStringArray("origin", "bbox")]
+[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Right" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_c8b5d")
-debug_color = Color(0.967773, 0, 0.472129, 0.42)
 script = ExtResource("5_c8b5d")
 cone_direction = 1
 origin = NodePath("../../..")
@@ -392,12 +392,11 @@ origin_offset = Vector2(50, 0)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Up" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
-script = ExtResource("4_2gjlv")
+[node name="Up" type="Node2D" parent="2DProjectedPlayer/OnPlanControls"]
+script = ExtResource("4_ahqdh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Up" node_paths=PackedStringArray("origin", "bbox")]
+[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Up" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_tvnrp")
-debug_color = Color(0.38881, 0.47205, 1, 0.42)
 script = ExtResource("5_c8b5d")
 cone_direction = 2
 origin = NodePath("../../..")
@@ -405,12 +404,11 @@ origin_offset = Vector2(0, -50)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Down" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
-script = ExtResource("4_2gjlv")
+[node name="Down" type="Node2D" parent="2DProjectedPlayer/OnPlanControls"]
+script = ExtResource("4_ahqdh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Down" node_paths=PackedStringArray("origin", "bbox")]
+[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Down" node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_smyhc")
-debug_color = Color(0.647922, 0.520916, 0, 0.42)
 script = ExtResource("5_c8b5d")
 cone_direction = 3
 origin = NodePath("../../..")
@@ -418,11 +416,9 @@ origin_offset = Vector2(0, 50)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Center" type="Area2D" parent="2DProjectedPlayer/OnPlanControls"]
-script = ExtResource("4_2gjlv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2DProjectedPlayer/OnPlanControls/Center"]
+[node name="Center" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls"]
 shape = SubResource("RectangleShape2D_54x30")
+script = ExtResource("21_t2wqn")
 
 [node name="Hints" type="Control" parent="."]
 layout_mode = 2
@@ -431,8 +427,10 @@ layout_mode = 2
 script = ExtResource("39_c8b5d")
 pc_variant = NodePath("PCHints")
 mobile_variant = NodePath("MobileButtons")
+preview = 1
 
 [node name="PCHints" type="Panel" parent="Hints/MobileSwitcher"]
+visible = false
 offset_left = 1251.0
 offset_top = 636.0
 offset_right = 1632.0
@@ -505,7 +503,6 @@ nintendo_icon = ExtResource("15_bdlay")
 generic_icon = ExtResource("16_a4yck")
 
 [node name="MobileButtons" type="Panel" parent="Hints/MobileSwitcher"]
-visible = false
 offset_left = 1251.0
 offset_top = 275.0
 offset_right = 1634.0
@@ -518,10 +515,11 @@ offset_top = 450.0
 offset_right = 383.0
 offset_bottom = 750.0
 
-[node name="Up" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+[node name="Up" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
 position = Vector2(183, -5)
 scale = Vector2(0.75, 0.75)
-script = ExtResource("4_2gjlv")
+shape = SubResource("ConvexPolygonShape2D_266aw")
+script = ExtResource("21_t2wqn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Up" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
@@ -529,14 +527,12 @@ texture = ExtResource("17_swb4v")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Up"]
-shape = SubResource("ConvexPolygonShape2D_266aw")
-
-[node name="Down" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+[node name="Down" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
 position = Vector2(183, 224)
 rotation = -3.14159
 scale = Vector2(0.75, 0.75)
-script = ExtResource("4_2gjlv")
+shape = SubResource("ConvexPolygonShape2D_266aw")
+script = ExtResource("21_t2wqn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Down" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
@@ -544,14 +540,12 @@ texture = ExtResource("17_swb4v")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Down"]
-shape = SubResource("ConvexPolygonShape2D_266aw")
-
-[node name="Left" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
-position = Vector2(69, 110)
+[node name="Left" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+position = Vector2(69, 109)
 rotation = -1.5708
 scale = Vector2(0.75, 0.75)
-script = ExtResource("4_2gjlv")
+shape = SubResource("ConvexPolygonShape2D_266aw")
+script = ExtResource("21_t2wqn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Left" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
@@ -559,14 +553,12 @@ texture = ExtResource("17_swb4v")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Left"]
-shape = SubResource("ConvexPolygonShape2D_266aw")
-
-[node name="Right" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
-position = Vector2(297, 110)
+[node name="Right" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+position = Vector2(297, 109)
 rotation = 1.5708
 scale = Vector2(0.75, 0.75)
-script = ExtResource("4_2gjlv")
+shape = SubResource("ConvexPolygonShape2D_266aw")
+script = ExtResource("21_t2wqn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Right" node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
@@ -574,38 +566,35 @@ texture = ExtResource("17_swb4v")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Right"]
-shape = SubResource("ConvexPolygonShape2D_266aw")
-
-[node name="HideBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
-position = Vector2(95, 175)
-script = ExtResource("4_2gjlv")
+[node name="HideBtn" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons"]
+position = Vector2(99, 179)
+shape = SubResource("RectangleShape2D_0bynk")
+script = ExtResource("21_t2wqn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/HideBtn" node_paths=PackedStringArray("btn_src")]
+position = Vector2(-4, -4)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("18_o7vux")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
 [node name="Hide" type="Label" parent="Hints/MobileSwitcher/MobileButtons/HideBtn"]
-offset_left = -51.0
-offset_top = 85.0
-offset_right = 52.0
-offset_bottom = 149.0
+offset_left = -55.0
+offset_top = 81.0
+offset_right = 48.0
+offset_bottom = 145.0
 text = "Hide"
 label_settings = SubResource("LabelSettings_yefry")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/HideBtn"]
-position = Vector2(4.5, 4)
+[node name="UndoBtn" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons"]
+position = Vector2(283, 179)
 shape = SubResource("RectangleShape2D_0bynk")
-
-[node name="UndoBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
-position = Vector2(279, 175)
-script = ExtResource("4_2gjlv")
+script = ExtResource("21_t2wqn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn" node_paths=PackedStringArray("btn_src")]
+position = Vector2(0, -4)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("19_rjyge")
 script = ExtResource("18_0bynk")
@@ -613,17 +602,13 @@ btn_src = NodePath("..")
 
 [node name="Undo" type="Label" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn"]
 offset_left = -60.0
-offset_top = 85.0
+offset_top = 81.0
 offset_right = 60.0
-offset_bottom = 149.0
+offset_bottom = 145.0
 text = "Undo"
 label_settings = SubResource("LabelSettings_yefry")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn"]
-position = Vector2(4.5, 4)
-shape = SubResource("RectangleShape2D_0bynk")
 
 [node name="StartBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
 position = Vector2(194, 0)
@@ -840,12 +825,10 @@ position = Vector2(-60, 25)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("27_jlbm7")
 
-[node name="SkipClickableArea" type="Area2D" parent="TutorialUI/SkipProgressBar"]
-script = ExtResource("4_2gjlv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialUI/SkipProgressBar/SkipClickableArea"]
-position = Vector2(275, 39.5)
+[node name="SkipClickableArea" type="TouchScreenButton" parent="TutorialUI/SkipProgressBar"]
+position = Vector2(275, 40)
 shape = SubResource("RectangleShape2D_o7vux")
+script = ExtResource("21_t2wqn")
 
 [node name="PauseMenu" parent="." instance=ExtResource("29_yefry")]
 layout_mode = 2
@@ -957,6 +940,14 @@ id = 5
 [connection signal="place_skull" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_place_skull"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="TuringBandlComponent/TuringBandlUI" method="_on_heist_planner_remove_last_movement"]
 [connection signal="remove_last_movement" from="HeistPlanner" to="SubViewport/3DScene/MovementManager/PlanningScenePlayerController" method="_on_heist_planner_remove_last_movement"]
+[connection signal="pressed" from="2DProjectedPlayer/OnPlanControls/Left/Button" to="2DProjectedPlayer/OnPlanControls/Left" method="_on_button_down"]
+[connection signal="released" from="2DProjectedPlayer/OnPlanControls/Left/Button" to="2DProjectedPlayer/OnPlanControls/Left" method="_on_button_up"]
+[connection signal="pressed" from="2DProjectedPlayer/OnPlanControls/Right/Button" to="2DProjectedPlayer/OnPlanControls/Right" method="_on_button_down"]
+[connection signal="released" from="2DProjectedPlayer/OnPlanControls/Right/Button" to="2DProjectedPlayer/OnPlanControls/Right" method="_on_button_up"]
+[connection signal="pressed" from="2DProjectedPlayer/OnPlanControls/Up/Button" to="2DProjectedPlayer/OnPlanControls/Up" method="_on_button_down"]
+[connection signal="released" from="2DProjectedPlayer/OnPlanControls/Up/Button" to="2DProjectedPlayer/OnPlanControls/Up" method="_on_button_up"]
+[connection signal="pressed" from="2DProjectedPlayer/OnPlanControls/Down/Button" to="2DProjectedPlayer/OnPlanControls/Down" method="_on_button_down"]
+[connection signal="released" from="2DProjectedPlayer/OnPlanControls/Down/Button" to="2DProjectedPlayer/OnPlanControls/Down" method="_on_button_up"]
 [connection signal="back_pressed" from="PauseMenu" to="GameManager" method="toggle_pause"]
 [connection signal="pressed" from="PauseButton" to="GameManager" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PauseButton" to="PauseButton/Sprite2D" method="_on_pressed"]

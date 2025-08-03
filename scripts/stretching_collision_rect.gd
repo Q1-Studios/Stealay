@@ -1,4 +1,4 @@
-extends CollisionShape2D
+extends TouchScreenButton
 
 enum Direction {LEFT, RIGHT, UP, DOWN}
 @export var cone_direction: Direction

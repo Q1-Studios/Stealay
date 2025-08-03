@@ -15,23 +15,21 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if _btn_pressed and not _prev_pressed:
-		_is_just_pressed = true
 		_prev_pressed = true
-	else:
-		_is_just_pressed = false
+		set_deferred("_is_just_pressed", false)
 	
 	if not _btn_pressed and _prev_pressed:
-		_is_just_released = true
 		_prev_pressed = false
-	else:
-		_is_just_released = false
+		set_deferred("_is_just_released", false)
 
 
 func _on_button_down() -> void:
-	_btn_pressed = true
+	set_deferred("_btn_pressed", true)
+	set_deferred("_is_just_pressed", true)
 
 func _on_button_up() -> void:
-	_btn_pressed = false
+	set_deferred("_btn_pressed", false)
+	set_deferred("_is_just_released", true)
 
 func is_pressed() -> bool:
 	return _btn_pressed
