@@ -108,6 +108,7 @@ func _process(delta: float) -> void:
 					instructions.text = "Finish your plan, then execute it by pressing enter."
 				instructions.show()
 				heist_planner.allow_move = true
+				heist_planner.allow_hide = true
 				heist_planner.allow_commit = true
 				tutorial_completed = true
 				Globals.tutorial_enabled = false
@@ -123,6 +124,7 @@ func _process(delta: float) -> void:
 			current_chat.silence()
 		set_hint_visibility(true)
 		heist_planner.allow_move = true
+		heist_planner.allow_hide = true
 		heist_planner.allow_commit = true
 
 func set_hint_visibility(visibility: bool) -> void:

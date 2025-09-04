@@ -31,6 +31,7 @@ signal place_skull(pos: Vector2i)
 var input_sequence: Array[Globals.movement] = []
 
 var allow_move: bool = false
+var allow_hide: bool = false
 var allow_commit: bool = false
 
 var prev_require_mouse_release: bool = false
@@ -82,11 +83,12 @@ func _process(delta: float) -> void:
 			move = Globals.movement.LEFT
 		elif action_pressed("PlannerRight") or control_pressed(right_set):
 			move = Globals.movement.RIGHT
-		elif action_pressed("PlannerHide") or control_pressed(hide_set):
+		elif ((action_pressed("PlannerHide") or control_pressed(hide_set))
+		and allow_hide):
 			move = Globals.movement.HIDE
 		elif action_pressed("PlannerDelete") or control_pressed(delete_set):
 			remove_last_action()
-		elif (Input.is_action_just_pressed("PlannerCommit", true) or control_pressed(commit_set, true)
+		elif ((Input.is_action_just_pressed("PlannerCommit", true) or control_pressed(commit_set, true))
 		and allow_commit):
 			finalize_sequence()
 
