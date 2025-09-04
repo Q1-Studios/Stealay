@@ -17,6 +17,14 @@ signal place_skull(pos: Vector2i)
 @export var delete_btns: Array[Pressable]
 @export var commit_btns: Array[Pressable]
 
+@onready var left_set: PressablesSet = PressablesSet.new(left_btns)
+@onready var right_set: PressablesSet = PressablesSet.new(right_btns)
+@onready var up_set: PressablesSet = PressablesSet.new(up_btns)
+@onready var down_set: PressablesSet = PressablesSet.new(down_btns)
+@onready var hide_set: PressablesSet = PressablesSet.new(hide_btns)
+@onready var delete_set: PressablesSet = PressablesSet.new(delete_btns)
+@onready var commit_set: PressablesSet = PressablesSet.new(commit_btns)
+
 @onready var invalid_sound: AudioStreamPlayer = $InvalidSound
 @onready var turncount_label: Label = $Turncount
 
@@ -66,19 +74,19 @@ func _process(delta: float) -> void:
 	delta_since_last_input += delta
 	
 	if allow_move:
-		if action_pressed("PlannerUp") or control_pressed(up_btns):
+		if action_pressed("PlannerUp") or control_pressed(up_set):
 			move = Globals.movement.UP
-		elif action_pressed("PlannerDown") or control_pressed(down_btns):
+		elif action_pressed("PlannerDown") or control_pressed(down_set):
 			move = Globals.movement.DOWN
-		elif action_pressed("PlannerLeft") or control_pressed(left_btns):
+		elif action_pressed("PlannerLeft") or control_pressed(left_set):
 			move = Globals.movement.LEFT
-		elif action_pressed("PlannerRight") or control_pressed(right_btns):
+		elif action_pressed("PlannerRight") or control_pressed(right_set):
 			move = Globals.movement.RIGHT
-		elif action_pressed("PlannerHide") or control_pressed(hide_btns):
+		elif action_pressed("PlannerHide") or control_pressed(hide_set):
 			move = Globals.movement.HIDE
-		elif action_pressed("PlannerDelete") or control_pressed(delete_btns):
+		elif action_pressed("PlannerDelete") or control_pressed(delete_set):
 			remove_last_action()
-		elif (Input.is_action_just_pressed("PlannerCommit", true) or control_pressed(commit_btns, true)
+		elif (Input.is_action_just_pressed("PlannerCommit", true) or control_pressed(commit_set, true)
 		and allow_commit):
 			finalize_sequence()
 
@@ -112,13 +120,11 @@ func action_pressed(action_name: String) -> bool:
 	
 	return false
 
-func control_pressed(pressables_list: Array[Pressable], release_inside: bool = false):
+func control_pressed(control_set: PressablesSet, release_inside: bool = false) -> bool:
 	var allow_holding: bool = false
 
 	if delta_since_last_input >= input_delta:
 		allow_holding = true
-	
-	var control_set: PressablesSet = PressablesSet.new(pressables_list)
 	
 	if not prev_require_mouse_release:
 		if release_inside and control_set.is_just_released_inside():
