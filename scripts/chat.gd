@@ -50,11 +50,7 @@ func _process(delta: float) -> void:
 		var current_label = bubble_labels[current_msg_index]
 		var voiceline = lines[current_msg_index]
 		
-		var current_message: String
-		if Globals.is_mobile and voiceline.touch_alternative:
-			current_message = voiceline.text_touch
-		else:
-			current_message = voiceline.text
+		var current_message: String = voiceline.get_text()
 		
 		current_bubble.show()
 		
@@ -64,11 +60,7 @@ func _process(delta: float) -> void:
 			text_finished = false
 			character_index = 0
 			
-			if Globals.is_mobile and voiceline.touch_alternative:
-				voiceline_player.stream = voiceline.audio_stream_touch
-			else:
-				voiceline_player.stream = voiceline.audio_stream
-			
+			voiceline_player.stream = voiceline.get_stream()
 			voiceline_player.play()
 		
 		while time_elapsed > time_btwn_chars:
@@ -95,7 +87,7 @@ func advance_dialogue() -> void:
 		done = true
 	
 func finalize_bubble() -> void:
-	bubble_labels[current_msg_index].text = lines[current_msg_index].text
+	bubble_labels[current_msg_index].text = lines[current_msg_index].get_text()
 	text_finished = true
 
 func silence() -> void:
