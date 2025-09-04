@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://btilhenabwlsc" path="res://scripts/pressable_area2d.gd" id="4_2gjlv"]
 [ext_resource type="Script" uid="uid://wodgxjtlwjm4" path="res://scripts/pressable_wrapper.gd" id="4_ahqdh"]
 [ext_resource type="PackedScene" uid="uid://6vblt84jg1hv" path="res://scenes/non_playable/ui/input_icon.tscn" id="5_a4yck"]
-[ext_resource type="Script" uid="uid://ckr6ft76xwr0e" path="res://scripts/stretching_collision_rect.gd" id="5_c8b5d"]
+[ext_resource type="Script" uid="uid://ckr6ft76xwr0e" path="res://scripts/stretching_collision_cone.gd" id="5_c8b5d"]
 [ext_resource type="Script" uid="uid://dbq3ndy5purel" path="res://scripts/TuringBandUIManager.gd" id="7_1rttj"]
 [ext_resource type="Script" uid="uid://bxcsx3v1tofol" path="res://scripts/bandlController.gd" id="8_0acuf"]
 [ext_resource type="Texture2D" uid="uid://ccllpjpc2upk8" path="res://assets/sprites/input/keyboard/shift.png" id="8_01txo"]
