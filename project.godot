@@ -23,6 +23,7 @@ boot_splash/minimum_display_time=10
 
 Globals="*res://scripts/globals.gd"
 SceneManager="*res://scenes/non_playable/scene_manager.tscn"
+InputSrcDetector="*res://scripts/input_src_detector.gd"
 
 [display]
 
@@ -125,10 +126,6 @@ Speedup={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
 
 [layer_names]
 

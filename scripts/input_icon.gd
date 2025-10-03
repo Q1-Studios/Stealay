@@ -1,8 +1,6 @@
 @tool
 extends Sprite2D
 
-var current: Globals.InputSrc = Globals.InputSrc.KEYBOARD
-
 @export_group("Icons")
 @export var keyboard_icon: Texture2D
 @export var playstation_icon: Texture2D
@@ -11,7 +9,7 @@ var current: Globals.InputSrc = Globals.InputSrc.KEYBOARD
 @export var generic_icon: Texture2D
 
 @export_group("Preview")
-@export var preview: Globals.InputSrc = Globals.InputSrc.KEYBOARD
+@export var preview: InputSrcDetector.InputSrc = InputSrcDetector.InputSrc.KEYBOARD
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -19,39 +17,20 @@ func _process(_delta: float) -> void:
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
-		current = Globals.last_input_src
-		change_icon_type(current)
+		change_icon_type(InputSrcDetector.current_src)
+		InputSrcDetector.input_changed.connect(change_icon_type)
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		var joy_name: String = Input.get_joy_name(event.device).to_lower()
-		
-		if joy_name.contains("playstation") or joy_name.contains("dualshock") or joy_name.contains("dualsense"):
-			current = Globals.InputSrc.PLAYSTATION
-		elif joy_name.contains("xbox"):
-			current = Globals.InputSrc.XBOX
-		elif joy_name.contains("switch"):
-			current = Globals.InputSrc.NINTENDO
-		else:
-			current = Globals.InputSrc.GENERIC
-		
-	elif event is InputEventKey:
-		current = Globals.InputSrc.KEYBOARD
-	
-	if not Engine.is_editor_hint():
-		Globals.last_input_src = current
-		change_icon_type(current)
-
-
-func change_icon_type(type: Globals.InputSrc) -> void:
+func change_icon_type(type: InputSrcDetector.InputSrc) -> void:
 	match type:
-		Globals.InputSrc.KEYBOARD:
+		InputSrcDetector.InputSrc.KEYBOARD:
 			texture = keyboard_icon
-		Globals.InputSrc.PLAYSTATION:
+		InputSrcDetector.InputSrc.TOUCH:
+			texture = keyboard_icon
+		InputSrcDetector.InputSrc.PLAYSTATION:
 			texture = playstation_icon
-		Globals.InputSrc.XBOX:
+		InputSrcDetector.InputSrc.XBOX:
 			texture = xbox_icon
-		Globals.InputSrc.NINTENDO:
+		InputSrcDetector.InputSrc.NINTENDO:
 			texture = nintendo_icon
-		Globals.InputSrc.GENERIC:
+		InputSrcDetector.InputSrc.GENERIC:
 			texture = generic_icon

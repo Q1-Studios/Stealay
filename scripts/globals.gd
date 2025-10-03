@@ -6,8 +6,6 @@ var tutorial_enabled: bool = true
 var is_web: bool = OS.get_name() == "Web"
 var is_mobile: bool = OS.get_name() == "Android" or OS.get_name() == "iOS"
 
-enum InputSrc {KEYBOARD, PLAYSTATION, XBOX, NINTENDO, GENERIC}
-var last_input_src: InputSrc = InputSrc.KEYBOARD
 var require_mouse_release: bool = false
 
 enum movement { 

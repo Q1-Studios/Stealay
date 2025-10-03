@@ -129,8 +129,6 @@ script = ExtResource("17_b5yxx")
 text = "I fulfilled my part of the bargain.
 ..."
 audio_stream = ExtResource("10_lxu5f")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_vf1sc"]
@@ -138,32 +136,24 @@ script = ExtResource("17_b5yxx")
 text = "The building plan and patrol routes are all yours.
 ..."
 audio_stream = ExtResource("11_ntchk")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_4fghf"]
 script = ExtResource("17_b5yxx")
 text = "But this won't be easy. You'll have to come up with a foolproof plan."
 audio_stream = ExtResource("12_jerq1")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_b5yxx"]
 script = ExtResource("17_b5yxx")
 text = "But with my intel, this should be as easy as..."
 audio_stream = ExtResource("13_m2q86")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_xgh5o"]
 script = ExtResource("17_b5yxx")
 text = "... heh... stealing candy from a baby. Or stealing a gem from a museum."
 audio_stream = ExtResource("14_kitgh")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_b31oo"]
@@ -179,16 +169,12 @@ metadata/_custom_type_script = "uid://djo1vvuimo46i"
 script = ExtResource("17_b5yxx")
 text = "Splendid. On the right, you can see your move sequence."
 audio_stream = ExtResource("16_jlbm7")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_255cg"]
 script = ExtResource("17_b5yxx")
 text = "Don't let these guards see you. Unless you really like jail."
 audio_stream = ExtResource("17_ntchk")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_7doss"]
@@ -222,32 +208,24 @@ metadata/_custom_type_script = "uid://djo1vvuimo46i"
 script = ExtResource("17_b5yxx")
 text = "Then get in there, and steal that precious gem."
 audio_stream = ExtResource("20_w8kyp")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_a4yck"]
 script = ExtResource("17_b5yxx")
 text = "And remember..."
 audio_stream = ExtResource("21_nup1x")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_latlh"]
 script = ExtResource("17_b5yxx")
 text = "You owe me."
 audio_stream = ExtResource("22_b5yxx")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="Resource" id="Resource_50e7h"]
 script = ExtResource("17_b5yxx")
 text = "I'm watching you."
 audio_stream = ExtResource("28_ynj1n")
-touch_alternative = false
-text_touch = ""
 metadata/_custom_type_script = "uid://djo1vvuimo46i"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2wqn"]
@@ -356,7 +334,7 @@ commit_btns = [NodePath("../Hints/MobileSwitcher/MobileButtons/StartBtn")]
 
 [node name="TouchControlBounds" type="ColorRect" parent="HeistPlanner"]
 visible = false
-layout_mode = 2
+layout_mode = 0
 offset_right = 1251.0
 offset_bottom = 1080.0
 mouse_filter = 1
@@ -708,7 +686,7 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="Control"]
-layout_mode = 2
+layout_mode = 0
 offset_top = 22.0
 offset_right = 1255.0
 offset_bottom = 90.0
