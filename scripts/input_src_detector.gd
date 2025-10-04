@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventJoypadButton or
-	(event is InputEventJoypadMotion and event.axis_value >= 0.5)):
+	(event is InputEventJoypadMotion and abs(event.axis_value) >= 0.5)):
 		var joy_name: String = Input.get_joy_name(event.device).to_lower()
 		
 		if joy_name.contains("playstation") or joy_name.contains("dualshock") or joy_name.contains("dualsense"):
