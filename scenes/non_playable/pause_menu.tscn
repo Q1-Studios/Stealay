@@ -102,7 +102,6 @@ scale = Vector2(1.558, 1.638)
 texture = ExtResource("2_5upjr")
 
 [node name="UI" type="Control" parent="."]
-layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0

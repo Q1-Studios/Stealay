@@ -19,6 +19,8 @@ signal request_data()
 
 var game_over: bool = false
 
+var pre_pause_focus: Control
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Globals.stop_moving = false
@@ -41,11 +43,17 @@ func _process(_delta):
 			Globals.speed = 1.2
 
 func toggle_pause():
+	if not get_tree().paused:
+		pre_pause_focus = get_viewport().gui_get_focus_owner()
+	
 	pause_menu.visible = not pause_menu.visible
 	if get_tree().current_scene.name != Globals.game_scene_name:
 		turing_bandl_ui.visible = not turing_bandl_ui.visible
 	get_tree().paused = not get_tree().paused
 	pause_menu.resetUI()
+	
+	if not get_tree().paused and pre_pause_focus != null:
+		pre_pause_focus.grab_focus()
 
 func check_win():
 	if goal.transform.origin.distance_to(player.transform.origin) <= 3 and not game_over:
