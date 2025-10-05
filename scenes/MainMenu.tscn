@@ -315,6 +315,7 @@ font_size = 48
 [node name="SubViewportContainer" type="SubViewportContainer"]
 offset_right = 1920.0
 offset_bottom = 1080.0
+focus_mode = 0
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
