@@ -1,6 +1,7 @@
-[gd_scene load_steps=120 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=121 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
+[ext_resource type="PackedScene" uid="uid://bgbiir2mrvq87" path="res://scenes/non_playable/mouse_hider.tscn" id="2_d80dn"]
 [ext_resource type="PackedScene" uid="uid://csr8qdvijf7o8" path="res://scenes/non_playable/HeistPlanner.tscn" id="2_sfq2c"]
 [ext_resource type="Script" uid="uid://d37i3xarnsfn" path="res://scripts/2d_projector.gd" id="3_latlh"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="3_pbho8"]
@@ -319,6 +320,8 @@ ambient_light_energy = 0.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_i05ib")
+
+[node name="MouseHider" parent="." instance=ExtResource("2_d80dn")]
 
 [node name="HeistPlanner" parent="." node_paths=PackedStringArray("player", "left_btns", "right_btns", "up_btns", "down_btns", "hide_btns", "delete_btns", "commit_btns") instance=ExtResource("2_sfq2c")]
 layout_mode = 2

@@ -1,8 +1,9 @@
-[gd_scene load_steps=48 format=4 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=49 format=4 uid="uid://bg4w7m5cvf82n"]
 
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="1_7la6k"]
 [ext_resource type="Texture2D" uid="uid://caiv810gq1dvv" path="res://assets/newui/paper.jpg" id="1_bky6r"]
+[ext_resource type="PackedScene" uid="uid://bgbiir2mrvq87" path="res://scenes/non_playable/mouse_hider.tscn" id="1_lw0hr"]
 [ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://scenes/non_playable/ui/button_audio_player.tscn" id="1_mipys"]
 [ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="2_2nypq"]
 [ext_resource type="PackedScene" uid="uid://u155dxc1ieh" path="res://scenes/non_playable/ui/page_audio_player.tscn" id="2_8a8k8"]
@@ -316,6 +317,8 @@ font_size = 48
 offset_right = 1920.0
 offset_bottom = 1080.0
 focus_mode = 0
+
+[node name="MouseHider" parent="." instance=ExtResource("1_lw0hr")]
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false

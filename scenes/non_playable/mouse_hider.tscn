@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgbiir2mrvq87"]
+
+[ext_resource type="Script" uid="uid://dlvysn8c1d74x" path="res://scripts/mouse_hider.gd" id="1_nhs2v"]
+
+[node name="MouseHider" type="Node"]
+process_mode = 3
+script = ExtResource("1_nhs2v")
