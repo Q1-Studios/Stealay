@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://ce0fwwrmppq3y"]
 
 [ext_resource type="Script" uid="uid://d2n00lhw5i4dh" path="res://scripts/loader.gd" id="1_8jgqb"]
-[ext_resource type="Texture2D" uid="uid://cqtcepskl70at" path="res://assets/newui/loading.png" id="2_ykev4"]
-[ext_resource type="Texture2D" uid="uid://wwqt2jnh4d6" path="res://assets/newui/blackbox.png" id="3_4254t"]
+[ext_resource type="Texture2D" uid="uid://cqtcepskl70at" path="res://assets/sprites/new_ui/loading.png" id="2_ykev4"]
+[ext_resource type="Texture2D" uid="uid://wwqt2jnh4d6" path="res://assets/sprites/new_ui/blackbox.png" id="3_4254t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rlryl"]
 font_size = 48

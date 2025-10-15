@@ -1,16 +1,16 @@
 [gd_scene load_steps=13 format=3 uid="uid://c60mal05vn06b"]
 
 [ext_resource type="Script" uid="uid://dec3topr56m3y" path="res://scripts/end_screen.gd" id="1_d221y"]
-[ext_resource type="Texture2D" uid="uid://bo18g6fw85sei" path="res://assets/newui/msgbg.png" id="2_23v3d"]
-[ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/ui/post_its/death.png" id="2_d221y"]
+[ext_resource type="Texture2D" uid="uid://bo18g6fw85sei" path="res://assets/sprites/new_ui/msgbg.png" id="2_23v3d"]
+[ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/sprites/ui/post_its/death.png" id="2_d221y"]
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="3_lpr8p"]
 [ext_resource type="Script" uid="uid://c4hkhw4gnfr0b" path="res://scripts/smart_button.gd" id="4_lpr8p"]
-[ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="4_pc0bh"]
-[ext_resource type="Texture2D" uid="uid://byoneha8p1jbp" path="res://assets/newui/yougotcaught.png" id="4_rnbta"]
-[ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="5_5vroo"]
-[ext_resource type="Texture2D" uid="uid://bv2entvwp58uq" path="res://assets/newui/youwin.png" id="6_0q1r5"]
+[ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/sprites/new_ui/texticons_fillonly.png" id="4_pc0bh"]
+[ext_resource type="Texture2D" uid="uid://byoneha8p1jbp" path="res://assets/sprites/new_ui/yougotcaught.png" id="4_rnbta"]
+[ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/sprites/new_ui/texticons_borderonly.png" id="5_5vroo"]
+[ext_resource type="Texture2D" uid="uid://bv2entvwp58uq" path="res://assets/sprites/new_ui/youwin.png" id="6_0q1r5"]
 [ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://scenes/non_playable/ui/button_audio_player.tscn" id="6_8knio"]
-[ext_resource type="Texture2D" uid="uid://d4bpodjweh7cb" path="res://assets/newui/incomplete.png" id="9_30hli"]
+[ext_resource type="Texture2D" uid="uid://d4bpodjweh7cb" path="res://assets/sprites/new_ui/incomplete.png" id="9_30hli"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2bp25"]
 font_size = 70

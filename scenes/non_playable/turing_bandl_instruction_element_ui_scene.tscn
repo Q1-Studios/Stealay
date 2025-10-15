@@ -1,14 +1,14 @@
 [gd_scene load_steps=20 format=3 uid="uid://2rjnelavqf7l"]
 
 [ext_resource type="Script" uid="uid://oi8rybdakg5l" path="res://scripts/ui_bandlinstruction.gd" id="1_f21df"]
-[ext_resource type="Texture2D" uid="uid://bl7oxsweocw2o" path="res://assets/ui/turingbandlarrowicons/up.png" id="2_kcpd6"]
-[ext_resource type="Texture2D" uid="uid://45bo3oxe8h6v" path="res://assets/ui/turingbandlarrowicons/down.png" id="3_jdyhi"]
-[ext_resource type="Texture2D" uid="uid://dpe143xfk4gv0" path="res://assets/ui/turingbandlarrowicons/left.png" id="4_cjqqi"]
-[ext_resource type="Texture2D" uid="uid://brssr5d7i7si6" path="res://assets/ui/turingbandlarrowicons/right.png" id="5_8osrm"]
-[ext_resource type="Texture2D" uid="uid://c8umfhef54iul" path="res://assets/ui/turingbandlarrowicons/hide.png" id="6_wiwbq"]
-[ext_resource type="Texture2D" uid="uid://2nu052otf56u" path="res://assets/ui/turingbandlarrowicons/empty.png" id="7_toq7o"]
-[ext_resource type="Texture2D" uid="uid://7qxcvhr2tmlp" path="res://assets/ui/turingbandlarrowicons/selectionsymbol.png" id="8_305r6"]
-[ext_resource type="Texture2D" uid="uid://byu231mdxjm12" path="res://assets/ui/turingbandlarrowicons/notselectionsymbol.png" id="9_ed1om"]
+[ext_resource type="Texture2D" uid="uid://bl7oxsweocw2o" path="res://assets/sprites/ui/turingbandlarrowicons/up.png" id="2_kcpd6"]
+[ext_resource type="Texture2D" uid="uid://45bo3oxe8h6v" path="res://assets/sprites/ui/turingbandlarrowicons/down.png" id="3_jdyhi"]
+[ext_resource type="Texture2D" uid="uid://dpe143xfk4gv0" path="res://assets/sprites/ui/turingbandlarrowicons/left.png" id="4_cjqqi"]
+[ext_resource type="Texture2D" uid="uid://brssr5d7i7si6" path="res://assets/sprites/ui/turingbandlarrowicons/right.png" id="5_8osrm"]
+[ext_resource type="Texture2D" uid="uid://c8umfhef54iul" path="res://assets/sprites/ui/turingbandlarrowicons/hide.png" id="6_wiwbq"]
+[ext_resource type="Texture2D" uid="uid://2nu052otf56u" path="res://assets/sprites/ui/turingbandlarrowicons/empty.png" id="7_toq7o"]
+[ext_resource type="Texture2D" uid="uid://7qxcvhr2tmlp" path="res://assets/sprites/ui/turingbandlarrowicons/selectionsymbol.png" id="8_305r6"]
+[ext_resource type="Texture2D" uid="uid://byu231mdxjm12" path="res://assets/sprites/ui/turingbandlarrowicons/notselectionsymbol.png" id="9_ed1om"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojfeb"]
 bg_color = Color(0.447059, 0.72549, 0.647059, 0.709804)

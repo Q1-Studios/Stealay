@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://cxy4hikcjoxb7"]
 
 [ext_resource type="Script" uid="uid://oi8rybdakg5l" path="res://scripts/ui_bandlinstruction.gd" id="1_0xnjm"]
-[ext_resource type="Texture2D" uid="uid://caws74fycwoi2" path="res://assets/ui/post_its/arrowUp.png" id="2_mhnxi"]
-[ext_resource type="Texture2D" uid="uid://bmw0r7wnp1my7" path="res://assets/ui/post_its/arrowDown.png" id="3_urn0h"]
-[ext_resource type="Texture2D" uid="uid://w1eneq7xmy85" path="res://assets/ui/post_its/arrowLeft.png" id="4_pcu6u"]
-[ext_resource type="Texture2D" uid="uid://dccwu5lwgfhps" path="res://assets/ui/post_its/arrowR.png" id="5_48324"]
-[ext_resource type="Texture2D" uid="uid://bnpx5induylqr" path="res://assets/ui/post_its/eye.png" id="6_s88lv"]
-[ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="7_0de6y"]
+[ext_resource type="Texture2D" uid="uid://caws74fycwoi2" path="res://assets/sprites/ui/post_its/arrowUp.png" id="2_mhnxi"]
+[ext_resource type="Texture2D" uid="uid://bmw0r7wnp1my7" path="res://assets/sprites/ui/post_its/arrowDown.png" id="3_urn0h"]
+[ext_resource type="Texture2D" uid="uid://w1eneq7xmy85" path="res://assets/sprites/ui/post_its/arrowLeft.png" id="4_pcu6u"]
+[ext_resource type="Texture2D" uid="uid://dccwu5lwgfhps" path="res://assets/sprites/ui/post_its/arrowR.png" id="5_48324"]
+[ext_resource type="Texture2D" uid="uid://bnpx5induylqr" path="res://assets/sprites/ui/post_its/eye.png" id="6_s88lv"]
+[ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/sprites/ui/post_its/empty.png" id="7_0de6y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojfeb"]
 bg_color = Color(0.270608, 0.267456, 0.352527, 0.666667)
