@@ -75,7 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://44m5l4ulq0i5" path="res://assets/sprites/input/generic_joypad/generic_Y.png" id="43_tvnrp"]
 [ext_resource type="Script" uid="uid://bk8lqeg1coucl" path="res://scripts/pressable_button.gd" id="48_266aw"]
 [ext_resource type="Texture2D" uid="uid://caja4gb2t0nn3" path="res://assets/sprites/mobile_buttons/pause.png" id="50_o7vux"]
-[ext_resource type="Script" uid="uid://dwxke28c72pqk" path="res://scripts/hide_on_pc.gd" id="51_rjyge"]
+[ext_resource type="Script" uid="uid://dwxke28c72pqk" path="res://scripts/show_on_touch.gd" id="51_rjyge"]
 [ext_resource type="Script" uid="uid://bjh651rh5xu1w" path="res://scripts/touch_darken.gd" id="57_lu33s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gjlv"]

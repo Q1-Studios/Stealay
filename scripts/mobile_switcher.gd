@@ -3,8 +3,8 @@ extends Node
 
 enum Platform {PC, MOBILE}
 
-@export var pc_variant: Node
-@export var mobile_variant: Node
+@export var pc_variant: CanvasItem
+@export var mobile_variant: CanvasItem
 @export var preview: Platform
 
 var platform: Platform

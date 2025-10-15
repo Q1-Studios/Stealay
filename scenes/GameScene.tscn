@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dj8ocoeajpxud" path="res://scenes/non_playable/pause_menu.tscn" id="13_1npfk"]
 [ext_resource type="PackedScene" uid="uid://6vblt84jg1hv" path="res://scenes/non_playable/ui/input_icon.tscn" id="13_a8ip2"]
 [ext_resource type="Texture2D" uid="uid://caja4gb2t0nn3" path="res://assets/sprites/mobile_buttons/pause.png" id="20_lpvha"]
-[ext_resource type="Script" uid="uid://dwxke28c72pqk" path="res://scripts/hide_on_pc.gd" id="21_s4ole"]
+[ext_resource type="Script" uid="uid://dwxke28c72pqk" path="res://scripts/show_on_touch.gd" id="21_s4ole"]
 [ext_resource type="Script" uid="uid://bjh651rh5xu1w" path="res://scripts/touch_darken.gd" id="23_v23gc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lk0vr"]
