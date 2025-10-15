@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene load_steps=44 format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="PackedScene" uid="uid://bgbiir2mrvq87" path="res://scenes/non_playable/mouse_hider.tscn" id="1_v23gc"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cg2ylqvx868ee" path="res://scripts/speedup_indicator.gd" id="4_6nmf6"]
 [ext_resource type="PackedScene" uid="uid://cb36gbar6tdv" path="res://scenes/non_playable/guard.tscn" id="4_18ig4"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://scenes/non_playable/player.tscn" id="5_7s5hy"]
+[ext_resource type="FontFile" uid="uid://crmwiei4eut0g" path="res://fonts/bnmachine.ttf" id="5_n7dut"]
 [ext_resource type="PackedScene" uid="uid://c60mal05vn06b" path="res://scenes/non_playable/EndScreen.tscn" id="6_6nmf6"]
 [ext_resource type="Script" uid="uid://bnupccjjlnkp5" path="res://scripts/pressable_touchscreen_button.gd" id="6_v23gc"]
 [ext_resource type="Script" uid="uid://emtjvummxi6o" path="res://scripts/guard_mover.gd" id="6_xs4ih"]
@@ -34,26 +35,31 @@
 [ext_resource type="Script" uid="uid://bjh651rh5xu1w" path="res://scripts/touch_darken.gd" id="23_v23gc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lk0vr"]
+font = ExtResource("5_n7dut")
 font_size = 48
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpvha"]
 size = Vector2(1030, 940)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6nmf6"]
+font = ExtResource("5_n7dut")
 font_size = 90
 
 [sub_resource type="LabelSettings" id="LabelSettings_1npfk"]
 font_size = 90
 
 [sub_resource type="LabelSettings" id="LabelSettings_iaegw"]
+font = ExtResource("5_n7dut")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2gh7q"]
+font = ExtResource("5_n7dut")
 font_size = 54
 font_color = Color(0.393086, 0.393086, 0.393085, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_a5tct"]
+font = ExtResource("5_n7dut")
 font_size = 24
 font_color = Color(0, 0.410708, 0.818128, 1)
 
@@ -182,14 +188,17 @@ visible = false
 [node name="IncompleteScreen" parent="." instance=ExtResource("6_6nmf6")]
 visible = false
 
-[node name="UI" parent="IncompleteScreen" index="2"]
-layout_mode = 0
-
 [node name="Label" parent="IncompleteScreen/UI" index="0"]
 offset_top = 113.04
 offset_bottom = 154.96
 text = "Plan incomplete"
 label_settings = SubResource("LabelSettings_1npfk")
+
+[node name="GOTCAUGHT" parent="IncompleteScreen/UI" index="1"]
+visible = false
+
+[node name="INCOMPLETE" parent="IncompleteScreen/UI" index="2"]
+visible = true
 
 [node name="WinScreen" parent="." instance=ExtResource("6_6nmf6")]
 visible = false
@@ -197,11 +206,14 @@ visible = false
 [node name="Check" parent="WinScreen" index="1"]
 texture = ExtResource("8_6nmf6")
 
-[node name="UI" parent="WinScreen" index="2"]
-layout_mode = 0
-
 [node name="Label" parent="WinScreen/UI" index="0"]
 text = "You Win"
+
+[node name="GOTCAUGHT" parent="WinScreen/UI" index="1"]
+visible = false
+
+[node name="YOUWIN" parent="WinScreen/UI" index="3"]
+visible = true
 
 [node name="Fills" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" index="0"]
 region_rect = Rect2(918.539, 921.904, 618.93, 242.19)

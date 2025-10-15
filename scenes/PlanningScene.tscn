@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene load_steps=122 format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://bgbiir2mrvq87" path="res://scenes/non_playable/mouse_hider.tscn" id="2_d80dn"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cxy4hikcjoxb7" path="res://scenes/non_playable/ui/turing_bandl_instruction_element_ui_scene.tscn" id="9_ec7cf"]
 [ext_resource type="PackedScene" uid="uid://b44tvfhd3lcf1" path="res://scenes/non_playable/player.tscn" id="10_ec7cf"]
 [ext_resource type="PackedScene" uid="uid://crkpn5vqe2wwa" path="res://scenes/non_playable/ui/chat.tscn" id="10_ibx1f"]
+[ext_resource type="FontFile" uid="uid://crmwiei4eut0g" path="res://fonts/bnmachine.ttf" id="10_ltoun"]
 [ext_resource type="AudioStream" uid="uid://dpchh6yw6wdxn" path="res://assets/sounds/voicelines/tutorial/voiceline1.ogg" id="10_lxu5f"]
 [ext_resource type="Script" uid="uid://bncnyql6noftg" path="res://scripts/tutorial_manager.gd" id="10_nivii"]
 [ext_resource type="Texture2D" uid="uid://brdin8rl67s74" path="res://assets/sprites/input/generic_joypad/generic_RT.png" id="11_7doss"]
@@ -93,6 +94,7 @@ size = Vector2(0, 0)
 size = Vector2(100, 100)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yefry"]
+font = ExtResource("10_ltoun")
 font_size = 46
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_266aw"]
@@ -123,6 +125,7 @@ expand_margin_bottom = 5.0
 Label/styles/normal = SubResource("StyleBoxFlat_65r8s")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ibx1f"]
+font = ExtResource("10_ltoun")
 font_size = 36
 
 [sub_resource type="Resource" id="Resource_01txo"]
@@ -302,6 +305,7 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_2gjlv")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_c8b5d")
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1aly"]
+font = ExtResource("10_ltoun")
 font_size = 36
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7vux"]
@@ -760,7 +764,7 @@ autoplay = "arrow_up_down"
 layout_mode = 0
 offset_left = 24.0
 offset_top = 975.0
-offset_right = 574.0
+offset_right = 610.0
 offset_bottom = 1054.0
 mouse_filter = 1
 theme = SubResource("Theme_2gjlv")
@@ -843,6 +847,7 @@ render_target_update_mode = 4
 [node name="3DScene" type="Node3D" parent="SubViewport"]
 
 [node name="Player" parent="SubViewport/3DScene" groups=["player"] instance=ExtResource("10_ec7cf")]
+hideshadow = true
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/3DScene"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.64, 7.594, -11.905)
@@ -894,26 +899,31 @@ texture = ExtResource("38_yefry")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -7)
 input_sequence = Array[int]([1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 1, 3, 1, 1, 3, 1])
 id = 1
+hideshadow = true
 
 [node name="redfloorGuard" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -6)
 input_sequence = Array[int]([3, 3, 1, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3])
 id = 2
+hideshadow = true
 
 [node name="randompillarroomguard" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -21)
 input_sequence = Array[int]([1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 3, 3, 3, 3, 1])
 id = 3
+hideshadow = true
 
 [node name="theFinalBoss" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -23)
 input_sequence = Array[int]([3, 3, 3, 1, 3, 3, 0, 3, 3, 3, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 3, 3, 3])
 id = 4
+hideshadow = true
 
 [node name="startingGumba" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
 input_sequence = Array[int]([2, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 3, 3, 3, 2, 0, 0, 2, 2, 1, 1, 3, 3, 0, 0, 0, 0, 3, 3, 3, 0, 3, 3, 3, 1, 1, 3, 3, 3, 1, 1, 1, 2, 1, 1, 1, 3, 1, 1, 1, 1, 2, 2])
 id = 5
+hideshadow = true
 
 [connection signal="load_game_board" from="." to="GameManager" method="_on_planning_scene_load_game_board"]
 [connection signal="add_movement" from="HeistPlanner" to="TuringBandlComponent/TuringBandlUI" method="_on_heist_planner_add_movement"]

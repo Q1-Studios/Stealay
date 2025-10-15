@@ -1,16 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://c60mal05vn06b"]
+[gd_scene load_steps=13 format=3 uid="uid://c60mal05vn06b"]
 
-[ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="1_4km7q"]
 [ext_resource type="Script" uid="uid://dec3topr56m3y" path="res://scripts/end_screen.gd" id="1_d221y"]
+[ext_resource type="Texture2D" uid="uid://bo18g6fw85sei" path="res://assets/newui/msgbg.png" id="2_23v3d"]
 [ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/ui/post_its/death.png" id="2_d221y"]
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="3_lpr8p"]
 [ext_resource type="Script" uid="uid://c4hkhw4gnfr0b" path="res://scripts/smart_button.gd" id="4_lpr8p"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="4_pc0bh"]
+[ext_resource type="Texture2D" uid="uid://byoneha8p1jbp" path="res://assets/newui/yougotcaught.png" id="4_rnbta"]
 [ext_resource type="Texture2D" uid="uid://dk6q5fclpp8db" path="res://assets/newui/texticons_borderonly.png" id="5_5vroo"]
+[ext_resource type="Texture2D" uid="uid://bv2entvwp58uq" path="res://assets/newui/youwin.png" id="6_0q1r5"]
 [ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://scenes/non_playable/ui/button_audio_player.tscn" id="6_8knio"]
+[ext_resource type="Texture2D" uid="uid://d4bpodjweh7cb" path="res://assets/newui/incomplete.png" id="9_30hli"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2bp25"]
-font_size = 100
+font_size = 70
 
 [node name="EndScreen" type="Control" node_paths=PackedStringArray("first_button")]
 layout_mode = 3
@@ -25,36 +28,53 @@ script = ExtResource("1_d221y")
 first_button = NodePath("UI/DefaultView/VBoxContainer/Continue")
 
 [node name="Empty" type="Sprite2D" parent="."]
-position = Vector2(946, 459)
-scale = Vector2(2.416, 1.836)
-texture = ExtResource("1_4km7q")
+position = Vector2(960.99994, 479.99997)
+scale = Vector2(0.755, 0.755)
+texture = ExtResource("2_23v3d")
 
 [node name="Check" type="Sprite2D" parent="."]
-position = Vector2(978, 468)
+position = Vector2(978, 525)
 scale = Vector2(0.532, 0.532)
 texture = ExtResource("2_d221y")
 
 [node name="UI" type="Control" parent="."]
-layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Label" type="Label" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.062
 anchor_right = 1.0
 anchor_bottom = 0.138
 offset_left = 3.0
-offset_top = 93.04
+offset_top = 136.04001
 offset_right = 3.0
-offset_bottom = 147.96
+offset_bottom = 190.96
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 115
 text = "Got Caught"
 label_settings = SubResource("LabelSettings_2bp25")
 horizontal_alignment = 1
+
+[node name="GOTCAUGHT" type="Sprite2D" parent="UI"]
+position = Vector2(974, 300.00003)
+scale = Vector2(0.43617904, 0.43617904)
+texture = ExtResource("4_rnbta")
+
+[node name="INCOMPLETE" type="Sprite2D" parent="UI"]
+visible = false
+position = Vector2(973.0001, 297)
+scale = Vector2(0.43407017, 0.43407017)
+texture = ExtResource("9_30hli")
+
+[node name="YOUWIN" type="Sprite2D" parent="UI"]
+visible = false
+position = Vector2(964, 449)
+scale = Vector2(1.051611, 1.051611)
+texture = ExtResource("6_0q1r5")
 
 [node name="DefaultView" type="Control" parent="UI"]
 layout_mode = 1

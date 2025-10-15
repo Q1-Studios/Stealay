@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://crkpn5vqe2wwa"]
+[gd_scene load_steps=17 format=3 uid="uid://crkpn5vqe2wwa"]
 
 [ext_resource type="Script" uid="uid://8ypg4mvasyqw" path="res://scripts/chat.gd" id="1_1vpf0"]
 [ext_resource type="Texture2D" uid="uid://dlpc8t81caida" path="res://assets/sprites/Tutorial/speech_bubble.png" id="2_bhmos"]
+[ext_resource type="FontFile" uid="uid://crmwiei4eut0g" path="res://fonts/bnmachine.ttf" id="3_14id3"]
 [ext_resource type="Texture2D" uid="uid://c5w5mt4ir5daw" path="res://assets/sprites/Tutorial/speech_rect.PNG" id="3_fnrej"]
 [ext_resource type="Texture2D" uid="uid://qsm0kleuyn4t" path="res://assets/sprites/Tutorial/chat_guy.png" id="4_1vpvk"]
 [ext_resource type="Script" uid="uid://de1nc1oj51tr7" path="res://scripts/input_icon.gd" id="4_ah8ck"]
@@ -14,9 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://jfnda028lhil" path="res://assets/sprites/input/generic_joypad/generic_A.png" id="9_igpr6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t1nil"]
+font = ExtResource("3_14id3")
 font_size = 58
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2q88"]
+font = ExtResource("3_14id3")
 font_size = 36
 font_color = Color(0, 0, 0, 1)
 
@@ -98,14 +101,14 @@ offset_left = 1150.5
 offset_top = 977.6
 offset_right = 1555.5
 offset_bottom = 1027.6
-text = "Press            to continue"
+text = "Press       to continue"
 label_settings = SubResource("LabelSettings_l2q88")
 
 [node name="InputIcon" type="Sprite2D" parent="ContinueLabelSwitcher/ContinueLabel"]
 process_mode = 3
 position = Vector2(147.5, 23.4)
 scale = Vector2(0.125, 0.125)
-texture = ExtResource("6_14id3")
+texture = ExtResource("5_w6dnx")
 script = ExtResource("4_ah8ck")
 keyboard_icon = ExtResource("5_w6dnx")
 playstation_icon = ExtResource("6_14id3")

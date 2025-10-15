@@ -9,6 +9,7 @@ extends Node3D
 @export var HopAnimator: Node3D
 @export var RotationAnimator: Node3D
 @export var id:int
+@export var hideshadow:bool
 
 func _onready():
 	AnimPlayer.play("RESET")
@@ -45,6 +46,9 @@ func _ready() -> void:
 		Globals.speed = 10
 	else: 
 		Globals.speed = 1.2
+		
+	if hideshadow:
+		$Sprite3D2.hide()
 
 func moveUp() -> void:
 	_move(Vector3(0,0,-1))
