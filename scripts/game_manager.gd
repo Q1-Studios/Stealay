@@ -65,7 +65,7 @@ func check_win():
 		win.show()
 		music.stop()
 		win_jingle.play()
-		vibrate(0.75, 0.5)
+		vibrate(1, 0.5)
 		emit_signal("won")
 		return true
 	return false
@@ -82,7 +82,7 @@ func check_lose():
 		caught.show()
 		music.stop()
 		lose_jingle.play()
-		vibrate(0.75, 0.5)
+		vibrate(1, 0.5)
 
 func _on_player_movement_controller_out_of_moves() -> void:
 	if not game_over:
@@ -92,7 +92,7 @@ func _on_player_movement_controller_out_of_moves() -> void:
 		incomplete.show()
 		music.stop()
 		lose_jingle.play()
-		vibrate(0.75, 0.5)
+		vibrate(1, 0.5)
 	#post_lose_precedure()
 	
 func post_lose_precedure():
