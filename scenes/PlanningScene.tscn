@@ -309,7 +309,7 @@ font = ExtResource("10_ltoun")
 font_size = 36
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7vux"]
-size = Vector2(550, 79)
+size = Vector2(560, 79)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjyge"]
 size = Vector2(120, 120)
@@ -764,7 +764,7 @@ autoplay = "arrow_up_down"
 layout_mode = 0
 offset_left = 24.0
 offset_top = 975.0
-offset_right = 610.0
+offset_right = 584.0
 offset_bottom = 1054.0
 mouse_filter = 1
 theme = SubResource("Theme_2gjlv")
@@ -780,7 +780,7 @@ offset_left = 117.0
 offset_top = 14.0
 offset_right = 538.0
 offset_bottom = 64.0
-text = "Hold        to skip tutorial"
+text = "Hold      to skip tutorial"
 label_settings = SubResource("LabelSettings_r1aly")
 
 [node name="Sprite2D" type="Sprite2D" parent="TutorialUI/SkipProgressBar/MobileSwitcher/SkipLabel"]
@@ -789,7 +789,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("27_jlbm7")
 
 [node name="InputIcon" parent="TutorialUI/SkipProgressBar/MobileSwitcher/SkipLabel" instance=ExtResource("5_a4yck")]
-position = Vector2(117, 24)
+position = Vector2(109, 24)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("39_latlh")
 keyboard_icon = ExtResource("39_latlh")
@@ -813,7 +813,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("27_jlbm7")
 
 [node name="SkipClickableArea" type="TouchScreenButton" parent="TutorialUI/SkipProgressBar"]
-position = Vector2(275, 40)
+position = Vector2(280, 40)
 shape = SubResource("RectangleShape2D_o7vux")
 script = ExtResource("21_t2wqn")
 

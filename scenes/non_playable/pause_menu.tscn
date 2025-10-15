@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/ui/post_its/empty.png" id="1_je4cm"]
 [ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/ui/post_its/scribble.png" id="2_5upjr"]
 [ext_resource type="Script" uid="uid://c4hkhw4gnfr0b" path="res://scripts/smart_button.gd" id="3_tkxux"]
+[ext_resource type="Texture2D" uid="uid://1jfvfpl5a2oh" path="res://assets/newui/gamepaused.png" id="3_v1n4w"]
 [ext_resource type="PackedScene" uid="uid://dptpc6b54d3bn" path="res://scenes/non_playable/ui/button_audio_player.tscn" id="4_v1n4w"]
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="5_nkuvg"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/newui/texticons_fillonly.png" id="6_fer7r"]
@@ -34,9 +35,6 @@ func resetUI():
 func _on_back_pressed() -> void:
 	back_pressed.emit()
 "
-
-[sub_resource type="LabelSettings" id="LabelSettings_5upjr"]
-font_size = 90
 
 [sub_resource type="GDScript" id="GDScript_06788"]
 resource_name = "buttonlogic"
@@ -107,19 +105,10 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 1
 
-[node name="Label" type="Label" parent="UI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.062
-anchor_right = 1.0
-anchor_bottom = 0.138
-offset_top = 13.04
-offset_bottom = 54.96
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 115
-text = "Game paused"
-label_settings = SubResource("LabelSettings_5upjr")
-horizontal_alignment = 1
+[node name="Label" type="Sprite2D" parent="UI"]
+position = Vector2(964, 166)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3_v1n4w")
 
 [node name="DefaultView" type="Control" parent="UI"]
 layout_mode = 1

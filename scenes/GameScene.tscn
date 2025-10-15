@@ -214,6 +214,8 @@ visible = false
 
 [node name="YOUWIN" parent="WinScreen/UI" index="3"]
 visible = true
+position = Vector2(964, 301)
+scale = Vector2(0.8, 0.8)
 
 [node name="Fills" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" index="0"]
 region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
@@ -282,11 +284,6 @@ text = "New best heist!"
 label_settings = SubResource("LabelSettings_a5tct")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Check2" type="Sprite2D" parent="WinScreen"]
-position = Vector2(978, 468)
-scale = Vector2(0.532, 0.532)
-texture = ExtResource("8_6nmf6")
 
 [node name="PauseMenu" parent="." instance=ExtResource("13_1npfk")]
 
