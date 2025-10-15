@@ -122,7 +122,9 @@ func _on_pause_button_pressed() -> void:
 	toggle_pause()
 
 func vibrate(amplitude: float, duration: float) -> void:
-	if Input.get_connected_joypads().size() > 0:
+	if (Input.get_connected_joypads().size() > 0
+	and InputSrcDetector.controller_current):
 		Input.start_joy_vibration(0, 0, amplitude, duration)
-	elif Globals.is_mobile:
+	elif (Globals.is_mobile and
+	InputSrcDetector.current_src == InputSrcDetector.InputSrc.TOUCH):
 		Input.vibrate_handheld(duration * 1000, amplitude)

@@ -7,6 +7,8 @@ enum InputSrc {KEYBOARD, TOUCH, PLAYSTATION, XBOX, NINTENDO, GENERIC}
 var current_src: InputSrc
 var previous_src: InputSrc
 
+var controller_current: bool = false
+
 func _ready() -> void:
 	# Default setup for platforms before anything is pressed
 	if Globals.is_mobile:
@@ -19,6 +21,7 @@ func _input(event: InputEvent) -> void:
 	if (event is InputEventJoypadButton or
 	(event is InputEventJoypadMotion and abs(event.axis_value) >= 0.5)):
 		var joy_name: String = Input.get_joy_name(event.device).to_lower()
+		controller_current = true
 		
 		if joy_name.contains("playstation") or joy_name.contains("dualshock") or joy_name.contains("dualsense"):
 			current_src = InputSrc.PLAYSTATION
@@ -30,9 +33,11 @@ func _input(event: InputEvent) -> void:
 			current_src = InputSrc.GENERIC
 	
 	elif event is InputEventScreenTouch:
+		controller_current = false
 		current_src = InputSrc.TOUCH
 	
 	elif event is InputEventKey:
+		controller_current = false
 		current_src = InputSrc.KEYBOARD
 	
 	if current_src != previous_src:
