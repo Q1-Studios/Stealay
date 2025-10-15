@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=49 format=4 uid="uid://bg4w7m5cvf82n"]
 
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/sprites/new_ui/texticons_fillonly.png" id="1_7la6k"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://u155dxc1ieh" path="res://scenes/non_playable/ui/page_audio_player.tscn" id="2_8a8k8"]
 [ext_resource type="Theme" uid="uid://cb6idjbop8kw2" path="res://assets/sprites/check_button_better/BetterButton.tres" id="3_2wh52"]
 [ext_resource type="Script" uid="uid://dxfbi5lg82tc3" path="res://scripts/pageflip.gd" id="4_826wr"]
-[ext_resource type="Texture2D" uid="uid://cq3u3h02epvfg" path="res://assets/sprites/menu_placeholder.png" id="4_l72w3"]
 [ext_resource type="Material" uid="uid://cux2uimlb1q0u" path="res://assets/models/map_final/material/flippermaterial.tres" id="6_826wr"]
 [ext_resource type="Script" uid="uid://c4hkhw4gnfr0b" path="res://scripts/smart_button.gd" id="6_i7r3k"]
 [ext_resource type="Texture2D" uid="uid://cnjhuew5ssw74" path="res://assets/models/flippage/papertexture.jpg" id="7_ucygd"]
@@ -82,13 +81,13 @@ signal page_flip(direction: int)
 @export var triggered_by: Button
 
 func showMe() -> void:
-	page_flip.emit(3)
+	page_flip.emit()
 	show()
 	first_button.grab_focus()
 
 
 func HideMe() -> void:
-	page_flip.emit(2)
+	page_flip.emit()
 	hide()
 	triggered_by.grab_focus()
 	
@@ -106,34 +105,22 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:position")
-tracks/0/interp = 0
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node3D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -169,32 +156,20 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_ucygd"]
 resource_name = "flip_down"
 length = 1.076
-tracks/0/type = "value"
+tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/path = NodePath("MeshInstance3D")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 20)]
-}
-tracks/1/type = "position_3d"
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0, 20)
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D")
-tracks/1/interp = 2
+tracks/1/path = NodePath("MeshInstance3D:visible")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0, 20)
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 1.03333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
@@ -204,32 +179,20 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_l72w3"]
 resource_name = "flip_up"
 length = 1.1205
-tracks/0/type = "value"
+tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/path = NodePath("MeshInstance3D")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -20)]
-}
-tracks/1/type = "position_3d"
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0, -20)
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D")
-tracks/1/interp = 2
+tracks/1/path = NodePath("MeshInstance3D:visible")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 0, -20)
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 1.03333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
@@ -771,11 +734,6 @@ render_target_update_mode = 4
 
 [node name="Node3D" type="Node3D" parent="SubViewport/Node2D/PageFlip/SubViewport"]
 
-[node name="Sprite3D" type="Sprite3D" parent="SubViewport/Node2D/PageFlip/SubViewport/Node3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-visible = false
-texture = ExtResource("4_l72w3")
-
 [node name="Camera3D" type="Camera3D" parent="SubViewport/Node2D/PageFlip/SubViewport/Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.75, 0)
 environment = SubResource("Environment_ucygd")
@@ -800,7 +758,7 @@ visible = false
 [node name="umblattern" type="Node3D" parent="SubViewport/Node2D/PageFlip/SubViewport/Node3D/Node3D"]
 
 [node name="Plane" type="MeshInstance3D" parent="SubViewport/Node2D/PageFlip/SubViewport/Node3D/Node3D/umblattern"]
-transform = Transform3D(10, 0, 0, 0, 10, -4.37114e-07, 0, 4.37114e-07, 10, -6.78576e-07, 5.40001, 2.36041e-07)
+transform = Transform3D(10, 0, 0, 0, 10, -4.3711398e-07, 0, 4.3711398e-07, 10, -6.78576e-07, 5.40001, 2.36041e-07)
 mesh = SubResource("ArrayMesh_826wr")
 skeleton = NodePath("")
 "blend_shapes/Key 1" = 0.0
@@ -857,8 +815,8 @@ vertical_alignment = 1
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton" method="startGame"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/ButtonAudioPlayer" method="_on_click"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/UI/DefaultView/PlayButton/PageAudioPlayer" method="_on_page_turn"]
+[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/PageFlip" method="_on_page_flip"]
 [connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="Camera2D/Fader" method="_on_play_button_pressed"]
-[connection signal="pressed" from="SubViewport/Node2D/UI/DefaultView/PlayButton" to="SubViewport/Node2D/PageFlip" method="_on_page_flip" binds= [3]]
 [connection signal="focus_entered" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/FancyButton" method="_on_focus_entered"]
 [connection signal="focus_entered" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/ButtonAudioPlayer" method="_on_focus_entered"]
 [connection signal="focus_exited" from="SubViewport/Node2D/UI/DefaultView/OptionsButton" to="SubViewport/Node2D/UI/DefaultView/OptionsButton/FancyButton" method="_on_focus_exited"]
