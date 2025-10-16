@@ -37,8 +37,11 @@ func _input(event: InputEvent) -> void:
 		current_src = InputSrc.TOUCH
 	
 	elif event is InputEventKey:
-		controller_current = false
-		current_src = InputSrc.KEYBOARD
+		# Phone volume controls are also keys, these shouldn't trigger a switch
+		if (not Globals.is_mobile or event.as_text_keycode() not in
+		["VolumeUp", "VolumeDown", "VolumeMute", "Unknown"]):
+			controller_current = false
+			current_src = InputSrc.KEYBOARD
 	
 	if current_src != previous_src:
 		input_changed.emit(current_src)
