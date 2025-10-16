@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bg4w7m5cvf82n"]
+[gd_scene load_steps=36 format=3 uid="uid://bg4w7m5cvf82n"]
 
 [ext_resource type="Script" uid="uid://dqkwefcstr5y7" path="res://scripts/fancy_button.gd" id="1_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cduu48nagk7au" path="res://assets/sprites/new_ui/texticons_fillonly.png" id="1_7la6k"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" uid="uid://d2uk130pr7wgd" path="res://scripts/page_flip_creator.gd" id="25_os5dr"]
 [ext_resource type="Script" uid="uid://bpkvxlh2113p8" path="res://scripts/fader.gd" id="25_wrgne"]
 [ext_resource type="PackedScene" uid="uid://6wyw1dutsrrw" path="res://scenes/non_playable/page_flip.tscn" id="26_duata"]
+[ext_resource type="FontFile" uid="uid://crmwiei4eut0g" path="res://assets/fonts/bnmachine.ttf" id="30_lw0hr"]
 
 [sub_resource type="GDScript" id="GDScript_ow34m"]
 resource_name = "buttonlogic"
@@ -93,6 +94,7 @@ func HideMe() -> void:
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_hm0al"]
+font = ExtResource("30_lw0hr")
 font_size = 48
 
 [node name="SubViewportContainer" type="SubViewportContainer"]
