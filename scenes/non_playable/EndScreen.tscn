@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c60mal05vn06b"]
+[gd_scene format=3 uid="uid://c60mal05vn06b"]
 
 [ext_resource type="Script" uid="uid://dec3topr56m3y" path="res://scripts/end_screen.gd" id="1_d221y"]
 [ext_resource type="Texture2D" uid="uid://bo18g6fw85sei" path="res://assets/sprites/new_ui/msgbg.png" id="2_23v3d"]
@@ -15,7 +15,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_2bp25"]
 font_size = 70
 
-[node name="EndScreen" type="Control" node_paths=PackedStringArray("first_button")]
+[node name="EndScreen" type="Control" unique_id=1796127158 node_paths=PackedStringArray("first_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,22 +27,22 @@ size_flags_vertical = 3
 script = ExtResource("1_d221y")
 first_button = NodePath("UI/DefaultView/VBoxContainer/Continue")
 
-[node name="Empty" type="Sprite2D" parent="."]
+[node name="Empty" type="Sprite2D" parent="." unique_id=1109992073]
 position = Vector2(960.99994, 479.99997)
 scale = Vector2(0.755, 0.755)
 texture = ExtResource("2_23v3d")
 
-[node name="Check" type="Sprite2D" parent="."]
+[node name="Check" type="Sprite2D" parent="." unique_id=1954424875]
 position = Vector2(978, 525)
 scale = Vector2(0.532, 0.532)
 texture = ExtResource("2_d221y")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." unique_id=1502161170]
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="Label" type="Label" parent="UI"]
+[node name="Label" type="Label" parent="UI" unique_id=576909468]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -59,24 +59,24 @@ text = "Got Caught"
 label_settings = SubResource("LabelSettings_2bp25")
 horizontal_alignment = 1
 
-[node name="GOTCAUGHT" type="Sprite2D" parent="UI"]
+[node name="GOTCAUGHT" type="Sprite2D" parent="UI" unique_id=957167404]
 position = Vector2(974, 300.00003)
 scale = Vector2(0.43617904, 0.43617904)
 texture = ExtResource("4_rnbta")
 
-[node name="INCOMPLETE" type="Sprite2D" parent="UI"]
+[node name="INCOMPLETE" type="Sprite2D" parent="UI" unique_id=447375369]
 visible = false
 position = Vector2(973.0001, 297)
 scale = Vector2(0.43407017, 0.43407017)
 texture = ExtResource("9_30hli")
 
-[node name="YOUWIN" type="Sprite2D" parent="UI"]
+[node name="YOUWIN" type="Sprite2D" parent="UI" unique_id=614444324]
 visible = false
 position = Vector2(964, 449)
 scale = Vector2(1.051611, 1.051611)
 texture = ExtResource("6_0q1r5")
 
-[node name="DefaultView" type="Control" parent="UI"]
+[node name="DefaultView" type="Control" parent="UI" unique_id=1109924358]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,7 +84,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefaultView"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefaultView" unique_id=1467950311]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -99,7 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="Continue" type="Button" parent="UI/DefaultView/VBoxContainer"]
+[node name="Continue" type="Button" parent="UI/DefaultView/VBoxContainer" unique_id=714410638]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
@@ -107,25 +107,25 @@ text = "
 "
 script = ExtResource("4_lpr8p")
 
-[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/Continue"]
+[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/Continue" unique_id=87851002]
 position = Vector2(159, 32)
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("3_lpr8p")
 
-[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Continue/FancyButton"]
+[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Continue/FancyButton" unique_id=24115799]
 visible = false
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("4_pc0bh")
 region_enabled = true
 region_rect = Rect2(150.381, 92.281, 574.896, 336.375)
 
-[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Continue/FancyButton"]
+[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Continue/FancyButton" unique_id=317469170]
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("5_5vroo")
 region_enabled = true
 region_rect = Rect2(150.381, 92.2806, 574.896, 336.375)
 
-[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/Continue" instance=ExtResource("6_8knio")]
+[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/Continue" unique_id=1936086515 instance=ExtResource("6_8knio")]
 
 [connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/FancyButton" method="_on_focus_entered"]
 [connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/Continue" to="UI/DefaultView/VBoxContainer/Continue/ButtonAudioPlayer" method="_on_focus_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bk3bgljl4ox8h"]
+[gd_scene format=3 uid="uid://bk3bgljl4ox8h"]
 
 [ext_resource type="PackedScene" uid="uid://bgbiir2mrvq87" path="res://scenes/non_playable/mouse_hider.tscn" id="1_v23gc"]
 [ext_resource type="Script" uid="uid://d0klmhrydubhb" path="res://scripts/game_manager.gd" id="1_xy3my"]
@@ -81,12 +81,12 @@ func _process(delta: float) -> void:
 	self.rotate_z(0.01*delta)
 "
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node3D" unique_id=2126788813]
 
-[node name="MouseHider" parent="." instance=ExtResource("1_v23gc")]
+[node name="MouseHider" parent="." unique_id=1379188926 instance=ExtResource("1_v23gc")]
 hide_initially = true
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("player", "goal", "pause_menu", "caught", "incomplete", "win", "speedup_btn", "win_jingle", "lose_jingle", "music")]
+[node name="GameManager" type="Node" parent="." unique_id=882386104 node_paths=PackedStringArray("player", "goal", "pause_menu", "caught", "incomplete", "win", "speedup_btn", "win_jingle", "lose_jingle", "music")]
 script = ExtResource("1_xy3my")
 player = NodePath("../Player")
 goal = NodePath("../GoalObject")
@@ -99,17 +99,17 @@ win_jingle = NodePath("../WinJingle")
 lose_jingle = NodePath("../LoseJingle")
 music = NodePath("../MusicPlayer")
 
-[node name="WinJingle" type="AudioStreamPlayer" parent="."]
+[node name="WinJingle" type="AudioStreamPlayer" parent="." unique_id=838132131]
 stream = ExtResource("10_a5tct")
 volume_db = -5.0
 bus = &"Music"
 
-[node name="LoseJingle" type="AudioStreamPlayer" parent="."]
+[node name="LoseJingle" type="AudioStreamPlayer" parent="." unique_id=1173833948]
 stream = ExtResource("8_2gh7q")
 volume_db = -5.0
 bus = &"Music"
 
-[node name="Turncount" type="Label" parent="."]
+[node name="Turncount" type="Label" parent="." unique_id=446200761]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -125,30 +125,30 @@ label_settings = SubResource("LabelSettings_lk0vr")
 vertical_alignment = 1
 script = ExtResource("4_2gh7q")
 
-[node name="SpeedupIndicator" type="Control" parent="."]
+[node name="SpeedupIndicator" type="Control" parent="." unique_id=392577163]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_6nmf6")
 
-[node name="SpeedupBtn" type="TouchScreenButton" parent="SpeedupIndicator"]
+[node name="SpeedupBtn" type="TouchScreenButton" parent="SpeedupIndicator" unique_id=1964268747]
 position = Vector2(1843, 70)
 scale = Vector2(0.15, 0.15)
 shape = SubResource("RectangleShape2D_lpvha")
 script = ExtResource("6_v23gc")
 
-[node name="Sprite2D" type="Sprite2D" parent="SpeedupIndicator/SpeedupBtn"]
+[node name="Sprite2D" type="Sprite2D" parent="SpeedupIndicator/SpeedupBtn" unique_id=1486165914]
 position = Vector2(0, -180)
 texture = ExtResource("4_1npfk")
 script = ExtResource("23_v23gc")
 
-[node name="MobileSwitcher" type="Node2D" parent="SpeedupIndicator/SpeedupBtn/Sprite2D" node_paths=PackedStringArray("pc_variant", "mobile_variant")]
+[node name="MobileSwitcher" type="Node2D" parent="SpeedupIndicator/SpeedupBtn/Sprite2D" unique_id=1641009374 node_paths=PackedStringArray("pc_variant", "mobile_variant")]
 script = ExtResource("8_03l4r")
 pc_variant = NodePath("PCLabel")
 mobile_variant = NodePath("MobileLabel")
 
-[node name="PCLabel" type="Label" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher"]
+[node name="PCLabel" type="Label" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher" unique_id=799633678]
 offset_left = -293.333
 offset_top = 206.667
 offset_right = 296.667
@@ -160,7 +160,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="InputIcon" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher/PCLabel" instance=ExtResource("13_a8ip2")]
+[node name="InputIcon" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher/PCLabel" unique_id=1339191000 instance=ExtResource("13_a8ip2")]
 position = Vector2(346.667, 66.6667)
 scale = Vector2(0.32, 0.32)
 texture = ExtResource("7_3t3mo")
@@ -170,7 +170,7 @@ xbox_icon = ExtResource("10_lpvha")
 nintendo_icon = ExtResource("11_s4ole")
 generic_icon = ExtResource("12_x1py8")
 
-[node name="MobileLabel" type="Label" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher"]
+[node name="MobileLabel" type="Label" parent="SpeedupIndicator/SpeedupBtn/Sprite2D/MobileSwitcher" unique_id=23429341]
 visible = false
 offset_left = -293.333
 offset_top = 206.667
@@ -182,10 +182,10 @@ label_settings = SubResource("LabelSettings_6nmf6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CaughtScreen" parent="." instance=ExtResource("6_6nmf6")]
+[node name="CaughtScreen" parent="." unique_id=976942432 instance=ExtResource("6_6nmf6")]
 visible = false
 
-[node name="IncompleteScreen" parent="." instance=ExtResource("6_6nmf6")]
+[node name="IncompleteScreen" parent="." unique_id=1413190964 instance=ExtResource("6_6nmf6")]
 visible = false
 
 [node name="Label" parent="IncompleteScreen/UI" index="0"]
@@ -200,7 +200,7 @@ visible = false
 [node name="INCOMPLETE" parent="IncompleteScreen/UI" index="2"]
 visible = true
 
-[node name="WinScreen" parent="." instance=ExtResource("6_6nmf6")]
+[node name="WinScreen" parent="." unique_id=1227982894 instance=ExtResource("6_6nmf6")]
 visible = false
 
 [node name="Check" parent="WinScreen" index="1"]
@@ -223,17 +223,17 @@ region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
 [node name="Lines" parent="WinScreen/UI/DefaultView/VBoxContainer/Continue/FancyButton" index="1"]
 region_rect = Rect2(918.539, 921.904, 618.93, 242.19)
 
-[node name="Score Component" type="Node2D" parent="WinScreen"]
+[node name="Score Component" type="Node2D" parent="WinScreen" unique_id=1549184702]
 z_index = -1
 script = ExtResource("7_icif4")
 
-[node name="PaperTexture" type="Sprite2D" parent="WinScreen/Score Component"]
+[node name="PaperTexture" type="Sprite2D" parent="WinScreen/Score Component" unique_id=1353735513]
 position = Vector2(1628, 506)
 texture = ExtResource("8_iaegw")
 region_enabled = true
 region_rect = Rect2(2078.51, 3047.55, 401.487, 459.449)
 
-[node name="MovesTakenTitle" type="Label" parent="WinScreen/Score Component"]
+[node name="MovesTakenTitle" type="Label" parent="WinScreen/Score Component" unique_id=269429867]
 offset_left = 1550.0
 offset_top = 355.0
 offset_right = 1735.0
@@ -243,7 +243,7 @@ label_settings = SubResource("LabelSettings_iaegw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="WinScreen/Score Component/MovesTakenTitle"]
+[node name="Label" type="Label" parent="WinScreen/Score Component/MovesTakenTitle" unique_id=2020749696]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 39.0
@@ -254,7 +254,7 @@ label_settings = SubResource("LabelSettings_2gh7q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PreviousBestTitle" type="Label" parent="WinScreen/Score Component"]
+[node name="PreviousBestTitle" type="Label" parent="WinScreen/Score Component" unique_id=1352516857]
 offset_left = 1550.0
 offset_top = 480.0
 offset_right = 1758.0
@@ -264,7 +264,7 @@ label_settings = SubResource("LabelSettings_iaegw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="WinScreen/Score Component/PreviousBestTitle"]
+[node name="Label" type="Label" parent="WinScreen/Score Component/PreviousBestTitle" unique_id=1417131684]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 39.0
@@ -275,7 +275,7 @@ label_settings = SubResource("LabelSettings_2gh7q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NewBestHeist" type="Label" parent="WinScreen/Score Component"]
+[node name="NewBestHeist" type="Label" parent="WinScreen/Score Component" unique_id=134944898]
 offset_left = 1456.0
 offset_top = 610.0
 offset_right = 1852.0
@@ -285,86 +285,86 @@ label_settings = SubResource("LabelSettings_a5tct")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PauseMenu" parent="." instance=ExtResource("13_1npfk")]
+[node name="PauseMenu" parent="." unique_id=739260814 instance=ExtResource("13_1npfk")]
 
-[node name="PauseButton" type="TouchScreenButton" parent="."]
+[node name="PauseButton" type="TouchScreenButton" parent="." unique_id=1937497744]
 process_mode = 3
 position = Vector2(60, 60)
 shape = SubResource("RectangleShape2D_n7dut")
 script = ExtResource("21_s4ole")
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseButton"]
+[node name="Sprite2D" type="Sprite2D" parent="PauseButton" unique_id=1255166604]
 position = Vector2(3.8147e-06, 3.8147e-06)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_lpvha")
 script = ExtResource("23_v23gc")
 
-[node name="Map" parent="." instance=ExtResource("3_cxv17")]
+[node name="Map" parent="." unique_id=1502004825 instance=ExtResource("3_cxv17")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
 
-[node name="Player" parent="." instance=ExtResource("5_7s5hy")]
+[node name="Player" parent="." unique_id=1135707456 instance=ExtResource("5_7s5hy")]
 id = 10
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=152652798]
 transform = Transform3D(0.707107, -0.612373, 0.353553, 0, 0.5, 0.866026, -0.707107, -0.612373, 0.353553, 2.915, 7.2, 3)
 environment = SubResource("Environment_18ig4")
 projection = 1
 size = 7.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player/Camera3D"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player/Camera3D" unique_id=2013891195]
 transform = Transform3D(0.67718, -0.391692, -0.6229, 0.670888, -0.0190249, 0.741314, -0.302217, -0.9199, 0.249898, 0, 0, 0)
 
-[node name="Sprite3D" type="Sprite3D" parent="Player/Camera3D"]
+[node name="Sprite3D" type="Sprite3D" parent="Player/Camera3D" unique_id=23333885]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 7.15256e-07, 1.19209e-07, -49.74)
 modulate = Color(0.554693, 0.617583, 0.660369, 1)
 texture = ExtResource("11_21xg8")
 script = SubResource("GDScript_21xg8")
 
-[node name="MovementManager" type="Node" parent="."]
+[node name="MovementManager" type="Node" parent="." unique_id=217303219]
 
-[node name="GuardMovementController" type="Node" parent="MovementManager" node_paths=PackedStringArray("guard_list")]
+[node name="GuardMovementController" type="Node" parent="MovementManager" unique_id=1061973245 node_paths=PackedStringArray("guard_list")]
 script = ExtResource("6_xs4ih")
 guard_list = [NodePath("../../Guards/mainCircleGuard"), NodePath("../../Guards/startingGumba"), NodePath("../../Guards/redfloorGuard"), NodePath("../../Guards/randompillarroomguard"), NodePath("../../Guards/theFinalBoss")]
 
-[node name="PlayerMovementController" type="Node" parent="MovementManager" node_paths=PackedStringArray("player")]
+[node name="PlayerMovementController" type="Node" parent="MovementManager" unique_id=2101490590 node_paths=PackedStringArray("player")]
 script = ExtResource("7_6ytau")
 player = NodePath("../../Player")
 
-[node name="Guards" type="Node3D" parent="."]
+[node name="Guards" type="Node3D" parent="." unique_id=128702263]
 
-[node name="mainCircleGuard" parent="Guards" instance=ExtResource("4_18ig4")]
+[node name="mainCircleGuard" parent="Guards" unique_id=1460081533 instance=ExtResource("4_18ig4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -7)
 input_sequence = Array[int]([1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 1, 3, 1, 1, 3, 1])
 id = 1
 
-[node name="redfloorGuard" parent="Guards" instance=ExtResource("4_18ig4")]
+[node name="redfloorGuard" parent="Guards" unique_id=2123588626 instance=ExtResource("4_18ig4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -6)
 input_sequence = Array[int]([3, 3, 1, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3])
 id = 2
 
-[node name="randompillarroomguard" parent="Guards" instance=ExtResource("4_18ig4")]
+[node name="randompillarroomguard" parent="Guards" unique_id=713705723 instance=ExtResource("4_18ig4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -21)
 input_sequence = Array[int]([1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 3, 3, 3, 3, 1])
 id = 3
 
-[node name="theFinalBoss" parent="Guards" instance=ExtResource("4_18ig4")]
+[node name="theFinalBoss" parent="Guards" unique_id=1527598238 instance=ExtResource("4_18ig4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -23)
 input_sequence = Array[int]([3, 3, 3, 1, 3, 3, 0, 3, 3, 3, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 3, 3, 3])
 id = 4
 
-[node name="startingGumba" parent="Guards" instance=ExtResource("4_18ig4")]
+[node name="startingGumba" parent="Guards" unique_id=1191994387 instance=ExtResource("4_18ig4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
 input_sequence = Array[int]([2, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 3, 3, 3, 2, 0, 0, 2, 2, 1, 1, 3, 3, 0, 0, 0, 0, 3, 3, 3, 0, 3, 3, 3, 1, 1, 3, 3, 3, 1, 1, 1, 2, 1, 1, 1, 3, 1, 1, 1, 1, 2, 2])
 id = 5
 
-[node name="GoalObject" parent="." instance=ExtResource("8_vijgj")]
+[node name="GoalObject" parent="." unique_id=1749720500 instance=ExtResource("8_vijgj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -22)
 
-[node name="Walls" type="Node3D" parent="."]
+[node name="Walls" type="Node3D" parent="." unique_id=1435288129]
 visible = false
 script = ExtResource("9_pynjx")
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=154132352]
 stream = ExtResource("11_j40tv")
 volume_db = -7.0
 autoplay = true

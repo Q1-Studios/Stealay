@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dptpc6b54d3bn"]
+[gd_scene format=3 uid="uid://dptpc6b54d3bn"]
 
 [ext_resource type="Script" uid="uid://bvcbl54x7b7m5" path="res://scripts/button_audio_player.gd" id="1_1gmnu"]
 [ext_resource type="AudioStream" uid="uid://8xspqrbpbx2x" path="res://assets/sounds/click/click1.wav" id="2_qbguq"]
@@ -34,13 +34,13 @@ stream_5/stream = ExtResource("12_tbijr")
 stream_6/stream = ExtResource("13_x35vd")
 stream_7/stream = ExtResource("14_b22gq")
 
-[node name="ButtonAudioPlayer" type="Node2D"]
+[node name="ButtonAudioPlayer" type="Node2D" unique_id=1514882218]
 script = ExtResource("1_1gmnu")
 
-[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=1172622142]
 stream = SubResource("AudioStreamRandomizer_8vx4p")
 bus = &"SFX"
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=232847672]
 stream = SubResource("AudioStreamRandomizer_hubol")
 bus = &"SFX"

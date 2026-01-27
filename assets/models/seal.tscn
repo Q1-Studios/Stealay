@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://caljcteyi14oj"]
+[gd_scene format=3 uid="uid://caljcteyi14oj"]
 
 [ext_resource type="PackedScene" uid="uid://r2s4cftdnt3x" path="res://assets/models/seal.glb" id="1_fkfob"]
 [ext_resource type="Texture2D" uid="uid://ccpv2f6sie5gt" path="res://assets/models/sealtext.png" id="2_nu4eq"]
@@ -6,7 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83idt"]
 albedo_texture = ExtResource("2_nu4eq")
 
-[node name="seal" instance=ExtResource("1_fkfob")]
+[node name="seal" unique_id=1691678146 instance=ExtResource("1_fkfob")]
 
-[node name="seal_lowpoly" parent="." index="0"]
+[node name="seal_lowpoly" parent="." index="0" unique_id=300613505]
 material_override = SubResource("StandardMaterial3D_83idt")

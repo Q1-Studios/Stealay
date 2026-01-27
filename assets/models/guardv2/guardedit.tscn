@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx78adoqi1uv"]
+[gd_scene format=3 uid="uid://dx78adoqi1uv"]
 
 [ext_resource type="PackedScene" uid="uid://nr2r0k5cvjob" path="res://assets/models/guardv2/guardedit.gltf" id="1_kdt2n"]
 [ext_resource type="Material" uid="uid://kehluajayyfs" path="res://assets/models/guardv2/guardmat.tres" id="2_8m06n"]
 
-[node name="guardedit" instance=ExtResource("1_kdt2n")]
+[node name="guardedit" unique_id=53684645 instance=ExtResource("1_kdt2n")]
 
 [node name="Cube" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_8m06n")

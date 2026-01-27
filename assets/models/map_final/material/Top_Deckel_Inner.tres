@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://blp13orisupii"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://blp13orisupii"]
 
 [ext_resource type="Texture2D" uid="uid://c0qfleglwlwvf" path="res://assets/models/map_final/OUTERCOVERFINAL.png" id="1_7cu2k"]
 

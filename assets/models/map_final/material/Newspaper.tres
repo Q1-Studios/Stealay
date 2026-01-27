@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dovtemq0j6ykl"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dovtemq0j6ykl"]
 
 [ext_resource type="Texture2D" uid="uid://cj5sdany1v884" path="res://assets/models/map_final/newspaper.png" id="1_3pxk6"]
 

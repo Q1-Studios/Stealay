@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dj8ocoeajpxud"]
+[gd_scene format=3 uid="uid://dj8ocoeajpxud"]
 
 [ext_resource type="Texture2D" uid="uid://cl4lwnow7hmmq" path="res://assets/sprites/ui/post_its/empty.png" id="1_je4cm"]
 [ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/sprites/ui/post_its/scribble.png" id="2_5upjr"]
@@ -75,7 +75,7 @@ func HideMe() -> void:
 	triggered_by.grab_focus()
 "
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("first_button")]
+[node name="PauseMenu" type="Control" unique_id=937804120 node_paths=PackedStringArray("first_button")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -89,28 +89,28 @@ mouse_filter = 1
 script = SubResource("GDScript_b31oo")
 first_button = NodePath("UI/DefaultView/VBoxContainer/OptionsButton")
 
-[node name="Empty" type="Sprite2D" parent="."]
+[node name="Empty" type="Sprite2D" parent="." unique_id=1220892590]
 position = Vector2(946, 448)
 scale = Vector2(2.208, 2.208)
 texture = ExtResource("1_je4cm")
 
-[node name="Scribble" type="Sprite2D" parent="."]
+[node name="Scribble" type="Sprite2D" parent="." unique_id=246554346]
 position = Vector2(963.5, 450.5)
 scale = Vector2(1.558, 1.638)
 texture = ExtResource("2_5upjr")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." unique_id=1826897945]
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 1
 
-[node name="Label" type="Sprite2D" parent="UI"]
+[node name="Label" type="Sprite2D" parent="UI" unique_id=1543832667]
 position = Vector2(964, 166)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("3_v1n4w")
 
-[node name="DefaultView" type="Control" parent="UI"]
+[node name="DefaultView" type="Control" parent="UI" unique_id=2001183532]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,7 +120,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = SubResource("GDScript_06788")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefaultView"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DefaultView" unique_id=1613958442]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -135,7 +135,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 
-[node name="OptionsButton" type="Button" parent="UI/DefaultView/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="UI/DefaultView/VBoxContainer" unique_id=392618367]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../MainMenu")
@@ -144,27 +144,27 @@ text = "
 "
 script = ExtResource("3_tkxux")
 
-[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/OptionsButton" instance=ExtResource("4_v1n4w")]
+[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/OptionsButton" unique_id=1829326712 instance=ExtResource("4_v1n4w")]
 
-[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/OptionsButton"]
+[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/OptionsButton" unique_id=1467755538]
 position = Vector2(159, 32)
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("5_nkuvg")
 
-[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton"]
+[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton" unique_id=73480857]
 visible = false
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("6_fer7r")
 region_enabled = true
 region_rect = Rect2(922.893, 83.4774, 1094.75, 324.143)
 
-[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton"]
+[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton" unique_id=1277218213]
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(922.893, 83.477, 1094.75, 324.143)
 
-[node name="MainMenu" type="Button" parent="UI/DefaultView/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="UI/DefaultView/VBoxContainer" unique_id=1191809038]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
@@ -174,27 +174,27 @@ text = "
 "
 script = SubResource("GDScript_255cg")
 
-[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/MainMenu"]
+[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/MainMenu" unique_id=880258010]
 position = Vector2(159, 32)
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("5_nkuvg")
 
-[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/MainMenu/FancyButton"]
+[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/MainMenu/FancyButton" unique_id=1278299086]
 visible = false
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("6_fer7r")
 region_enabled = true
 region_rect = Rect2(174.548, 424.49, 523.465, 259.374)
 
-[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/MainMenu/FancyButton"]
+[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/MainMenu/FancyButton" unique_id=1612848165]
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(174.548, 424.49, 523.465, 259.374)
 
-[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/MainMenu" instance=ExtResource("4_v1n4w")]
+[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/MainMenu" unique_id=116054042 instance=ExtResource("4_v1n4w")]
 
-[node name="Back" type="Button" parent="UI/DefaultView/VBoxContainer"]
+[node name="Back" type="Button" parent="UI/DefaultView/VBoxContainer" unique_id=1107269062]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../MainMenu")
@@ -203,27 +203,27 @@ text = "
 "
 script = ExtResource("3_tkxux")
 
-[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/Back"]
+[node name="FancyButton" type="Node2D" parent="UI/DefaultView/VBoxContainer/Back" unique_id=1211262864]
 position = Vector2(159, 32)
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("5_nkuvg")
 
-[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Back/FancyButton"]
+[node name="Fills" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Back/FancyButton" unique_id=375884977]
 visible = false
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("6_fer7r")
 region_enabled = true
 region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
 
-[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Back/FancyButton"]
+[node name="Lines" type="Sprite2D" parent="UI/DefaultView/VBoxContainer/Back/FancyButton" unique_id=1603602329]
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
 
-[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/Back" instance=ExtResource("4_v1n4w")]
+[node name="ButtonAudioPlayer" parent="UI/DefaultView/VBoxContainer/Back" unique_id=1782511358 instance=ExtResource("4_v1n4w")]
 
-[node name="OptionsView" type="Control" parent="UI" node_paths=PackedStringArray("first_button", "triggered_by")]
+[node name="OptionsView" type="Control" parent="UI" unique_id=1303002575 node_paths=PackedStringArray("first_button", "triggered_by")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -236,25 +236,25 @@ script = SubResource("GDScript_7doss")
 first_button = NodePath("VBoxContainer/MuteSoundCheckButton")
 triggered_by = NodePath("../DefaultView/VBoxContainer/OptionsButton")
 
-[node name="FancyButton" type="Node2D" parent="UI/OptionsView"]
+[node name="FancyButton" type="Node2D" parent="UI/OptionsView" unique_id=504079654]
 position = Vector2(1010, 279)
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("5_nkuvg")
 
-[node name="Fills" type="Sprite2D" parent="UI/OptionsView/FancyButton"]
+[node name="Fills" type="Sprite2D" parent="UI/OptionsView/FancyButton" unique_id=1958383215]
 visible = false
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("6_fer7r")
 region_enabled = true
 region_rect = Rect2(922.893, 83.4774, 1094.75, 324.143)
 
-[node name="Lines" type="Sprite2D" parent="UI/OptionsView/FancyButton"]
+[node name="Lines" type="Sprite2D" parent="UI/OptionsView/FancyButton" unique_id=316451675]
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(922.893, 83.477, 1094.75, 324.143)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/OptionsView"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/OptionsView" unique_id=597465214]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -269,7 +269,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="MuteSoundCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+[node name="MuteSoundCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer" unique_id=1797111552]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../MuteMusicAudioCheckButton")
 theme = ExtResource("8_wjmoj")
@@ -282,27 +282,27 @@ vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("9_qs6f5")
 
-[node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton"]
+[node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" unique_id=1413067412]
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("5_nkuvg")
 
-[node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/FancyButton"]
+[node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/FancyButton" unique_id=764799125]
 visible = false
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("6_fer7r")
 region_enabled = true
 region_rect = Rect2(125.917, 1541.75, 1504.51, 287.448)
 
-[node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/FancyButton"]
+[node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton/FancyButton" unique_id=1796692820]
 position = Vector2(550, 170)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(125.917, 1541.75, 1504.51, 287.448)
 
-[node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" instance=ExtResource("4_v1n4w")]
+[node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/MuteSoundCheckButton" unique_id=1371712125 instance=ExtResource("4_v1n4w")]
 
-[node name="MuteMusicAudioCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer"]
+[node name="MuteMusicAudioCheckButton" type="CheckButton" parent="UI/OptionsView/VBoxContainer" unique_id=871744250]
 layout_mode = 2
 focus_neighbor_top = NodePath("../MuteSoundCheckButton")
 focus_neighbor_bottom = NodePath("../BackButton")
@@ -316,27 +316,27 @@ vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("10_qbbyt")
 
-[node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton"]
+[node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" unique_id=489104198]
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("5_nkuvg")
 
-[node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/FancyButton"]
+[node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/FancyButton" unique_id=572731372]
 visible = false
 position = Vector2(-212.01, 8.99738)
 texture = ExtResource("6_fer7r")
 region_enabled = true
 region_rect = Rect2(95.3379, 1823.08, 1498.4, 244.636)
 
-[node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/FancyButton"]
+[node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton/FancyButton" unique_id=229216395]
 position = Vector2(550, 170)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(95.3379, 1823.08, 1498.4, 244.636)
 
-[node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" instance=ExtResource("4_v1n4w")]
+[node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/MuteMusicAudioCheckButton" unique_id=1223726735 instance=ExtResource("4_v1n4w")]
 
-[node name="BackButton" type="Button" parent="UI/OptionsView/VBoxContainer"]
+[node name="BackButton" type="Button" parent="UI/OptionsView/VBoxContainer" unique_id=1525983281]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../MuteMusicAudioCheckButton")
@@ -345,25 +345,25 @@ text = "
 "
 script = ExtResource("3_tkxux")
 
-[node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/BackButton"]
+[node name="FancyButton" type="Node2D" parent="UI/OptionsView/VBoxContainer/BackButton" unique_id=449960171]
 position = Vector2(173.5, 25)
 scale = Vector2(0.249995, 0.249995)
 script = ExtResource("5_nkuvg")
 
-[node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/BackButton/FancyButton"]
+[node name="Fills" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/BackButton/FancyButton" unique_id=1788778814]
 visible = false
 position = Vector2(50, 0)
 texture = ExtResource("6_fer7r")
 region_enabled = true
 region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
 
-[node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/BackButton/FancyButton"]
+[node name="Lines" type="Sprite2D" parent="UI/OptionsView/VBoxContainer/BackButton/FancyButton" unique_id=1198533442]
 position = Vector2(50, 0)
 texture = ExtResource("7_w8mih")
 region_enabled = true
 region_rect = Rect2(908.754, 887.349, 654.403, 281.332)
 
-[node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/BackButton" instance=ExtResource("4_v1n4w")]
+[node name="ButtonAudioPlayer" parent="UI/OptionsView/VBoxContainer/BackButton" unique_id=195917443 instance=ExtResource("4_v1n4w")]
 
 [connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/ButtonAudioPlayer" method="_on_focus_entered"]
 [connection signal="focus_entered" from="UI/DefaultView/VBoxContainer/OptionsButton" to="UI/DefaultView/VBoxContainer/OptionsButton/FancyButton" method="_on_focus_entered"]

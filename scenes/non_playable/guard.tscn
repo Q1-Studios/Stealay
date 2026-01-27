@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cb36gbar6tdv"]
+[gd_scene format=4 uid="uid://cb36gbar6tdv"]
 
 [ext_resource type="PackedScene" uid="uid://dnj8dlx4y3qhe" path="res://assets/models/placeholderguard/figure.tscn" id="1_a4vwu"]
 [ext_resource type="Script" uid="uid://c16qi3cfubcaj" path="res://scripts/guardVisuals.gd" id="1_m4837"]
@@ -550,7 +550,7 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_m4837"]
 
-[node name="Guard" type="Node3D" node_paths=PackedStringArray("AnimPlayer", "HopAnimator", "RotationAnimator", "token", "alert")]
+[node name="Guard" type="Node3D" unique_id=743033026 node_paths=PackedStringArray("AnimPlayer", "HopAnimator", "RotationAnimator", "token", "alert")]
 script = ExtResource("1_m4837")
 AnimPlayer = NodePath("RotationAnimator/AnimationPlayer")
 HopAnimator = NodePath("RotationAnimator/HopAnimator")
@@ -558,382 +558,369 @@ RotationAnimator = NodePath("RotationAnimator")
 token = NodePath("Sprite3D")
 alert = NodePath("Alert")
 
-[node name="RotationAnimator" type="Node3D" parent="."]
+[node name="RotationAnimator" type="Node3D" parent="." unique_id=1921993110]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RotationAnimator"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RotationAnimator" unique_id=1672895105]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_d2mtx")
-}
+libraries/ = SubResource("AnimationLibrary_d2mtx")
 speed_scale = 1.5
 
-[node name="HopAnimator" type="Node3D" parent="RotationAnimator"]
+[node name="HopAnimator" type="Node3D" parent="RotationAnimator" unique_id=291768043]
 
-[node name="Visual" type="Node3D" parent="RotationAnimator/HopAnimator"]
+[node name="Visual" type="Node3D" parent="RotationAnimator/HopAnimator" unique_id=1183498499]
 transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, -0.362254, 0)
 
-[node name="figur2" parent="RotationAnimator/HopAnimator/Visual" instance=ExtResource("1_a4vwu")]
+[node name="figur2" parent="RotationAnimator/HopAnimator/Visual" unique_id=255348790 instance=ExtResource("1_a4vwu")]
 visible = false
 
-[node name="guardedit" parent="RotationAnimator/HopAnimator/Visual" instance=ExtResource("3_lngpj")]
+[node name="guardedit" parent="RotationAnimator/HopAnimator/Visual" unique_id=275764952 instance=ExtResource("3_lngpj")]
 transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, 0, -0.151193, 0)
 visible = false
 
-[node name="Node3D" type="Node3D" parent="RotationAnimator/HopAnimator/Visual"]
+[node name="Node3D" type="Node3D" parent="RotationAnimator/HopAnimator/Visual" unique_id=310796173]
 transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, 0, -0.14, 0)
 
-[node name="guardedit" type="Node3D" parent="RotationAnimator/HopAnimator/Visual/Node3D"]
+[node name="guardedit" type="Node3D" parent="RotationAnimator/HopAnimator/Visual/Node3D" unique_id=1282952407]
 
-[node name="Cube" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit"]
+[node name="Cube" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit" unique_id=1027195883]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.946674, 0)
 material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_iox0f")
-skeleton = NodePath("")
 
-[node name="Empty" type="Node3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube"]
+[node name="Empty" type="Node3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube" unique_id=337987272]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.31261, -1.03086)
 
-[node name="Cube_004" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty"]
+[node name="Cube_004" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty" unique_id=1159038695]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.933894, 0, -0.911678, 1.03086)
 material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_qg4u6")
-skeleton = NodePath("")
 
-[node name="Sphere" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty/Cube_004"]
+[node name="Sphere" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty/Cube_004" unique_id=1229159504]
 transform = Transform3D(0.337178, 0, 0, 0, 0.337178, 0, 0, 0, 0.361045, 0, -1.20393, -1.37247)
 material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_jwcvc")
-skeleton = NodePath("")
 
-[node name="Empty_001" type="Node3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube"]
+[node name="Empty_001" type="Node3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube" unique_id=1206882203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.31261, 1.03086)
 
-[node name="Cube_003" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_001"]
+[node name="Cube_003" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_001" unique_id=130072799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.933894, 0, -0.911678, -1.03086)
 material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_hl058")
-skeleton = NodePath("")
 
-[node name="Sphere_001" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_001/Cube_003"]
+[node name="Sphere_001" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_001/Cube_003" unique_id=1136655834]
 transform = Transform3D(-0.337178, 0, -1.17919e-07, 0, 0.337178, 0, 1.10124e-07, 0, -0.361045, 0, -1.20393, 1.3902)
 material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_kfx6o")
-skeleton = NodePath("")
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_001/Cube_003/Sphere_001"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_001/Cube_003/Sphere_001" unique_id=1625354016]
 transform = Transform3D(0, -1.84888, 9.60473e-08, -0.589534, 4.90751e-14, 9.60473e-08, -9.60473e-08, -3.01221e-07, -0.589534, -0.28382, -0.0507839, -0.00525198)
 material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_i1f5c")
-skeleton = NodePath("")
 
-[node name="Empty_002" type="Node3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube"]
+[node name="Empty_002" type="Node3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube" unique_id=1497719106]
 transform = Transform3D(4.96023, 0, 0, 0, 4.96023, 0, 0, 0, 4.96023, 0.241021, 4.40768, -0.00885962)
 
-[node name="Cube_002" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_002"]
+[node name="Cube_002" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_002" unique_id=1036553038]
 transform = Transform3D(0, 0, 0.137805, 0, 0.0396004, 0, -0.137805, 0, 0, -0.0431828, 0.323689, 0)
 material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_hregb")
-skeleton = NodePath("")
 
-[node name="Cube_001" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_002/Cube_002"]
+[node name="Cube_001" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_002/Cube_002" unique_id=1068718255]
 transform = Transform3D(0.6262, 0, 0, 0, 0.504498, 0, 0, 0, 0.152123, 0, -3.35131, 1.32314)
 material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_3ueym")
-skeleton = NodePath("")
 
-[node name="Cylinder" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_002/Cube_002"]
+[node name="Cylinder" type="MeshInstance3D" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit/Cube/Empty_002/Cube_002" unique_id=1536213409]
 transform = Transform3D(0, 0, -1.46296, 0, 5.09094, 0, 1.46296, 0, 0, -0.0129613, -25.7936, -0.0392424)
 material_override = ExtResource("4_lngpj")
 mesh = SubResource("ArrayMesh_x5x8n")
-skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit"]
-libraries = {
-&"": SubResource("AnimationLibrary_hiyts")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RotationAnimator/HopAnimator/Visual/Node3D/guardedit" unique_id=1251917401]
+libraries/ = SubResource("AnimationLibrary_hiyts")
 
-[node name="Node3D" type="Node3D" parent="RotationAnimator" node_paths=PackedStringArray("spotted_sound")]
+[node name="Node3D" type="Node3D" parent="RotationAnimator" unique_id=691427536 node_paths=PackedStringArray("spotted_sound")]
 script = ExtResource("3_k7l5m")
 spotted_sound = NodePath("../../SpottedSound")
 cone_color = Color(0.976471, 0.933333, 0.839216, 0.505882)
 
-[node name="RayCast3D" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1276810420 groups=["side_ray_cast_shit"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, 0, -0.25)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D2" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D2" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1297857478 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871558, 0, 0, 0)
 target_position = Vector3(0, 0, -0.25)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D3" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D3" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1912850124 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 0, 0, 0)
 target_position = Vector3(0, 0, -0.25)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D4" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D4" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=649382596 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 0, 0, 0)
 target_position = Vector3(0, 0, -0.26)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D5" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D5" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=446747274 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 0, 0, 0)
 target_position = Vector3(0, 0, -0.34)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D6" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D6" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=129457183 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, 0, 0, 0)
 target_position = Vector3(0, 0, -0.42)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D7" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D7" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1018671451 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
 target_position = Vector3(0, 0, -0.5)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D8" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D8" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=429476915 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 0, 0, 0)
 target_position = Vector3(0, 0, -0.57)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D9" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D9" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1191504784 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0, 0, 0)
 target_position = Vector3(0, 0, -0.64)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D10" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D10" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1502831282 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 target_position = Vector3(0, 0, -0.71)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D11" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D11" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=397707376 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 0, 0, 0)
 target_position = Vector3(0, 0, -0.77)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D12" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D12" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=2136113949 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, 0.819152, 0, 0, 0)
 target_position = Vector3(0, 0, -0.82)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D13" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D13" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=724449611 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
 target_position = Vector3(0, 0, -0.87)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D14" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D14" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1758970958 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 0, 0, 0)
 target_position = Vector3(0, 0, -0.91)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D15" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D15" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1734444077 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0, 0, 0)
 target_position = Vector3(0, 0, -0.94)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D16" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D16" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1469393261 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 0)
 target_position = Vector3(0, 0, -0.97)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D17" type="RayCast3D" parent="RotationAnimator/Node3D"]
+[node name="RayCast3D17" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=694378900]
 transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0, 0, 0)
 target_position = Vector3(0, 0, -0.98)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D18" type="RayCast3D" parent="RotationAnimator/Node3D"]
+[node name="RayCast3D18" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1335819681]
 transform = Transform3D(0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 0, 0, 0)
 target_position = Vector3(0, 0, -0.99)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="middle" type="RayCast3D" parent="RotationAnimator/Node3D"]
+[node name="middle" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1746894304]
 target_position = Vector3(0, 0, -1)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D36" type="RayCast3D" parent="RotationAnimator/Node3D"]
+[node name="RayCast3D36" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=232036634]
 transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0, 0)
 target_position = Vector3(0, 0, -0.99)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D35" type="RayCast3D" parent="RotationAnimator/Node3D"]
+[node name="RayCast3D35" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=260980191]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, 0)
 target_position = Vector3(0, 0, -0.98)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D34" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D34" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1287748084 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, 0)
 target_position = Vector3(0, 0, -0.97)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D33" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D33" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1431042417 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 0, 0, 0)
 target_position = Vector3(0, 0, -0.94)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D32" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D32" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=315796898 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 0, 0, 0)
 target_position = Vector3(0, 0, -0.91)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D31" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D31" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1909047233 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)
 target_position = Vector3(0, 0, -0.87)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D30" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D30" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=816756662 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, 0, 0, 0)
 target_position = Vector3(0, 0, -0.82)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D29" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D29" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1736437813 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 0, 0, 0)
 target_position = Vector3(0, 0, -0.77)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D28" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D28" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=637984888 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 target_position = Vector3(0, 0, -0.71)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D27" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D27" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1605844477 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 0, 0, 0)
 target_position = Vector3(0, 0, -0.64)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D26" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D26" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=927125213 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, 0, 0, 0)
 target_position = Vector3(0, 0, -0.57)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D25" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D25" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=693289565 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
 target_position = Vector3(0, 0, -0.5)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D24" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D24" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1081534823 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 0, 0, 0)
 target_position = Vector3(0, 0, -0.42)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D23" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D23" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=696487813 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, 0, 0, 0)
 target_position = Vector3(0, 0, -0.34)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D22" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D22" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1307157214 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 0, 0, 0)
 target_position = Vector3(0, 0, -0.26)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D21" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D21" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=832264937 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 0, 0, 0)
 target_position = Vector3(0, 0, -0.25)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D20" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D20" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=1756107106 groups=["side_ray_cast_shit"]]
 transform = Transform3D(0.0871558, 0, -0.996195, 0, 1, 0, 0.996195, 0, 0.0871558, 0, 0, 0)
 target_position = Vector3(0, 0, -0.25)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="RayCast3D19" type="RayCast3D" parent="RotationAnimator/Node3D" groups=["side_ray_cast_shit"]]
+[node name="RayCast3D19" type="RayCast3D" parent="RotationAnimator/Node3D" unique_id=509714812 groups=["side_ray_cast_shit"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, 0, -0.25)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0.447059, 0, 1)
 
-[node name="SIZE REFERENCE FLOOR CUBE" type="MeshInstance3D" parent="."]
+[node name="SIZE REFERENCE FLOOR CUBE" type="MeshInstance3D" parent="." unique_id=589745458]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 visible = false
 mesh = SubResource("BoxMesh_m4837")
 
-[node name="SpottedSound" type="AudioStreamPlayer" parent="."]
+[node name="SpottedSound" type="AudioStreamPlayer" parent="." unique_id=1908716168]
 stream = ExtResource("6_lngpj")
 bus = &"SFX"
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=672447669]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 1.16209, 0)
 texture = ExtResource("8_04nd2")
 
-[node name="Sprite3D2" type="Sprite3D" parent="."]
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1551868007]
 transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0.253478, -0.464207, -0.00867909)
 modulate = Color(1, 1, 1, 0.607843)
 texture = ExtResource("9_f4dfr")
 
-[node name="Alert" type="Label3D" parent="."]
+[node name="Alert" type="Label3D" parent="." unique_id=432303413]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.238626, 1.35891, -0.32674)
 visible = false
 modulate = Color(0.791558, 0, 0.22557, 1)

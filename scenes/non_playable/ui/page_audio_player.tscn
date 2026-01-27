@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://u155dxc1ieh"]
+[gd_scene format=3 uid="uid://u155dxc1ieh"]
 
 [ext_resource type="Script" uid="uid://bu1asr76s8b7" path="res://scripts/page_audio_player.gd" id="1_8mf4f"]
 [ext_resource type="AudioStream" uid="uid://csis0sftdhm3d" path="res://assets/sounds/page_turn/page_turn1.wav" id="2_plqjo"]
@@ -15,9 +15,9 @@ stream_2/stream = ExtResource("4_e6fl5")
 stream_3/stream = ExtResource("5_1cnpe")
 stream_4/stream = ExtResource("6_slhuo")
 
-[node name="PageAudioPlayer" type="Node2D"]
+[node name="PageAudioPlayer" type="Node2D" unique_id=1955291984]
 script = ExtResource("1_8mf4f")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=415722273]
 stream = SubResource("AudioStreamRandomizer_og3jb")
 bus = &"SFX"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://6wyw1dutsrrw"]
+[gd_scene format=4 uid="uid://6wyw1dutsrrw"]
 
 [ext_resource type="Script" uid="uid://dxfbi5lg82tc3" path="res://scripts/page_flip.gd" id="1_skcfc"]
 [ext_resource type="Material" uid="uid://cux2uimlb1q0u" path="res://assets/models/map_final/material/flippermaterial.tres" id="2_47w27"]
@@ -132,48 +132,43 @@ _data = {
 &"Plane|Action_004": SubResource("Animation_fmmu8")
 }
 
-[node name="PageFlip" type="Sprite2D" node_paths=PackedStringArray("mesh_to_flip", "animation_player")]
+[node name="PageFlip" type="Sprite2D" unique_id=1810679012 node_paths=PackedStringArray("mesh_to_flip", "animation_player")]
 texture = SubResource("ViewportTexture_skcfc")
 script = ExtResource("1_skcfc")
 base_material = ExtResource("2_47w27")
 mesh_to_flip = NodePath("SubViewport/Node3D/Node3D/umblattern/Plane")
 animation_player = NodePath("SubViewport/Node3D/AnimationPlayer")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1727641194]
 world_3d = SubResource("World3D_l72w3")
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="Node3D" type="Node3D" parent="SubViewport"]
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=1490053969]
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D" unique_id=1005106508]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.75, 0)
 environment = SubResource("Environment_ucygd")
 projection = 1
 size = 10.75
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/Node3D"]
-libraries = {
-&"": SubResource("AnimationLibrary_mipys")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/Node3D" unique_id=321455718]
+libraries/ = SubResource("AnimationLibrary_mipys")
 
-[node name="Node3D" type="Node3D" parent="SubViewport/Node3D"]
+[node name="Node3D" type="Node3D" parent="SubViewport/Node3D" unique_id=334647331]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 visible = false
 
-[node name="umblattern" type="Node3D" parent="SubViewport/Node3D/Node3D"]
+[node name="umblattern" type="Node3D" parent="SubViewport/Node3D/Node3D" unique_id=1787102050]
 
-[node name="Plane" type="MeshInstance3D" parent="SubViewport/Node3D/Node3D/umblattern"]
+[node name="Plane" type="MeshInstance3D" parent="SubViewport/Node3D/Node3D/umblattern" unique_id=591246750]
 transform = Transform3D(10, 0, 0, 0, 10, -4.3711398e-07, 0, 4.3711398e-07, 10, -6.78576e-07, 5.40001, 2.36041e-07)
 mesh = SubResource("ArrayMesh_826wr")
-skeleton = NodePath("")
 "blend_shapes/Key 1" = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/Node3D/Node3D/umblattern"]
-libraries = {
-&"": SubResource("AnimationLibrary_7qnyy")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/Node3D/Node3D/umblattern" unique_id=1508576852]
+libraries/ = SubResource("AnimationLibrary_7qnyy")
 
 [connection signal="animation_finished" from="SubViewport/Node3D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

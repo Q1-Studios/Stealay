@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://wg8m75jsgvyy"]
+[gd_scene format=3 uid="uid://wg8m75jsgvyy"]
 
 [ext_resource type="Texture2D" uid="uid://4vch2c573xoj" path="res://assets/sprites/ui/post_its/death.png" id="1_4wc2p"]
 
@@ -20,15 +20,15 @@ func _ready() -> void:
 transparency = 1
 albedo_color = Color(0, 1, 1, 0.52549)
 
-[node name="PathElement" type="Node3D"]
+[node name="PathElement" type="Node3D" unique_id=1806322083]
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=638696670]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.5, 0)
 axis = 1
 texture = ExtResource("1_4wc2p")
 script = SubResource("GDScript_iqd85")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2021515464]
 visible = false
 mesh = SubResource("BoxMesh_esxmd")
 surface_material_override/0 = SubResource("StandardMaterial3D_nxj2s")

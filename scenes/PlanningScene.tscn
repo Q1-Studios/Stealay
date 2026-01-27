@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://tfksyvs2qbdu"]
+[gd_scene format=3 uid="uid://tfksyvs2qbdu"]
 
 [ext_resource type="Script" uid="uid://lntsseib6ktx" path="res://scripts/planning_scene.gd" id="1_i05ib"]
 [ext_resource type="PackedScene" uid="uid://bgbiir2mrvq87" path="res://scenes/non_playable/mouse_hider.tscn" id="2_d80dn"]
@@ -321,14 +321,14 @@ background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_energy = 0.0
 
-[node name="PlanningScene" type="SubViewportContainer"]
+[node name="PlanningScene" type="SubViewportContainer" unique_id=194588829]
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_i05ib")
 
-[node name="MouseHider" parent="." instance=ExtResource("2_d80dn")]
+[node name="MouseHider" parent="." unique_id=626796563 instance=ExtResource("2_d80dn")]
 
-[node name="HeistPlanner" parent="." node_paths=PackedStringArray("player", "left_btns", "right_btns", "up_btns", "down_btns", "hide_btns", "delete_btns", "commit_btns") instance=ExtResource("2_sfq2c")]
+[node name="HeistPlanner" parent="." unique_id=276996518 node_paths=PackedStringArray("player", "left_btns", "right_btns", "up_btns", "down_btns", "hide_btns", "delete_btns", "commit_btns") instance=ExtResource("2_sfq2c")]
 layout_mode = 2
 mouse_filter = 1
 player = NodePath("../SubViewport/3DScene/Player")
@@ -340,7 +340,7 @@ hide_btns = [NodePath("../2DProjectedPlayer/OnPlanControls/Center"), NodePath(".
 delete_btns = [NodePath("../Hints/MobileSwitcher/MobileButtons/UndoBtn")]
 commit_btns = [NodePath("../Hints/MobileSwitcher/MobileButtons/StartBtn")]
 
-[node name="TouchControlBounds" type="ColorRect" parent="HeistPlanner"]
+[node name="TouchControlBounds" type="ColorRect" parent="HeistPlanner" unique_id=581592006]
 visible = false
 layout_mode = 0
 offset_right = 1251.0
@@ -348,18 +348,18 @@ offset_bottom = 1080.0
 mouse_filter = 1
 color = Color(0.45098, 1, 0, 0.301961)
 
-[node name="2DProjectedPlayer" type="Node2D" parent="." node_paths=PackedStringArray("camera_3d", "target")]
+[node name="2DProjectedPlayer" type="Node2D" parent="." unique_id=1293175477 node_paths=PackedStringArray("camera_3d", "target")]
 position = Vector2(1110, 1020)
 script = ExtResource("3_latlh")
 camera_3d = NodePath("../SubViewport/3DScene/Camera3D")
 target = NodePath("../SubViewport/3DScene/Player")
 
-[node name="OnPlanControls" type="Node2D" parent="2DProjectedPlayer"]
+[node name="OnPlanControls" type="Node2D" parent="2DProjectedPlayer" unique_id=920432599]
 
-[node name="Left" type="Node2D" parent="2DProjectedPlayer/OnPlanControls"]
+[node name="Left" type="Node2D" parent="2DProjectedPlayer/OnPlanControls" unique_id=2123351175]
 script = ExtResource("4_ahqdh")
 
-[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Left" node_paths=PackedStringArray("origin", "bbox")]
+[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Left" unique_id=719831749 node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_2gjlv")
 script = ExtResource("5_c8b5d")
 origin = NodePath("../../..")
@@ -367,10 +367,10 @@ origin_offset = Vector2(-50, 0)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Right" type="Node2D" parent="2DProjectedPlayer/OnPlanControls"]
+[node name="Right" type="Node2D" parent="2DProjectedPlayer/OnPlanControls" unique_id=427472048]
 script = ExtResource("4_ahqdh")
 
-[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Right" node_paths=PackedStringArray("origin", "bbox")]
+[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Right" unique_id=1028862660 node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_c8b5d")
 script = ExtResource("5_c8b5d")
 cone_direction = 1
@@ -379,10 +379,10 @@ origin_offset = Vector2(50, 0)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Up" type="Node2D" parent="2DProjectedPlayer/OnPlanControls"]
+[node name="Up" type="Node2D" parent="2DProjectedPlayer/OnPlanControls" unique_id=1873177425]
 script = ExtResource("4_ahqdh")
 
-[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Up" node_paths=PackedStringArray("origin", "bbox")]
+[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Up" unique_id=502630775 node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_tvnrp")
 script = ExtResource("5_c8b5d")
 cone_direction = 2
@@ -391,10 +391,10 @@ origin_offset = Vector2(0, -50)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Down" type="Node2D" parent="2DProjectedPlayer/OnPlanControls"]
+[node name="Down" type="Node2D" parent="2DProjectedPlayer/OnPlanControls" unique_id=604059253]
 script = ExtResource("4_ahqdh")
 
-[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Down" node_paths=PackedStringArray("origin", "bbox")]
+[node name="Button" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls/Down" unique_id=25786231 node_paths=PackedStringArray("origin", "bbox")]
 shape = SubResource("RectangleShape2D_smyhc")
 script = ExtResource("5_c8b5d")
 cone_direction = 3
@@ -403,26 +403,26 @@ origin_offset = Vector2(0, 50)
 cone_base_length = 100.0
 bbox = NodePath("../../../../HeistPlanner/TouchControlBounds")
 
-[node name="Center" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls"]
+[node name="Center" type="TouchScreenButton" parent="2DProjectedPlayer/OnPlanControls" unique_id=96844867]
 shape = SubResource("RectangleShape2D_54x30")
 script = ExtResource("21_t2wqn")
 
-[node name="Hints" type="Control" parent="."]
+[node name="Hints" type="Control" parent="." unique_id=1980781393]
 layout_mode = 2
 
-[node name="MobileSwitcher" type="Node2D" parent="Hints" node_paths=PackedStringArray("pc_variant", "mobile_variant")]
+[node name="MobileSwitcher" type="Node2D" parent="Hints" unique_id=692584460 node_paths=PackedStringArray("pc_variant", "mobile_variant")]
 script = ExtResource("39_c8b5d")
 pc_variant = NodePath("PCHints")
 mobile_variant = NodePath("MobileButtons")
 
-[node name="PCHints" type="Panel" parent="Hints/MobileSwitcher"]
+[node name="PCHints" type="Panel" parent="Hints/MobileSwitcher" unique_id=1528598672]
 offset_left = 1251.0
 offset_top = 636.0
 offset_right = 1632.0
 offset_bottom = 1080.0
 theme = ExtResource("8_u4w3t")
 
-[node name="Move" type="Label" parent="Hints/MobileSwitcher/PCHints"]
+[node name="Move" type="Label" parent="Hints/MobileSwitcher/PCHints" unique_id=405080399]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 22.0
@@ -431,10 +431,10 @@ offset_bottom = 86.0
 text = "Plan"
 label_settings = SubResource("LabelSettings_yefry")
 
-[node name="InputIcon" parent="Hints/MobileSwitcher/PCHints/Move" instance=ExtResource("5_a4yck")]
+[node name="InputIcon" parent="Hints/MobileSwitcher/PCHints/Move" unique_id=1463172461 instance=ExtResource("5_a4yck")]
 position = Vector2(-70, 35)
 
-[node name="Hide" type="Label" parent="Hints/MobileSwitcher/PCHints"]
+[node name="Hide" type="Label" parent="Hints/MobileSwitcher/PCHints" unique_id=1348611565]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 127.0
@@ -443,7 +443,7 @@ offset_bottom = 191.0
 text = "Hide"
 label_settings = SubResource("LabelSettings_yefry")
 
-[node name="InputIcon" parent="Hints/MobileSwitcher/PCHints/Hide" instance=ExtResource("5_a4yck")]
+[node name="InputIcon" parent="Hints/MobileSwitcher/PCHints/Hide" unique_id=1254726911 instance=ExtResource("5_a4yck")]
 position = Vector2(-70, 35)
 texture = ExtResource("8_01txo")
 keyboard_icon = ExtResource("8_01txo")
@@ -452,7 +452,7 @@ xbox_icon = ExtResource("9_4fghf")
 nintendo_icon = ExtResource("9_4fghf")
 generic_icon = ExtResource("9_4fghf")
 
-[node name="Undo" type="Label" parent="Hints/MobileSwitcher/PCHints"]
+[node name="Undo" type="Label" parent="Hints/MobileSwitcher/PCHints" unique_id=1091161468]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 237.0
@@ -461,7 +461,7 @@ offset_bottom = 301.0
 text = "Undo"
 label_settings = SubResource("LabelSettings_yefry")
 
-[node name="InputIcon" parent="Hints/MobileSwitcher/PCHints/Undo" instance=ExtResource("5_a4yck")]
+[node name="InputIcon" parent="Hints/MobileSwitcher/PCHints/Undo" unique_id=499038440 instance=ExtResource("5_a4yck")]
 position = Vector2(-70, 35)
 texture = ExtResource("34_yivre")
 keyboard_icon = ExtResource("34_yivre")
@@ -470,7 +470,7 @@ xbox_icon = ExtResource("11_7doss")
 nintendo_icon = ExtResource("11_7doss")
 generic_icon = ExtResource("11_7doss")
 
-[node name="Start" type="Label" parent="Hints/MobileSwitcher/PCHints"]
+[node name="Start" type="Label" parent="Hints/MobileSwitcher/PCHints" unique_id=690243908]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 338.0
@@ -479,7 +479,7 @@ offset_bottom = 402.0
 text = "Start"
 label_settings = SubResource("LabelSettings_yefry")
 
-[node name="InputIcon" parent="Hints/MobileSwitcher/PCHints/Start" instance=ExtResource("5_a4yck")]
+[node name="InputIcon" parent="Hints/MobileSwitcher/PCHints/Start" unique_id=638307375 instance=ExtResource("5_a4yck")]
 position = Vector2(-70, 35)
 texture = ExtResource("33_kitgh")
 keyboard_icon = ExtResource("33_kitgh")
@@ -488,7 +488,7 @@ xbox_icon = ExtResource("14_0hyt6")
 nintendo_icon = ExtResource("15_bdlay")
 generic_icon = ExtResource("16_a4yck")
 
-[node name="MobileButtons" type="Panel" parent="Hints/MobileSwitcher"]
+[node name="MobileButtons" type="Panel" parent="Hints/MobileSwitcher" unique_id=324784716]
 visible = false
 offset_left = 1251.0
 offset_top = 275.0
@@ -496,77 +496,77 @@ offset_right = 1634.0
 offset_bottom = 1080.0
 theme = ExtResource("8_u4w3t")
 
-[node name="ArrowControls" type="Control" parent="Hints/MobileSwitcher/MobileButtons"]
+[node name="ArrowControls" type="Control" parent="Hints/MobileSwitcher/MobileButtons" unique_id=90046091]
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 450.0
 offset_right = 383.0
 offset_bottom = 750.0
 
-[node name="Up" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+[node name="Up" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls" unique_id=1678283832]
 position = Vector2(183, -5)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("ConvexPolygonShape2D_266aw")
 script = ExtResource("21_t2wqn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Up" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Up" unique_id=417208157 node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("17_swb4v")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="Down" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+[node name="Down" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls" unique_id=2044530398]
 position = Vector2(183, 224)
 rotation = -3.14159
 scale = Vector2(0.75, 0.75)
 shape = SubResource("ConvexPolygonShape2D_266aw")
 script = ExtResource("21_t2wqn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Down" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Down" unique_id=1139778410 node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("17_swb4v")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="Left" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+[node name="Left" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls" unique_id=670091586]
 position = Vector2(69, 109)
 rotation = -1.5708
 scale = Vector2(0.75, 0.75)
 shape = SubResource("ConvexPolygonShape2D_266aw")
 script = ExtResource("21_t2wqn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Left" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Left" unique_id=1640868482 node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("17_swb4v")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="Right" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls"]
+[node name="Right" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls" unique_id=117922559]
 position = Vector2(297, 109)
 rotation = 1.5708
 scale = Vector2(0.75, 0.75)
 shape = SubResource("ConvexPolygonShape2D_266aw")
 script = ExtResource("21_t2wqn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Right" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/ArrowControls/Right" unique_id=139162880 node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("17_swb4v")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="HideBtn" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons"]
+[node name="HideBtn" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons" unique_id=1470741441]
 position = Vector2(99, 179)
 shape = SubResource("RectangleShape2D_0bynk")
 script = ExtResource("21_t2wqn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/HideBtn" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/HideBtn" unique_id=197857729 node_paths=PackedStringArray("btn_src")]
 position = Vector2(-4, -4)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("18_o7vux")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="Hide" type="Label" parent="Hints/MobileSwitcher/MobileButtons/HideBtn"]
+[node name="Hide" type="Label" parent="Hints/MobileSwitcher/MobileButtons/HideBtn" unique_id=290108673]
 offset_left = -55.0
 offset_top = 81.0
 offset_right = 48.0
@@ -576,19 +576,19 @@ label_settings = SubResource("LabelSettings_yefry")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UndoBtn" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons"]
+[node name="UndoBtn" type="TouchScreenButton" parent="Hints/MobileSwitcher/MobileButtons" unique_id=1964136671]
 position = Vector2(283, 179)
 shape = SubResource("RectangleShape2D_0bynk")
 script = ExtResource("21_t2wqn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn" unique_id=1031816085 node_paths=PackedStringArray("btn_src")]
 position = Vector2(0, -4)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("19_rjyge")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="Undo" type="Label" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn"]
+[node name="Undo" type="Label" parent="Hints/MobileSwitcher/MobileButtons/UndoBtn" unique_id=1380651336]
 offset_left = -60.0
 offset_top = 81.0
 offset_right = 60.0
@@ -598,17 +598,17 @@ label_settings = SubResource("LabelSettings_yefry")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons"]
+[node name="StartBtn" type="Area2D" parent="Hints/MobileSwitcher/MobileButtons" unique_id=1751995213]
 position = Vector2(194, 0)
 script = ExtResource("4_2gjlv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/StartBtn" node_paths=PackedStringArray("btn_src")]
+[node name="Sprite2D" type="Sprite2D" parent="Hints/MobileSwitcher/MobileButtons/StartBtn" unique_id=1459165511 node_paths=PackedStringArray("btn_src")]
 scale = Vector2(0.185, 0.185)
 texture = ExtResource("20_lu33s")
 script = ExtResource("18_0bynk")
 btn_src = NodePath("..")
 
-[node name="Start" type="Label" parent="Hints/MobileSwitcher/MobileButtons/StartBtn"]
+[node name="Start" type="Label" parent="Hints/MobileSwitcher/MobileButtons/StartBtn" unique_id=279466126]
 offset_left = -50.0
 offset_top = -40.0
 offset_right = 100.0
@@ -618,23 +618,23 @@ label_settings = SubResource("LabelSettings_swb4v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/StartBtn"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/MobileSwitcher/MobileButtons/StartBtn" unique_id=1515362256]
 position = Vector2(-4.5, 9.5)
 shape = SubResource("RectangleShape2D_266aw")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("goal", "pause_menu", "turing_bandl_ui")]
+[node name="GameManager" type="Node" parent="." unique_id=548535564 node_paths=PackedStringArray("goal", "pause_menu", "turing_bandl_ui")]
 script = ExtResource("3_pbho8")
 goal = NodePath("../SubViewport/3DScene/GoalObject")
 pause_menu = NodePath("../PauseMenu")
 turing_bandl_ui = NodePath("../TuringBandlComponent/TuringBandlUI")
 
-[node name="DiaPostit" type="Sprite2D" parent="."]
+[node name="DiaPostit" type="Sprite2D" parent="." unique_id=1309683472]
 position = Vector2(45, 125)
 scale = Vector2(0.09, 0.09)
 
-[node name="TuringBandlComponent" type="Node2D" parent="."]
+[node name="TuringBandlComponent" type="Node2D" parent="." unique_id=615446233]
 
-[node name="TuringBandlUI" type="Control" parent="TuringBandlComponent"]
+[node name="TuringBandlUI" type="Control" parent="TuringBandlComponent" unique_id=1398133029]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -650,7 +650,7 @@ size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("7_1rttj")
 
-[node name="Panel" type="Panel" parent="TuringBandlComponent/TuringBandlUI"]
+[node name="Panel" type="Panel" parent="TuringBandlComponent/TuringBandlUI" unique_id=1153001549]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -663,7 +663,7 @@ grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlComponent/TuringBandlUI/Panel" node_paths=PackedStringArray("bandl1", "bandl2", "bandl3", "bandl4")]
+[node name="VBoxContainer" type="VBoxContainer" parent="TuringBandlComponent/TuringBandlUI/Panel" unique_id=224296657 node_paths=PackedStringArray("bandl1", "bandl2", "bandl3", "bandl4")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -677,29 +677,29 @@ bandl2 = NodePath("TuringBandlInstruction2")
 bandl3 = NodePath("TuringBandlInstruction3")
 bandl4 = NodePath("TuringBandlInstruction4")
 
-[node name="TuringBandlInstruction" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+[node name="TuringBandlInstruction" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" unique_id=1790815444 instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TuringBandlInstruction2" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+[node name="TuringBandlInstruction2" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" unique_id=942551139 instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TuringBandlInstruction3" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+[node name="TuringBandlInstruction3" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" unique_id=241989479 instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="TuringBandlInstruction4" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" instance=ExtResource("9_ec7cf")]
+[node name="TuringBandlInstruction4" parent="TuringBandlComponent/TuringBandlUI/Panel/VBoxContainer" unique_id=36093220 instance=ExtResource("9_ec7cf")]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1763948911]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Control"]
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=345574706]
 layout_mode = 0
 offset_top = 22.0
 offset_right = 1255.0
 offset_bottom = 90.0
 
-[node name="Instructions" type="Label" parent="Control/CenterContainer"]
+[node name="Instructions" type="Label" parent="Control/CenterContainer" unique_id=1196475646]
 visible = false
 layout_mode = 2
 theme = SubResource("Theme_lu33s")
@@ -708,7 +708,7 @@ label_settings = SubResource("LabelSettings_ibx1f")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TutorialUI" type="Control" parent="." node_paths=PackedStringArray("heist_planner", "instructions", "movement_hints", "undo_hints", "start_hints", "hide_hints", "skip_control")]
+[node name="TutorialUI" type="Control" parent="." unique_id=1544593817 node_paths=PackedStringArray("heist_planner", "instructions", "movement_hints", "undo_hints", "start_hints", "hide_hints", "skip_control")]
 visible = false
 layout_mode = 2
 mouse_filter = 1
@@ -721,27 +721,27 @@ start_hints = [NodePath("../Hints/MobileSwitcher/PCHints/Start"), NodePath("../H
 hide_hints = [NodePath("../Hints/MobileSwitcher/PCHints/Hide"), NodePath("../Hints/MobileSwitcher/MobileButtons/HideBtn")]
 skip_control = NodePath("SkipProgressBar/SkipClickableArea")
 
-[node name="Chat" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
+[node name="Chat" parent="TutorialUI" unique_id=1680377557 instance=ExtResource("10_ibx1f")]
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_01txo"), SubResource("Resource_vf1sc"), SubResource("Resource_4fghf")])
 
-[node name="Chat2" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
+[node name="Chat2" parent="TutorialUI" unique_id=483468401 instance=ExtResource("10_ibx1f")]
 visible = false
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_b5yxx"), SubResource("Resource_xgh5o"), SubResource("Resource_b31oo")])
 
-[node name="Chat3" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
+[node name="Chat3" parent="TutorialUI" unique_id=1850756158 instance=ExtResource("10_ibx1f")]
 visible = false
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_06788"), SubResource("Resource_255cg"), SubResource("Resource_7doss")])
 
-[node name="Chat4" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
+[node name="Chat4" parent="TutorialUI" unique_id=2065410654 instance=ExtResource("10_ibx1f")]
 visible = false
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_hypni"), SubResource("Resource_0hyt6"), SubResource("Resource_bdlay")])
 
-[node name="Chat5" parent="TutorialUI" instance=ExtResource("10_ibx1f")]
+[node name="Chat5" parent="TutorialUI" unique_id=2056605260 instance=ExtResource("10_ibx1f")]
 visible = false
 lines = Array[ExtResource("17_b5yxx")]([SubResource("Resource_a4yck"), SubResource("Resource_latlh"), SubResource("Resource_50e7h")])
 chat_icon = 1
 
-[node name="ClickableArea" type="Button" parent="TutorialUI"]
+[node name="ClickableArea" type="Button" parent="TutorialUI" unique_id=493859617]
 layout_mode = 0
 offset_left = 822.0
 offset_right = 1920.0
@@ -749,19 +749,17 @@ offset_bottom = 1080.0
 theme = SubResource("Theme_dbl34")
 script = ExtResource("48_266aw")
 
-[node name="Arrow" type="Sprite2D" parent="TutorialUI"]
+[node name="Arrow" type="Sprite2D" parent="TutorialUI" unique_id=217508646]
 visible = false
 position = Vector2(1115, 900)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("36_a4yck")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialUI/Arrow"]
-libraries = {
-&"": SubResource("AnimationLibrary_50e7h")
-}
-autoplay = "arrow_up_down"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialUI/Arrow" unique_id=430547733]
+libraries/ = SubResource("AnimationLibrary_50e7h")
+autoplay = &"arrow_up_down"
 
-[node name="SkipProgressBar" type="ProgressBar" parent="TutorialUI"]
+[node name="SkipProgressBar" type="ProgressBar" parent="TutorialUI" unique_id=1303457887]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 975.0
@@ -771,12 +769,12 @@ mouse_filter = 1
 theme = SubResource("Theme_2gjlv")
 show_percentage = false
 
-[node name="MobileSwitcher" type="Node2D" parent="TutorialUI/SkipProgressBar" node_paths=PackedStringArray("pc_variant", "mobile_variant")]
+[node name="MobileSwitcher" type="Node2D" parent="TutorialUI/SkipProgressBar" unique_id=645836355 node_paths=PackedStringArray("pc_variant", "mobile_variant")]
 script = ExtResource("39_c8b5d")
 pc_variant = NodePath("SkipLabel")
 mobile_variant = NodePath("MobileSkipLabel")
 
-[node name="SkipLabel" type="Label" parent="TutorialUI/SkipProgressBar/MobileSwitcher"]
+[node name="SkipLabel" type="Label" parent="TutorialUI/SkipProgressBar/MobileSwitcher" unique_id=724403905]
 offset_left = 117.0
 offset_top = 14.0
 offset_right = 538.0
@@ -784,12 +782,12 @@ offset_bottom = 64.0
 text = "Hold      to skip tutorial"
 label_settings = SubResource("LabelSettings_r1aly")
 
-[node name="Sprite2D" type="Sprite2D" parent="TutorialUI/SkipProgressBar/MobileSwitcher/SkipLabel"]
+[node name="Sprite2D" type="Sprite2D" parent="TutorialUI/SkipProgressBar/MobileSwitcher/SkipLabel" unique_id=1092300402]
 position = Vector2(-60, 25)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("27_jlbm7")
 
-[node name="InputIcon" parent="TutorialUI/SkipProgressBar/MobileSwitcher/SkipLabel" instance=ExtResource("5_a4yck")]
+[node name="InputIcon" parent="TutorialUI/SkipProgressBar/MobileSwitcher/SkipLabel" unique_id=317653471 instance=ExtResource("5_a4yck")]
 position = Vector2(109, 24)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("39_latlh")
@@ -799,7 +797,7 @@ xbox_icon = ExtResource("41_2gjlv")
 nintendo_icon = ExtResource("42_c8b5d")
 generic_icon = ExtResource("43_tvnrp")
 
-[node name="MobileSkipLabel" type="Label" parent="TutorialUI/SkipProgressBar/MobileSwitcher"]
+[node name="MobileSkipLabel" type="Label" parent="TutorialUI/SkipProgressBar/MobileSwitcher" unique_id=646275345]
 visible = false
 offset_left = 145.0
 offset_top = 14.0
@@ -808,49 +806,49 @@ offset_bottom = 64.0
 text = "Hold to skip tutorial"
 label_settings = SubResource("LabelSettings_r1aly")
 
-[node name="Sprite2D" type="Sprite2D" parent="TutorialUI/SkipProgressBar/MobileSwitcher/MobileSkipLabel"]
+[node name="Sprite2D" type="Sprite2D" parent="TutorialUI/SkipProgressBar/MobileSwitcher/MobileSkipLabel" unique_id=325855701]
 position = Vector2(-60, 25)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("27_jlbm7")
 
-[node name="SkipClickableArea" type="TouchScreenButton" parent="TutorialUI/SkipProgressBar"]
+[node name="SkipClickableArea" type="TouchScreenButton" parent="TutorialUI/SkipProgressBar" unique_id=1482926377]
 position = Vector2(280, 40)
 shape = SubResource("RectangleShape2D_o7vux")
 script = ExtResource("21_t2wqn")
 
-[node name="PauseMenu" parent="." instance=ExtResource("29_yefry")]
+[node name="PauseMenu" parent="." unique_id=1053020004 instance=ExtResource("29_yefry")]
 layout_mode = 2
 
-[node name="PauseButton" type="TouchScreenButton" parent="."]
+[node name="PauseButton" type="TouchScreenButton" parent="." unique_id=120028176]
 process_mode = 3
 position = Vector2(60, 60)
 shape = SubResource("RectangleShape2D_rjyge")
 script = ExtResource("51_rjyge")
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseButton"]
+[node name="Sprite2D" type="Sprite2D" parent="PauseButton" unique_id=1790912164]
 position = Vector2(3.8147e-06, 3.8147e-06)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("50_o7vux")
 script = ExtResource("57_lu33s")
 
-[node name="InputConsumer" type="ColorRect" parent="PauseButton"]
+[node name="InputConsumer" type="ColorRect" parent="PauseButton" unique_id=241018863]
 offset_left = -60.0
 offset_top = -60.0
 offset_right = 60.0
 offset_bottom = 60.0
 color = Color(1, 1, 1, 0)
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1254909865]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="3DScene" type="Node3D" parent="SubViewport"]
+[node name="3DScene" type="Node3D" parent="SubViewport" unique_id=1644202023]
 
-[node name="Player" parent="SubViewport/3DScene" groups=["player"] instance=ExtResource("10_ec7cf")]
+[node name="Player" parent="SubViewport/3DScene" unique_id=1066535844 groups=["player"] instance=ExtResource("10_ec7cf")]
 hideshadow = true
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport/3DScene"]
+[node name="Camera3D" type="Camera3D" parent="SubViewport/3DScene" unique_id=2121974734]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.64, 7.594, -11.905)
 environment = SubResource("Environment_1rttj")
 projection = 1
@@ -858,69 +856,69 @@ current = true
 fov = 50.0
 size = 26.478
 
-[node name="Map" parent="SubViewport/3DScene" instance=ExtResource("8_rly6o")]
+[node name="Map" parent="SubViewport/3DScene" unique_id=1255812368 instance=ExtResource("8_rly6o")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.5, 1.5, -19.5)
 visible = false
 
-[node name="MovementManager" type="Node" parent="SubViewport/3DScene"]
+[node name="MovementManager" type="Node" parent="SubViewport/3DScene" unique_id=435847914]
 
-[node name="GuardMovementController" type="Node" parent="SubViewport/3DScene/MovementManager" node_paths=PackedStringArray("guard_list")]
+[node name="GuardMovementController" type="Node" parent="SubViewport/3DScene/MovementManager" unique_id=872435359 node_paths=PackedStringArray("guard_list")]
 script = ExtResource("11_y7sd5")
 guard_list = [NodePath("../../startingGumba"), NodePath("../../mainCircleGuard"), NodePath("../../redfloorGuard"), NodePath("../../randompillarroomguard"), NodePath("../../theFinalBoss")]
 
-[node name="PlanningScenePlayerController" type="Node" parent="SubViewport/3DScene/MovementManager" node_paths=PackedStringArray("player")]
+[node name="PlanningScenePlayerController" type="Node" parent="SubViewport/3DScene/MovementManager" unique_id=572223086 node_paths=PackedStringArray("player")]
 script = ExtResource("12_y7sd5")
 player = NodePath("../../Player")
 PathElementScene = ExtResource("34_nup1x")
 HideElementScene = ExtResource("35_b5yxx")
 SkullElementScene = ExtResource("36_01txo")
 
-[node name="Sprite3D" type="Sprite3D" parent="SubViewport/3DScene"]
+[node name="Sprite3D" type="Sprite3D" parent="SubViewport/3DScene" unique_id=1931592224]
 transform = Transform3D(2.325, 0, 0, 0, -1.01629e-07, 2.325, 0, -2.325, -1.01629e-07, -11.955, -1.443, -11.964)
 texture = ExtResource("13_un3xe")
 
-[node name="GoalObject" parent="SubViewport/3DScene" instance=ExtResource("14_un3xe")]
+[node name="GoalObject" parent="SubViewport/3DScene" unique_id=1763651630 instance=ExtResource("14_un3xe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -22)
 
-[node name="Walls" type="Node3D" parent="SubViewport/3DScene"]
+[node name="Walls" type="Node3D" parent="SubViewport/3DScene" unique_id=912548555]
 visible = false
 script = ExtResource("16_ibx1f")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SubViewport/3DScene"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SubViewport/3DScene" unique_id=337748130]
 stream = ExtResource("36_yivre")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
 
-[node name="DiamondSticker" type="Sprite3D" parent="SubViewport/3DScene"]
+[node name="DiamondSticker" type="Sprite3D" parent="SubViewport/3DScene" unique_id=1005223415]
 transform = Transform3D(1.2, 0, 0, 0, -5.24537e-08, 1.2, 0, -1.2, -5.24537e-08, -24.2727, 3.08171, -21.7178)
 texture = ExtResource("38_yefry")
 
-[node name="mainCircleGuard" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
+[node name="mainCircleGuard" parent="SubViewport/3DScene" unique_id=1814009850 instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -7)
 input_sequence = Array[int]([1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 1, 3, 1, 1, 3, 1])
 id = 1
 hideshadow = true
 
-[node name="redfloorGuard" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
+[node name="redfloorGuard" parent="SubViewport/3DScene" unique_id=1086662929 instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -6)
 input_sequence = Array[int]([3, 3, 1, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3])
 id = 2
 hideshadow = true
 
-[node name="randompillarroomguard" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
+[node name="randompillarroomguard" parent="SubViewport/3DScene" unique_id=978357453 instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -21)
 input_sequence = Array[int]([1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 3, 3, 3, 3, 1])
 id = 3
 hideshadow = true
 
-[node name="theFinalBoss" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
+[node name="theFinalBoss" parent="SubViewport/3DScene" unique_id=840252004 instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -23)
 input_sequence = Array[int]([3, 3, 3, 1, 3, 3, 0, 3, 3, 3, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 3, 3, 3])
 id = 4
 hideshadow = true
 
-[node name="startingGumba" parent="SubViewport/3DScene" instance=ExtResource("9_0acuf")]
+[node name="startingGumba" parent="SubViewport/3DScene" unique_id=1108452865 instance=ExtResource("9_0acuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -2)
 input_sequence = Array[int]([2, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 3, 3, 3, 2, 0, 0, 2, 2, 1, 1, 3, 3, 0, 0, 0, 0, 3, 3, 3, 0, 3, 3, 3, 1, 1, 3, 3, 3, 1, 1, 1, 2, 1, 1, 1, 3, 1, 1, 1, 1, 2, 2])
 id = 5

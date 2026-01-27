@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxy4hikcjoxb7"]
+[gd_scene format=3 uid="uid://cxy4hikcjoxb7"]
 
 [ext_resource type="Script" uid="uid://oi8rybdakg5l" path="res://scripts/ui_bandlinstruction.gd" id="1_0xnjm"]
 [ext_resource type="Texture2D" uid="uid://caws74fycwoi2" path="res://assets/sprites/ui/post_its/arrowUp.png" id="2_mhnxi"]
@@ -29,7 +29,7 @@ texture = ExtResource("6_s88lv")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xnjm"]
 texture = ExtResource("7_0de6y")
 
-[node name="TuringBandlInstruction" type="Control" node_paths=PackedStringArray("UpArrowSymbol", "DownArrowSymbol", "LeftArrowSymbol", "RightArrowSymbol", "HideArrowSymbol", "EmptyArrowSymbol")]
+[node name="TuringBandlInstruction" type="Control" unique_id=44257352 node_paths=PackedStringArray("UpArrowSymbol", "DownArrowSymbol", "LeftArrowSymbol", "RightArrowSymbol", "HideArrowSymbol", "EmptyArrowSymbol")]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 3
@@ -43,7 +43,7 @@ RightArrowSymbol = NodePath("HBoxContainer/BandlSymbol/RightArrow")
 HideArrowSymbol = NodePath("HBoxContainer/BandlSymbol/HideArrow")
 EmptyArrowSymbol = NodePath("HBoxContainer/BandlSymbol/EmptyArrow")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2018141248]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,13 +51,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BandlSymbol" type="Panel" parent="HBoxContainer"]
+[node name="BandlSymbol" type="Panel" parent="HBoxContainer" unique_id=1910284888]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_ojfeb")
 
-[node name="UpArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+[node name="UpArrow" type="Panel" parent="HBoxContainer/BandlSymbol" unique_id=1118521262]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -68,7 +68,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_pcu6u")
 
-[node name="DownArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+[node name="DownArrow" type="Panel" parent="HBoxContainer/BandlSymbol" unique_id=1519861667]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -79,7 +79,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_48324")
 
-[node name="LeftArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+[node name="LeftArrow" type="Panel" parent="HBoxContainer/BandlSymbol" unique_id=229690336]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -90,7 +90,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_s88lv")
 
-[node name="RightArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+[node name="RightArrow" type="Panel" parent="HBoxContainer/BandlSymbol" unique_id=933684428]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -101,7 +101,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_0de6y")
 
-[node name="HideArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+[node name="HideArrow" type="Panel" parent="HBoxContainer/BandlSymbol" unique_id=289123939]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -112,7 +112,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_60um3")
 
-[node name="EmptyArrow" type="Panel" parent="HBoxContainer/BandlSymbol"]
+[node name="EmptyArrow" type="Panel" parent="HBoxContainer/BandlSymbol" unique_id=154284039]
 visible = false
 layout_mode = 1
 anchors_preset = 15

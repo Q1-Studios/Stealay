@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://csr8qdvijf7o8"]
+[gd_scene format=3 uid="uid://csr8qdvijf7o8"]
 
 [ext_resource type="Script" uid="uid://kffkeo6bcao7" path="res://scripts/planner.gd" id="1_qk7fk"]
 [ext_resource type="FontFile" uid="uid://crmwiei4eut0g" path="res://assets/fonts/bnmachine.ttf" id="2_e4c8q"]
@@ -13,7 +13,7 @@ font_color = Color(0.509286, 0.509286, 0.509286, 1)
 font = ExtResource("2_e4c8q")
 font_size = 48
 
-[node name="HeistPlanner" type="Control"]
+[node name="HeistPlanner" type="Control" unique_id=1098022068]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qk7fk")
 
-[node name="TurncountTitle" type="Label" parent="."]
+[node name="TurncountTitle" type="Label" parent="." unique_id=2064464018]
 layout_mode = 0
 offset_left = 1431.0
 offset_top = 30.0
@@ -33,7 +33,7 @@ label_settings = SubResource("LabelSettings_dcjuf")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Turncount" type="Label" parent="."]
+[node name="Turncount" type="Label" parent="." unique_id=911891919]
 layout_mode = 0
 offset_left = 1431.0
 offset_top = 90.0
@@ -44,7 +44,7 @@ label_settings = SubResource("LabelSettings_j03c0")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="InvalidSound" type="AudioStreamPlayer" parent="."]
+[node name="InvalidSound" type="AudioStreamPlayer" parent="." unique_id=114204327]
 stream = ExtResource("2_j03c0")
 volume_db = -5.0
 bus = &"SFX"

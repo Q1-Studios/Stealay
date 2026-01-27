@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg05c2k8pghfo"]
+[gd_scene format=3 uid="uid://bg05c2k8pghfo"]
 
 [ext_resource type="Texture2D" uid="uid://cqrrr7nyd22q" path="res://assets/sprites/ui/post_its/scribble.png" id="1_nxj2s"]
 
@@ -20,15 +20,15 @@ func _ready() -> void:
 transparency = 1
 albedo_color = Color(0, 1, 1, 0.52549)
 
-[node name="PathElement" type="Node3D"]
+[node name="PathElement" type="Node3D" unique_id=1471090202]
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1203566787]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.5, 0)
 axis = 1
 texture = ExtResource("1_nxj2s")
 script = SubResource("GDScript_iqd85")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1072413913]
 visible = false
 mesh = SubResource("BoxMesh_esxmd")
 surface_material_override/0 = SubResource("StandardMaterial3D_nxj2s")

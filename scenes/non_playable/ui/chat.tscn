@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crkpn5vqe2wwa"]
+[gd_scene format=3 uid="uid://crkpn5vqe2wwa"]
 
 [ext_resource type="Script" uid="uid://8ypg4mvasyqw" path="res://scripts/chat.gd" id="1_1vpf0"]
 [ext_resource type="Texture2D" uid="uid://dlpc8t81caida" path="res://assets/sprites/tutorial/speech_bubble.png" id="2_bhmos"]
@@ -37,22 +37,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Chat" type="Node2D"]
+[node name="Chat" type="Node2D" unique_id=1583382719]
 script = ExtResource("1_1vpf0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=69716753]
 offset_left = 822.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 1
 color = Color(1, 1, 1, 0.627451)
 
-[node name="SpeechBubble" type="Sprite2D" parent="."]
+[node name="SpeechBubble" type="Sprite2D" parent="." unique_id=643111098]
 position = Vector2(1287.5, 207.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_bhmos")
 
-[node name="Label" type="Label" parent="SpeechBubble"]
+[node name="Label" type="Label" parent="SpeechBubble" unique_id=1142173148]
 offset_left = -494.0
 offset_top = -177.0
 offset_right = 384.0
@@ -62,12 +62,12 @@ text = "I fulfilled my part of the bargain.
 label_settings = SubResource("LabelSettings_t1nil")
 autowrap_mode = 3
 
-[node name="SpeechRect" type="Sprite2D" parent="."]
+[node name="SpeechRect" type="Sprite2D" parent="." unique_id=2057073260]
 position = Vector2(1249.5, 497.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_fnrej")
 
-[node name="Label" type="Label" parent="SpeechRect"]
+[node name="Label" type="Label" parent="SpeechRect" unique_id=1777994500]
 offset_left = -447.0
 offset_top = -151.0
 offset_right = 443.0
@@ -77,12 +77,12 @@ text = "The building plan and patrol routes are yours.
 label_settings = SubResource("LabelSettings_t1nil")
 autowrap_mode = 3
 
-[node name="SpeechRect2" type="Sprite2D" parent="."]
+[node name="SpeechRect2" type="Sprite2D" parent="." unique_id=588032015]
 position = Vector2(1249.5, 807.6)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_fnrej")
 
-[node name="Label" type="Label" parent="SpeechRect2"]
+[node name="Label" type="Label" parent="SpeechRect2" unique_id=1795194270]
 offset_left = -447.0
 offset_top = -151.0
 offset_right = 443.0
@@ -91,12 +91,12 @@ text = "But this won't be easy. You'll have to come up with a foolproof plan."
 label_settings = SubResource("LabelSettings_t1nil")
 autowrap_mode = 3
 
-[node name="ContinueLabelSwitcher" type="Node2D" parent="." node_paths=PackedStringArray("pc_variant", "mobile_variant")]
+[node name="ContinueLabelSwitcher" type="Node2D" parent="." unique_id=9681889 node_paths=PackedStringArray("pc_variant", "mobile_variant")]
 script = ExtResource("4_w6dnx")
 pc_variant = NodePath("ContinueLabel")
 mobile_variant = NodePath("MobileContinueLabel")
 
-[node name="ContinueLabel" type="Label" parent="ContinueLabelSwitcher"]
+[node name="ContinueLabel" type="Label" parent="ContinueLabelSwitcher" unique_id=1216439596]
 offset_left = 1150.5
 offset_top = 977.6
 offset_right = 1555.5
@@ -104,7 +104,7 @@ offset_bottom = 1027.6
 text = "Press       to continue"
 label_settings = SubResource("LabelSettings_l2q88")
 
-[node name="InputIcon" type="Sprite2D" parent="ContinueLabelSwitcher/ContinueLabel"]
+[node name="InputIcon" type="Sprite2D" parent="ContinueLabelSwitcher/ContinueLabel" unique_id=1694221056]
 process_mode = 3
 position = Vector2(147.5, 23.4)
 scale = Vector2(0.125, 0.125)
@@ -117,7 +117,7 @@ nintendo_icon = ExtResource("8_il146")
 generic_icon = ExtResource("9_igpr6")
 preview = 1
 
-[node name="MobileContinueLabel" type="Label" parent="ContinueLabelSwitcher"]
+[node name="MobileContinueLabel" type="Label" parent="ContinueLabelSwitcher" unique_id=1853008830]
 visible = false
 offset_left = 1283.0
 offset_top = 978.0
@@ -126,9 +126,9 @@ offset_bottom = 1028.0
 text = "Tap to continue"
 label_settings = SubResource("LabelSettings_l2q88")
 
-[node name="ChatGuy" type="AnimatedSprite2D" parent="."]
+[node name="ChatGuy" type="AnimatedSprite2D" parent="." unique_id=813328584]
 position = Vector2(1780.5, 330.6)
 sprite_frames = SubResource("SpriteFrames_0uyyy")
 
-[node name="VoicelinePlayer" type="AudioStreamPlayer" parent="."]
+[node name="VoicelinePlayer" type="AudioStreamPlayer" parent="." unique_id=1705081056]
 bus = &"SFX"
